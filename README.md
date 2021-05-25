@@ -1,1 +1,2 @@
-# Graph-Rectifiability
+# Graph Rectifiability Summer Research
+#### Charles Zhang
