@@ -11,13 +11,18 @@
 }
 
 \usepackage{amsmath}
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
 % \usepackage{amsthm}
 % \theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}{Corollary}[subsection]
+
 \usepackage{graphicx}
 \usepackage{amsfonts}
-
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{float}
 
 
 
@@ -41,6 +46,8 @@
 
 \section{May 25}
 \subsection{Basic Set Theory}
+
+Review and summary of some definitions and theorems:
 
 \begin{definition}[Countable]
     An infinite set $A$ is countable if its elements 
@@ -98,7 +105,7 @@ and the \textit{interior} as the \textbf{largest open set} contained in $A$.
 \end{definition}
 
 \begin{definition}[Connected Component]
-    The connected component of $x$ is the largest connected subset of $A$ containing a point $x$.
+Connected component of $x$ is the largest connected subset of $A$ containing a point $x$.
 \end{definition}
 
 \begin{definition}[Disconnect]
@@ -130,7 +137,7 @@ to the vector $a$, \textit{rotations} which have a centre $a$ such
 that $|S(x)-a|=|x-a|$ for all $x$ (for convenience, we also 
 regard the identity transformation given by $I(x)=x$ as a 
 rotation) and \textit{reflections}, which maps points to their mirror 
-images in some $(n-1)$ -dimensional plane. A congruence that 
+images in some $(n-1)$-dimensional plane. A congruence that 
 may be achieved by a combination of a rotation and a translation, 
 that is, does not involve reflection, is called a \textit{rigid motion} or 
 \textit{direct congruence}. A transformation 
@@ -139,7 +146,116 @@ $S: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ is a \textit{similarity} of
 in $\mathbb{R}^{n} .$ A similarity transforms sets into geometrically 
 similar ones with all lengths multiplied by the factor $c$.
 
-\begin{definition}
-    
+\begin{definition}[Linear Transformation]
+    A transformation $T : \mathbb{R}^n \rightarrow \mathbb{R}^n$ is linear 
+    if $\forall x, y \in \mathbb{R}^n, T(x+y) = T(x) + T(y)$ and 
+    $T(\lambda x) = \lambda T(x), \lambda \in\mathbb{R}$ 
 \end{definition}
+
+Such a linear transformation is \textit{non-singular} if $T(x)=0$ if and only if $x=0 .$ If 
+$S: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ is of the form $S(x)=T(x)+a$, 
+where $T$ is a non-singular linear transformation and $a$ is a vector in 
+$\mathbb{R}^{n}$, then $S$ is called an \textit{affine transformation}\textit{ or an 
+affinity}. An affinity may be thought of as a shearing transformation; 
+its contracting or expanding effect need not be the same in every direction. 
+However, if $T$ is orthonormal, then $s$ is a congruence, and if $T$ is a 
+scalar multiple of an orthonormal transformation, then $T$ is a similarity.
+
+\begin{definition}[Hölder Function]
+    A function $f: X \rightarrow Y$ is called a Hölder function of exponent $\alpha$ if
+$$
+|f(x)-f(y)| \leq c|x-y|^{\alpha} \quad(x, y \in X)
+$$
+    for some constant $c\geq 0$.
+\end{definition}
+
+\begin{definition}[Libschitz Function]
+    The function $f$ is called Lipschitz if
+    $$
+    |f(x)-f(y)| \leq c|x-y| \quad(x, y \in X)
+    $$
+    and bi-Lipschitz if 
+    $$
+    c_{1}|x-y| \leq |f(x)-f(y)| \leq c_{2}|x-y| \quad(x, y \in X)
+    $$
+    for $0<c_{1} \leq c_{2}<\infty$, in which case both $f$ and 
+    $f^{-1}: f(X) \rightarrow X$ are Lipschitz functions.     
+\end{definition}
+
+\begin{definition}[Lower Limit]
+    $$\displaystyle \lowlim_{x \to 0} f(x) \equiv \lim_{r\to 0}(inf\{f(x):0<x<r\})$$
+\end{definition}
+
+\textbf{Note:} $inf\{f(x):0<x<r\}$ is either $-\infty$ for all positive $r$ or else increases as $r$ decreases, 
+$\lowlim_{x \to 0} f(x)$ always exists.
+
+\begin{definition}[Upper Limit]
+    $$\displaystyle \uplim_{x \to 0} f(x) \equiv  \lim_{r\to 0}(sup\{f(x):0<x<r\})$$
+\end{definition}
+
+\textbf{Note:} The lower and upper limits exist as real numbers or $-\infty$ or $\infty$ for 
+every function $f$ and are indicative of the variation of $f$ for x close to 0, shown in Figure \ref{fig:lowerupperlimit}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.66\textwidth]{images/limit1.png}
+    \caption{The upper and lower limits of a function.}
+    \label{fig:lowerupperlimit}
+\end{figure}
+
+We write $f(x) \sim g(x)$ to mean that $f(x) / g(x) \rightarrow 1$ as $x \rightarrow 0$.
+
+\begin{theorem}[Lipschitz and Hölder functions are continuous]
+\end{theorem}
+
+\textit{Proof}: for the function $f: X \rightarrow Y$ is a Hölder 
+function of exponent $\alpha$ s.t. 
+$|f(x)-f(y)| \leq c|x-y|^{\alpha} \quad (x, y \in X)$ for some constant $c\geq 0$.
+Then, $\forall \epsilon > 0$, let $\displaystyle \delta = \frac{\epsilon}{c}$. Hence, 
+$\forall x, y\in X, |x-y| < \delta \Rightarrow \displaystyle |x-y| < \frac{\epsilon}{c} \Rightarrow |f(x) - f(y)| \leq c |x-y| \leq c\cdot \frac{\epsilon}{c} = \epsilon \Rightarrow$ Hölder functions are continous, 
+and let exponent $\alpha = 1$, then we have Lipschitz functions are continuous .
+
+\begin{definition}[Homeomorphism]
+    If $f: X \rightarrow Y$ is a continuous bijection with continuous 
+    inverse $f^{-1}: Y \rightarrow X$, then $f$ is called a homeomorphism, 
+    and $X$ and $Y$ are termed homeomorphic sets. 
+\end{definition}
+\begin{corollary}
+    Congruences, similarities 
+    and affine transformations on $\mathbb{R}^{n}$ are examples of homeomorphisms.
+\end{corollary}
+
+\begin{definition}[Differentiable]
+    If $f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$, we say that $f$ is 
+    differentiable at $x$ and has derivative given by the linear mapping 
+    $f^{\prime}(x): \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ if
+$$
+\lim _{h \rightarrow 0} \frac{\left|f(x+h)-f(x)-f^{\prime}(x) h\right|}{|h|}=0 .
+$$
+\end{definition}
+
+\begin{definition}[Pointwise Convergence]
+    For a sequence of functions: $f_k : X\rightarrow Y$ where $X$ and $Y$ are subsets 
+    of Euclidean spaces. $f_k$ converge pointwise to a function $f:X\rightarrow Y$ if 
+    $f_k(x)\rightarrow f(x)$ as $k\rightarrow \infty$.
+\end{definition}
+
+\begin{definition}[Unifrom Convergence]
+    For a sequence of functions: $f_k : X\rightarrow Y$ where $X$ and $Y$ are subsets 
+    of Euclidean spaces. $f_k$ converge uniformly to a function $f:X\rightarrow Y$ if 
+    $sup_{x\in X} |f_k(x)- f(x)| \rightarrow 0$ as $k\rightarrow \infty$.
+\end{definition}
+
+\textbf{Note}: Uniform convergence is a stronger property than pointwise convergence i.e. Uniform convergence implies pointwise convergence, but not the other way around
+
+\begin{theorem}
+    If the functions $f_k$ are continuous and converge uniformly to $f$, then $f$ is continuous. 
+\end{theorem}
+
+\textit{proof:} TODO
+
+
+\begin{theorem}[Logarithms]
+    Apparently, $a^c = b^{c\log a / \log b}$
+\end{theorem}
 \end{document}
