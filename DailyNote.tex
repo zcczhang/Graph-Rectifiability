@@ -1,0 +1,145 @@
+\documentclass[12pt, a4paper]{article}
+
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{amsmath}
+% \usepackage{amsthm}
+% \theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\usepackage{graphicx}
+\usepackage{amsfonts}
+
+
+
+
+\title{\textbf{Graph Rectifiability Summer Research with Lisa Naples} \\ [0.5cm] \sffamily{Daily Report}}
+
+\author{\sffamily{By} \\[.2cm] \textbf{\textit{Charles Zhang}}  \\ [.5cm]}
+
+\date{Summer 2021}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+{
+    \hypersetup{linkcolor=black}
+    \tableofcontents
+}
+
+\newpage
+
+\section{May 25}
+\subsection{Basic Set Theory}
+
+\begin{definition}[Countable]
+    An infinite set $A$ is countable if its elements 
+    can be listed in the form $x_1, x_2, ...$ with every 
+    element of appearing at a specific place in the list; 
+    otherwise, the set is uncountable
+\end{definition}
+
+\begin{definition}[Open]
+    $A \subset \mathbb{R}^n$ is open if, $\forall x\in A$, $\exists B(x, r)\in A$ where $r>0$.
+\end{definition}
+
+\begin{definition}[Closed]
+    $A \subset \mathbb{R}^n$ is closed if, whenever $\{x_k\}\in A$, $x_k\rightarrow x \in \mathbb{R}^n$, then $x\in A$.
+\end{definition}
+
+\begin{definition}[Closure]\label{closure}
+    $\bar{A}$ is the intersection of all the closed sets containing a set A. 
+\end{definition}
+
+\begin{definition}[Interior]\label{interior}
+    $int(A)$ is the union of all open sets contained in $A$.
+\end{definition}
+
+Definition \ref{closure} and \ref{interior} shows that The \textit{closure} 
+of $A$ is thought of as the \textbf{smallest closed set} containing $A$, 
+and the \textit{interior} as the \textbf{largest open set} contained in $A$.
+
+\begin{definition}[Boundary]
+    $\partial A = \bar{A}\setminus int(A)$
+\end{definition}
+
+\begin{theorem}
+    $x\in\partial A \Leftrightarrow \forall r > 0, B(x, r) \cap A \neq \emptyset, B(x, r) \cap A^C \neq \emptyset$ 
+\end{theorem}
+
+\begin{definition}[Dense]
+    Set $B$ is a dense in $A$ if $A\subset \bar{B}$, that is, if there are points of $B$ arbitrarily close to each point of $A$.
+\end{definition}
+
+\begin{definition}[Compact]
+    $A$ is compact if any collection of open sets that covers $A$ has a finite subcollection which also covers $A$.
+\end{definition}
+
+\begin{theorem}
+    A compact subset of $\mathbb{R}^n$ is both closed and bounded.
+\end{theorem}
+
+\begin{theorem}
+    The intersection of any collection of compact sets is compact.
+\end{theorem}
+
+\begin{definition}[Connected]
+    $A\subset \mathbb{R}^n$ is connected if there not exists open sets $U$ and $V$ s.t. $A\in U\cap V$ with disjoint and nonempty $A\cap U$ and $A\cap V$.
+\end{definition}
+
+\begin{definition}[Connected Component]
+    The connected component of $x$ is the largest connected subset of $A$ containing a point $x$.
+\end{definition}
+
+\begin{definition}[Disconnect]
+    The set $A$ is totally disconnected if the connected component of each point consists of just that point.
+\end{definition}
+
+The definition of \textit{disconnect} also can be as: $\exists$ open sets $U$ and $V$ s.t. $x\in U, y\in V$ and $A\subset U\cap V$.
+
+\begin{definition}[Borel Set]
+    Borel Sets is the smallest collection fo subsets of $\mathbb{R}^n$ with the following properties:
+    \begin{enumerate}
+        \item Every open set and every closed set is a Borel set.
+        \item The union of every finite or countable collection of Borel sets is a Borel set, and the intersection of every finite or countable collection of Borel sets is a Borel set.
+    \end{enumerate}
+\end{definition}
+
+In short, Any set that can be constructed using a sequence of countable unions or intersections starting with the open sets or closed sets will certainly be Borel.
+
+\subsection{Functions and Limits}
+
+\begin{definition}[Congruence]
+    The transformation $S : \mathbb{R}^n\rightarrow \mathbb{N}^n$ is congruence or isometry if it preserves distances i.e. if $|S(x)-S(y)| = |x-y|$ for $x, y\in \mathbb{R}^n$
+    
+\end{definition}
+
+Special cases include \textit{translations}, which are of the form 
+$S(x)=x+a$ and have the effect of shifting points parallel 
+to the vector $a$, \textit{rotations} which have a centre $a$ such 
+that $|S(x)-a|=|x-a|$ for all $x$ (for convenience, we also 
+regard the identity transformation given by $I(x)=x$ as a 
+rotation) and \textit{reflections}, which maps points to their mirror 
+images in some $(n-1)$ -dimensional plane. A congruence that 
+may be achieved by a combination of a rotation and a translation, 
+that is, does not involve reflection, is called a \textit{rigid motion} or 
+\textit{direct congruence}. A transformation 
+$S: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ is a \textit{similarity} of 
+\textit{ratio} or \textit{scale} $c>0$ if $|S(x)-S(y)|=c|x-y|$ for all $x, y$ 
+in $\mathbb{R}^{n} .$ A similarity transforms sets into geometrically 
+similar ones with all lengths multiplied by the factor $c$.
+
+\begin{definition}
+    
+\end{definition}
+\end{document}
