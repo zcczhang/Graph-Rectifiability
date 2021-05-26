@@ -18,12 +18,27 @@
 \newtheorem{definition}{Definition}[subsection]
 \newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{corollary}{Corollary}[subsection]
-
+\newtheorem{exercise}{Exercise}
 \usepackage{graphicx}
 \usepackage{amsfonts}
 \usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{float}
+\usepackage{enumerate} 
 
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{customexercise}{Exercise}
+\newcustomtheorem{customsol}{Solution}
 
 
 \title{\textbf{Graph Rectifiability Summer Research with Lisa Naples} \\ [0.5cm] \sffamily{Daily Report}}
@@ -44,6 +59,100 @@
 
 \newpage
 
+\section{May 26}
+\subsection{Exercises and Solutions}
+\begin{customexercise}{1.12}
+    Let $f, g:[0,1] \rightarrow \mathbb{R}$ be Lipschitz functions. 
+    Show that the functions defined on $[0,1]$ by $f(x)+g(x)$ and 
+    $f(x) g(x)$ are also Lipschitz.
+\end{customexercise}
+
+\textbf{Solution}:  
+\begin{enumerate}[(i)]
+    \item As $f, g$ are Lipschitz function, we have $|f(x)-f(y)| \leq c_1|x-y|$ and $|g(x)-g(y)| \leq c_2|x-y|$  where $\forall x, y \in [0, 1]$ and $c_1, c_2 \geq 0$.
+    Then, $|(f(x)+g(x)) - (f(y) + g(y))| = |f(x) - f(y) +g(x) - g(y)| \leq  |f(x) - f(y)| + |g(x) - g(y)|\leq (c_1 + c_2 )\cdot |x - y|, \forall x, y\in[0, 1] $. Since $(c_1+c_2)\geq 0$, the condition is satisfied and therefore
+    the functions defined on $[0,1]$ by $f(x)+g(x)$ is Lipschitz. 
+    \item Consider that $|f(x) -f(0)| \leq c_1 |x| \leq c_1, x\in[0, 1]$, so we have non-negative $c_3 = |f(0)| + c_1 \geq |f(x)|$. Similarly, 
+    we have non-negative $c_4 \geq |g(x)|$
+    
+    $|f|, |g| < 1$, $\forall x, y\in[0, 1]$\\
+    $\begin{aligned}
+        &|f(x)g(x) - f(y)g(y)| \\
+        =& |f(x)g(x) -f(x)g(y) + f(x)g(y)- f(y)g(y)| \\
+        =& |f(x)(g(x) - g(y)) + g(y)(f(x) - f(y))| \\ 
+        \leq& |g(y)||(f(x) - f(y))| + |f(x)||(g(x) - g(y))| \\
+        \leq& c_1 c_4 ||x-y| + c_2 c_3|x-y| \\
+        \leq& (c_1c_4 +c_2c_3) |x-y|
+    \end{aligned}$\\
+    Since $c_1c_4 +c_2c_3 \geq 0$, the condition is satisfied and therefore
+    the functions defined on $[0,1]$ by $f(x)g(x)$ is Lipschitz.
+\end{enumerate}
+
+
+\begin{customexercise}{1.13}
+    Let $f: \mathbb{R} \rightarrow \mathbb{R}$ be differentiable 
+    with $\left|f^{\prime}(x)\right| \leq c$ for all $x$. 
+    Show, using the mean value theorem, that $f$ is a Lipschitz function.
+\end{customexercise}
+
+\textbf{Solution}: 
+$\forall x, y \in \mathbf{R} , x \neq y$, by mean-value theorem, $\exists w \in(x, y)$ such that 
+$$
+\begin{aligned}
+    &\frac{f(y)-f(x)}{y-x}=f^{\prime}(w) \\
+    \Rightarrow  &\left|\frac{f(y)-f(x)}{y-x}\right|=\left|f^{\prime}(w)\right| \leq c \\
+    \Rightarrow &|f(x)-f(y)| \leq c|x-y| \quad (x, y \in \mathbb{R})
+\end{aligned}
+$$
+
+Therefore, $f$ is a Lipschitz function.
+
+
+\begin{customexercise}{1.14}
+    Show that every Lipschitz function 
+    $f: \mathbb{R} \rightarrow \mathbb{R}$ is continuous.
+\end{customexercise}
+
+\textbf{Solution: } See proof wrote for Theorem \ref{LipschitzContinuous}.
+
+
+\begin{customexercise}{1.15}
+    Let $f: \mathbb{R} \rightarrow \mathbb{R}$ be given by $f(x)=x^{2}+x .$ 
+    Find (i) $f^{-1}(2)$, (ii) $f^{-1}(-2)$ and (iii) $f^{-1}([2,6])$.
+\end{customexercise}
+
+\textbf{Solution}: As $f(x) = x^2 + x$, $\displaystyle x = -\frac{1}{2} \pm \frac{\sqrt{1 + 4y}}{2}$
+\begin{enumerate}[(i)]
+    \item $f^{-1}(2) = \{-2, 1\}$
+    \item $f^{-1}(-2) = \emptyset$
+    \item As $\displaystyle x = -\frac{1}{2} + \frac{\sqrt{1 + 4y}}{2}$ is increasing and $\displaystyle x = -\frac{1}{2} - \frac{\sqrt{1 + 4y}}{2}$ is decreasing while y increasing, 
+     $f^{-1}([2,6]) = [-3, -2]\cup [1, 2]$
+\end{enumerate}
+
+
+\begin{customexercise}{1.16}
+    Show that $f(x)=x^{2}$ is Lipschitz on $[0,2]$, bi-Lipschitz on 
+    $[1,2]$ and not Lipschitz on $\mathbb{R}$.
+\end{customexercise}
+
+\textbf{Solution}: 
+\begin{enumerate}[(i)]
+    \item As $\forall x, y\in [0,2]$, $|x+y|\leq 4$, we have $|f(x)-f(y)|=\left|x^{2}-y^{2}\right|=|x+y||x-y| \leq 4|x-y|$.
+    Thus, $f$ is Lipschitz on $[0,2]$.
+    \item Apparently, $2|x-y|\leq|f(x) - f(y)|\leq 4|x-y|$ by above. As $f([1, 2]) = [1, 4]$, $\forall x, y \in [1, 4]$, $\displaystyle \frac{1}{\sqrt{x}+\sqrt{y}} \leq \frac{1}{2}$, we have: \\
+    \(
+    \begin{aligned}
+        &\displaystyle \left|f^{-1}(x)-f^{-1}(y)\right|=|\sqrt{x}-\sqrt{y}|=\left|\frac{x-y}{\sqrt{x}+\sqrt{y}}\right| \leq \frac{1}{2}|x-y|\\
+        \Rightarrow & \text{ so } f^{-1} \text{ is Lipschitz on } [1,4]. \\
+        \Rightarrow & f \text{ is bi-Lipschitz on }[1,2].
+    \end{aligned}
+    \)
+    \item Let $x = ky, k\in\mathbb{R}\setminus\{0\}$, then $\displaystyle \frac{|f(x) - f(y)|}{|x - y|} = \frac{|k^2y^2 - y^2|}{|ky - y|} = \left|\frac{k^2 - 1}{k-1} \right | |y|$, which is unbounded on $\mathbb{R}$. Therefore, the Lipschitz constant does not exist and $f$ is not Lipschitz on $\mathbb{R}$
+
+\end{enumerate}
+
+
+\newpage
 \section{May 25}
 \subsection{Basic Set Theory}
 
@@ -205,15 +314,13 @@ every function $f$ and are indicative of the variation of $f$ for x close to 0, 
 
 We write $f(x) \sim g(x)$ to mean that $f(x) / g(x) \rightarrow 1$ as $x \rightarrow 0$.
 
-\begin{theorem}[Lipschitz and Hölder functions are continuous]
+\begin{theorem}[Lipschitz functions are continuous]\label{LipschitzContinuous}
 \end{theorem}
 
-\textit{Proof}: for the function $f: X \rightarrow Y$ is a Hölder 
-function of exponent $\alpha$ s.t. 
-$|f(x)-f(y)| \leq c|x-y|^{\alpha} \quad (x, y \in X)$ for some constant $c\geq 0$.
-Then, $\forall \epsilon > 0$, let $\displaystyle \delta = \frac{\epsilon}{c}$. Hence, 
-$\forall x, y\in X, |x-y| < \delta \Rightarrow \displaystyle |x-y| < \frac{\epsilon}{c} \Rightarrow |f(x) - f(y)| \leq c |x-y| \leq c\cdot \frac{\epsilon}{c} = \epsilon \Rightarrow$ Hölder functions are continous, 
-and let exponent $\alpha = 1$, then we have Lipschitz functions are continuous .
+\textit{Proof}: Assum that the function $f: X \rightarrow Y$ is a Lipschitz function s.t. 
+$|f(x)-f(y)| \leq c|x-y| (x, y \in X)$ for some constant $c\geq 0$.
+Then, $\forall \epsilon > 0$, let $\displaystyle \delta = \frac{\epsilon}{c}$, and we have
+$\forall x, y\in X, |x-y| < \delta \Rightarrow \displaystyle |x-y| < \frac{\epsilon}{c} \Rightarrow |f(x) - f(y)| \leq c |x-y| \leq c\cdot \frac{\epsilon}{c} = \epsilon \Rightarrow$ Lipschitz functions are continuous.
 
 \begin{definition}[Homeomorphism]
     If $f: X \rightarrow Y$ is a continuous bijection with continuous 
