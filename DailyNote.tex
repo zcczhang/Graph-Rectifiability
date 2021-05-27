@@ -19,11 +19,13 @@
 \newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{corollary}{Corollary}[subsection]
 \newtheorem{exercise}{Exercise}
+\newtheorem{property}{Property}[subsection]
 \usepackage{graphicx}
 \usepackage{amsfonts}
 \usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{float}
 \usepackage{enumerate} 
+
 
 \newtheorem{innercustomgeneric}{\customgenericname}
 \providecommand{\customgenericname}{}
@@ -41,9 +43,9 @@
 \newcustomtheorem{customsol}{Solution}
 
 
-\title{\textbf{Graph Rectifiability Summer Research with Lisa Naples} \\ [0.5cm] \sffamily{Daily Report}}
+\title{\textbf{Graph Rectifiability Summer Research} \\ [0.5cm] \sffamily{Daily Report\\(in reverse chronological order)}}
 
-\author{\sffamily{By} \\[.2cm] \textbf{\textit{Charles Zhang}}  \\ [.5cm]}
+\author{\textbf{\textit{Charles Zhang}}}
 
 \date{Summer 2021}
 
@@ -51,14 +53,67 @@
 
 \maketitle
 
-
 {
     \hypersetup{linkcolor=black}
     \tableofcontents
 }
 
 \newpage
+\section{May 27}
+\subsection{Measeres and Mass Distributions(1.3)}
 
+\begin{definition}[Measure]\label{measure}
+    We call $\mu$ a measure on $\mathbb{R}^{n}$ if $\mu$ assigns a non-negative number, possibly $\infty$, to each subset of $\mathbb{R}^{n}$ such that\\
+$
+\begin{aligned}
+\text { (a) }& \mu(\emptyset)=0 \\
+\text { (b) }& \mu(A) \leq \mu(B) \quad \text { if } A \subset B \\
+\text { (c) }&\text{if } A_{1}, A_{2}, \ldots \text{ is a countable (or finite) sequence of sets, then }\\
+& \mu\left(\bigcup_{i=1}^{\infty} A_{i}\right) \leq \sum_{i=1}^{\infty} \mu\left(A_{i}\right)\\
+& \text{ with equality in above, that is }\\
+& \mu\left(\bigcup_{i=1}^{\infty} A_{i}\right)=\sum_{i=1}^{\infty} \mu\left(A_{i}\right), \\
+&\text{ if the }A_i \text{ are disjoint Borel sets.}
+\end{aligned}
+$
+\end{definition}
+
+Condition (a) says that the \textit{\textbf{empty set has
+zero measure}}, condition (b) says \textit{\textbf{'the larger the set, the larger the measure'}} and condition (c) says that if a set is a union of a countable number of pieces (which may overlap), then the sum of the measure of the pieces is at least equal to the measure of the whole. If \textit{\textbf{a set is decomposed into a countable number of disjoint Borel sets}}, then the \textit{\textbf{total measure of the pieces equals the measure of the whole}}.
+
+\begin{property}[Measure] $ $
+\begin{enumerate}
+    \item if $B\subset A$ $A$ and $B$ are Borel sets with $\mu(B)$ finite, 
+    $$\mu(A\setminus B) = \mu(A) - \mu(B)$$ 
+    as $A = B\cup(A\setminus B)$ and using Definition \ref{measure} (c).
+    \item if $A_{1} \subset A_{2} \subset \cdots$ is an increasing sequence of Borel sets, then
+    $$
+    \mu\left(\bigcup_{i=1}^{\infty} A_{i}\right)=\lim _{i \rightarrow \infty} \mu\left(A_{i}\right) .
+    $$
+    as $\displaystyle\bigcup_{i=1}^{\infty} A_{i}=A_{1} \cup\left(A_{2} \backslash A_{1}\right) \cup\left(A_{3} \backslash A_{2}\right) \cup \dots$,
+    $$\begin{aligned} \mu\left(\bigcup_{i=1}^{\infty} A_{i}\right) &=\mu\left(A_{1}\right)+\sum_{i=1}^{\infty}\left(\mu\left(A_{i+1}\right)-\mu\left(A_{i}\right)\right) \\ &=\mu\left(A_{1}\right)+\lim _{k \rightarrow \infty} \sum_{i=1}^{k}\left(\mu\left(A_{i+1}\right)-\mu\left(A_{i}\right)\right) \\ &=\lim _{k \rightarrow \infty} \mu\left(A_{k}\right) . \end{aligned}$$
+    \item A simple extension of above is that if, for $\delta>0, A_{\delta}$ are Borel sets that are increasing as $\delta$ decreases, that is, $A_{\delta^{\prime}} \subset A_{\delta}$ for $0<\delta<\delta^{\prime}$, then
+    $$
+    \mu\left(\bigcup_{\delta>0} A_{\delta}\right)=\lim _{\delta \rightarrow 0} \mu\left(A_{\delta}\right) \text { . }
+    $$
+\end{enumerate}
+\end{property}
+
+\begin{definition}[Support of $\mu$] $ $\\
+    spt $\mu$, is the smallest closed set X such that $\mu(\mathbb{R}^n\setminus X) = 0$. 
+\end{definition}
+
+By above, $x$ is in the support if and only if $\forall r > 0, \mu(B(x, r)) > 0$. We say that \textbf{\textit{$\mu$ is a measure on a set $A$ if $A$ contains the support of $\mu$}}.
+
+\begin{definition}[Mass Distributions]
+    A measure on a bounded subset of $\mathbb{R}^{n}$ for which $0<\mu\left(\mathbb{R}^{n}\right)<\infty$ will be called a mass distribution, and we think of $\mu(A)$ as the mass of the set $A$.
+\end{definition}
+
+\begin{definition}[Lebsgue Measure on $\mathbb{R}$] 
+    $$\mathcal{L}^{1}(A)=\inf \left\{\sum_{i=1}^{\infty}\left(b_{i}-a_{i}\right): A \subset \bigcup_{i=1}^{\infty}\left[a_{i}, b_{i}\right]\right\}$$
+\end{definition}
+
+
+\newpage
 \section{May 26}
 \subsection{Exercises and Solutions}
 \begin{customexercise}{1.12}
@@ -154,7 +209,7 @@ Therefore, $f$ is a Lipschitz function.
 
 \newpage
 \section{May 25}
-\subsection{Basic Set Theory}
+\subsection{Basic Set Theory(1.1)}
 
 Review and summary of some definitions and theorems:
 
@@ -233,7 +288,7 @@ The definition of \textit{disconnect} also can be as: $\exists$ open sets $U$ an
 
 In short, Any set that can be constructed using a sequence of countable unions or intersections starting with the open sets or closed sets will certainly be Borel.
 
-\subsection{Functions and Limits}
+\subsection{Functions and Limits(1.2)}
 
 \begin{definition}[Congruence]
     The transformation $S : \mathbb{R}^n\rightarrow \mathbb{N}^n$ is congruence or isometry if it preserves distances i.e. if $|S(x)-S(y)| = |x-y|$ for $x, y\in \mathbb{R}^n$
