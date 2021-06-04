@@ -20,6 +20,7 @@
 \newtheorem{corollary}{Corollary}[subsection]
 \newtheorem{exercise}{Exercise}
 \newtheorem{property}{Property}[subsection]
+\newtheorem{proposition}{Proposition}[subsection]
 \usepackage{graphicx}
 \usepackage{amsfonts}
 \usepackage[letterpaper,margin=1in]{geometry}
@@ -57,8 +58,252 @@
     \hypersetup{linkcolor=black}
     \tableofcontents
 }
+
 \newpage
-\section{May 28-30}
+\section{May 3}
+\subsection{Exercises and Solutions}
+
+\begin{customexercise}{2.1}
+    Verify directly from the definitions that Equivalent definitions \ref{bcd-def}(ii) and (iv) give the same values for box dimension.
+\end{customexercise}
+
+\begin{customsol}{2.1}
+    Let $F$ be a subset of $\mathbb{R}^{n}$, let $N_{\delta}(F)$ denote the smallest number of closed balls of radius $\delta$ that cover $F$ and let $N_{\delta}^{\prime}(F)$ denote the number of $\delta$-mesh cubes that intersect $F$. 
+    Consider that the closed ball of radius $\delta\sqrt{n}$ will definitely contains the $\delta$-mesh cube when centers are the same. On the other hand, any closed ball of radius $\delta$ is intersect(and contained if center of the ball is the center of all cubes) at most $4^n$ $\delta$-mesh cubes. Thus, 
+    $$
+    N_{\delta \sqrt{n}}(F) \leq N_{\delta}^{\prime}(F) \leq 4^{n} N_{\delta}(F)
+    $$
+    Combining this inequality and dividing by $-\log \delta$,
+$$
+\frac{\log N_{\delta \sqrt{n}}(F)}{-\log (\delta \sqrt{n})+\log \sqrt{n}} \leq \frac{\log N_{\delta}^{\prime}(F)}{-\log \delta} \leq \frac{\log 4^{n}+\log N_{\delta}(F)}{-\log \delta}
+$$
+so taking lower limits as $\delta \rightarrow 0$ where $\delta\sqrt{n}\rightarrow 0 $ as well,
+$$
+\lowlim _{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\log \delta} \leq \lowlim _{\delta \rightarrow 0} \frac{\log N_{\delta}^{\prime}(F)}{-\log \delta} \leq \lowlim _{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\log \delta},
+$$
+with the other terms disappearing in the limit. Thus, the definition of lower box dimension is the same working with either $N_{\delta}(F)$ or $N_{\delta}^{\prime}(F)$. Taking upper limits, we get a similar conclusion for upper box dimension.
+\end{customsol}
+
+
+\begin{customexercise}{2.2}
+    Generalise Proposition \ref{prop2.5} by showing that if $f: F \rightarrow \mathbb{R}^{n}$ satisfies the Hölder condition $|f(x)-f(y)| \leq c|x-y|^{\alpha}$ where $c>0$ and $0<\alpha \leq 1$, then $\underline{\operatorname{dim}_{B}} f(F) \leq(1 / \alpha) \underline{\operatorname{dim}}_{\mathrm{B}} F$ and $\overline{\operatorname{dim}}_{\mathrm{B}} f(F) \leq(1 / \alpha) \overline{\operatorname{dim}}_{\mathrm{B}} F$.
+\end{customexercise}
+
+\begin{customsol}{2.2}
+    Note that if $\{U_i\}$ is a $\delta$-cover of $F$, then so $\{U_i\cap F\}$. Then, as
+    $$
+    |f(U_i\cap F)|\leq c|U_i\cap F|^\alpha\leq c|U_i|^\alpha\leq c\delta^\alpha
+    $$
+    (this can be understood as taking $x, y\in U_i\cap F$ or $x, y\in U_i$ where $|x-y|<\delta$ by construction)
+    s.t. $\{f(U_i\cap F)\}$ is a $c\delta^\alpha$ cover of $f(F)$, and hence $N_{c\delta^\alpha}(f(F)) \leq N_\delta(F), \forall \delta>0$(equal when $f$ is injective). Thus,
+    $$
+    \begin{aligned} \underline{\operatorname{dim}}_{B} f(F) &=\varliminf_{c \delta^{\alpha} \rightarrow 0} \frac{\log N_{c \delta^{\alpha}}(f(F))}{-\log c \delta^{\alpha}} \\
+        &\leq \varliminf_{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\alpha \log \delta-\log c} \\ &=\frac{1}{\alpha} \varliminf_{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\log \delta}\\
+        &=\frac{1}{\alpha} \underline{\operatorname{dim}}_{B} F \end{aligned}
+    $$
+    and same process can be applied for upper box-counting dimension. 
+\end{customsol}
+
+
+\begin{customexercise}{2.4}\label{calculation}
+    Verify that the Cantor dust depicted in Figure \ref{fig:cantordust}, has box dimension 1 (take $E_{0}$ to have side length 1).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=.66\textwidth]{images/cantordust.png}
+        \caption{ Construction of a ‘Cantor dust’ }
+        \label{fig:cantordust}
+    \end{figure}
+\end{customexercise}
+
+\begin{customsol}{2.4}
+    $k^{\text{th}}$ stage of the construction consists of $4^k$ squares of side length $4^{-k}$. Thus, if $4^{-k} < \delta \leq 4^{-k+1}$, the $4^k$ squares of $E_k$ give a $\delta$ cover of $F$, so $N_\delta(F)\leq 4^k$. Then:
+    $$
+    \overline{\operatorname{dim}}_{\mathrm{B}} F = \uplim_{\delta\rightarrow 0} \frac{\log N_\delta(F)}{-\log \delta}\leq \uplim_{k\rightarrow\infty} \frac{\log 4^k}{-\log 4^{-k+1}} = 1
+    $$
+    On the other hand, for $4^{-k-1}\leq \delta < 4^{-k}$, the cube can intersect at most two of the squares of $E_k$. There are $4^k$ squares in $E_k$, all containing points of $F$, so at least $4^k/2$ squares of side $\delta$ are required to cover $F$. Then, $N_\delta (F) \geq 4^{k}/2$, so:
+    $$
+    \underline{\operatorname{dim}_{\mathrm{B}}} F = \lowlim_{\delta\rightarrow 0}\frac{\log N_\delta(F)}{-\log \delta} \geq \lowlim_{k\rightarrow\infty} \frac{\log 4^k/2}{-\log 4^{-k-1}} = 1
+    $$
+
+    Therefore, the box-counting dimension of Cantor dust is 1. 
+\end{customsol}
+
+
+
+\begin{customexercise}{2.5}
+    Use Equivalent definition \ref{bcd-def}(i) to check that the upper box dimension of the von Koch curve(shown in Figure \ref{fig:kochcurve}) is at most $\log 4 / \log 3$ and \ref{bcd-def}(v) to check that the lower box dimension is at least this value.
+    \begin{figure}[t]
+        \centering
+        \includegraphics[width=.4\textwidth]{images/Kochcurve.png}
+        \caption{(a) Construction of the von Koch curve $F$. At each stage, the middle third of each interval is replaced by the other two sides of an equilateral triangle. (b) Three von Koch curves fitted together to form a snowflake curve.}
+        \label{fig:kochcurve}
+    \end{figure}
+\end{customexercise}
+
+\begin{customsol}{2.5}
+
+\end{customsol}
+
+
+
+
+\newpage
+\section{May 1-2}
+\subsection{Box-Counting Dimensions}
+
+\begin{definition}[$\delta$-mesh]
+    The family of cubes of the form
+$$
+\left[m_{1} \delta,\left(m_{1}+1\right) \delta\right] \times \cdots \times\left[m_{n} \delta,\left(m_{n}+1\right) \delta\right],
+$$
+where $m_{1}, \ldots, m_{n}$ are integers, is called the $\delta$-mesh or $\delta$-grid of $\mathbb{R}^n$.
+\end{definition}
+
+\begin{definition}[Diameter]
+    any subset of $n-$dimensional Euclidean space, $\mathbb{R}^n$, the \textbf{diameter} of $U$ is defined as $|U|=\sup \{|x-y|:x, y\in U\}$
+\end{definition}
+
+\begin{definition}[Box-Counting Dimension]\label{bcd-def}
+    The lower and upper box-counting dimensions of a subset $F$ of $\mathbb{R}^{n}$ are given by
+    $$\underline{\operatorname{dim}_{\mathrm{B}}} F=\varliminf_{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\log \delta}$$
+    $$\overline{\operatorname{dim}}_{\mathrm{B}} F=\varlimsup_{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\log \delta}$$
+    
+and the box-counting dimension of $F$ by
+$$
+\operatorname{dim}_{\mathrm{B}} F=\lim _{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\log \delta}
+$$
+(if this limit exists), where $N_{\delta}(F)$ is any of the following:
+\begin{enumerate}[i]
+    \item the smallest number of sets of diameter at most $\delta$ that cover $F$
+    \item  the smallest number of closed balls of radius $\delta$ that cover $F$
+    \item  the smallest number of cubes of side $\delta$ that cover $F$;
+    \item  the number of $\delta$-mesh cubes that intersect $F$;
+    \item  the largest number of disjoint balls of radius $\delta$ with centres in $F$  
+\end{enumerate}  
+Figure \ref{fig:bcd-def-vis} illustrates Five ways of finding the box dimension of $F$.
+
+\end{definition}
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=.66\textwidth]{images/bcd-def-vis.png}
+    \caption{Five ways of finding the box dimension of $F$}
+    \label{fig:bcd-def-vis}
+\end{figure}
+
+
+\textbf{Motivation:}
+If $N_\delta(F)$ obeys, at least approximately, a power law
+$$N_{\delta}(F) \simeq c \delta^{-s}$$
+for positive constant $c$ and $s$, we say that $F$ has box dimension $s$.
+\\
+Algorithms to solve for $s$:
+$$
+\log N_{\delta}(F) \simeq \log c-s \log \delta
+$$
+so
+$$
+s \simeq \frac{\log N_{\delta}(F)}{-\log \delta}+\frac{\log c}{\log \delta}
+$$
+and we might hope to obtain $s$ as
+$$
+s=\lim _{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\log \delta},
+$$
+with the second term disapperaing in the limit. And this implies that we assume that $\delta$ is sufficiently small. 
+
+
+Roughly speaking, equation for dimension says that $N_{\delta}(F) \simeq c \delta^{-s}$ for small $\delta$, where $s=\operatorname{dim}_{\mathrm{B}} F$, or, more precisely, that
+$$
+N_{\delta}(F) \delta^{s} \rightarrow \infty \quad \text { if } s<\operatorname{dim}_{\mathrm{B}} F
+$$
+and
+$$
+N_{\delta}(F) \delta^{s} \rightarrow 0 \quad \text { if } s>\operatorname{dim}_{\mathrm{B}} F .
+$$
+
+\textbf{Proof of Equivalence of Definition \ref{bcd-def}}:\\
+e.g.: (i)$\Leftrightarrow$(iv): Let $N_\delta(F)$ for the smallest number of sets of diameter $\delta$ that can cover $F$ whereas $N_\delta^\prime(F)$ be the number of $\delta$-mesh cubes that intersect $F$. 
+Note that these cubes provide a collection of $N_\delta^\prime(F)$ sets of diameter $\delta\sqrt{n}$(diagonal for "diameter at most $\delta$") that cover $F$, $$N_{\delta\sqrt{n}}(F)\leq N_\delta^\prime(F)$$
+On the other hand, set of diameter at most $\delta$ is(or must be) contained in $3^n$ mesh cubes of side $\delta$(e.g. choosing a cube containing some points of the set with its all neighbouring cubes, like the middle one and its 8 neighnors when $n=2$). Then we have:
+$$ N_\delta^\prime(F) \leq 3^n N_\delta(F)$$
+Combining these inequalities and dividing by $-\log \delta$,
+$$
+\frac{\log N_{\delta \sqrt{n}}(F)}{-\log (\delta \sqrt{n})+\log \sqrt{n}} \leq \frac{\log N_{\delta}^{\prime}(F)}{-\log \delta} \leq \frac{\log 3^{n}+\log N_{\delta}(F)}{-\log \delta}
+$$
+so taking lower limits as $\delta \rightarrow 0$,
+$$\varliminf_{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\log \delta} \leq \varliminf_{\delta \rightarrow 0} \frac{\log N_{\delta}^{\prime}(F)}{-\log \delta} \leq \varliminf_{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\log \delta}$$
+with the other terms diappearing in the limit. Thus, lower limit works as sama as for both $N_\delta(F)$, and similar for upper box dimension. 
+
+\textbf{\textit{\\Calculations}}: See Exercise \ref{calculation}
+
+\textbf{\\Note: }More generally a set $F$ made up of $m$ similar disjoint copies of itself at scale $r$ has $$\operatorname{dim}_{\mathrm{B}} F=\log m /-\log r$$
+
+Consider the neighborhood: $F_{\delta}=\left\{x \in \mathbb{R}^{n}:|x-y| \leq \delta \quad\right.$ for some $\left.y \in F\right\}$. The rate at which the $n$-dimensional volume, that is, $n$-dimensional Lebesgue measure $\mathcal{L}^n$, of $F_\delta$ shrinks as $\delta\rightarrow 0$
+
+This idea extends to fractional dimensions. If $F$ is a subset of $\mathbb{R}^{\prime}$ and $\displaystyle\lim _{\delta \rightarrow 0}\left(\mathcal{L}^{n}\left(F_{\delta}\right) / \delta^{n-s}\right)=c$ for some $s>0$ and $0<c<\infty$, it makes sense to
+regard $F$ as $s$ -dimensional, and it turns out that $s$ is just the boxcounting dimension. The number $c$ is called the \textit{$s$-dimensional Minkowski content} of $F$ --- a quantity that is useful in some concepts but has the disadvantages that it does not exist for many standard fractals and that it is not necessarily additive on disjoint subsets, that is, is not a measure. Even if this limit does not exist, we can take lower and upper limits, and these are related to the box dimensions.
+
+
+\begin{proposition}
+    If $F$ is a subset of $\mathbb{R}^{n}$, then
+$$
+\underline{\operatorname{dim}}_{\mathrm{B}} F=n-\varlimsup_{\delta \rightarrow 0} \frac{\log \mathcal{L}^{n}\left(F_{\delta}\right)}{\log \delta}
+$$
+$$
+\overline{\operatorname{dim}}_{\mathrm{B}} F=n-\lowlim_{\delta \rightarrow 0} \frac{\log \mathcal{L}^{n}\left(F_{\delta}\right)}{\log \delta}
+$$
+where $F_{\delta}$ is the $\delta$ -neighbourhood of $F$. 
+\end{proposition}
+\textit{Proof: }
+If $F$ can be covered by $N_{\delta}(F)$ balls of radius $\delta<1$, then $F_{\delta}$ can be covered by the concentric balls of radius $2 \delta .$ Hence,
+$$
+\mathcal{L}^{n}\left(F_{\delta}\right) \leq N_{\delta}(F) c_{n}(2 \delta)^{n},
+$$
+where $c_{n}$ is the volume of the unit ball in $\mathbb{R}^{n} .$ Taking logarithms,
+$$
+\frac{\log \mathcal{L}^{n}\left(F_{\delta}\right)}{-\log \delta} \leq \frac{\log 2^{n} c_{n}+n \log \delta+\log N_{\delta}(F)}{-\log \delta}
+$$
+so
+$$
+\varliminf_{\delta \rightarrow 0} \frac{\log \mathcal{L}^{n}\left(F_{\delta}\right)}{-\log \delta} \leq -n+\underline{\operatorname{dim}}_{\mathrm{B}} F
+$$
+with a similar inequality for the upper limits. On the other hand, if there are $N_{\delta}(F)$ disjoint balls of radius $\delta$ with centres in $F$, then by adding their volumes,
+$$
+N_{\delta}(F) c_{n} \delta^{n} \leq \mathcal{L}^{n}\left(F_{\delta}\right)
+$$
+Taking logarithms and letting $\delta \rightarrow 0$ gives the opposite inequality to the third inequality, using Equivalent definition $(\mathrm{v})$.
+
+
+\textbf{\\Note: }In the context of Proposition above, box dimension is sometimes referred to as Minkowski dimension or Minkowski–Bouligand dimension.
+
+
+\newpage
+\subsection{Properties and Problems of Box-Counting Dimension}
+
+
+
+\begin{proposition}\label{prop2.5} $ $
+    \begin{enumerate}[a.]
+        \item If $F \subset \mathbb{R}^{n}$ and $f: F \rightarrow \mathbb{R}^{m}$ is a Lipschitz transformation, that is,
+        $$
+        |f(x)-f(y)| \leq c|x-y| \quad(x, y \in F),
+        $$
+        then $\underline{\operatorname{dim}_{\mathrm{B}}} f(F) \leq \underline{\operatorname{dim}_{\mathrm{B}}} F$ and $\overline{\operatorname{dim}}_{\mathrm{B}} f(F) \leq \overline{\operatorname{dim}}_{\mathrm{B}} F$.
+        
+        \item If $F \subset \mathbb{R}^{n}$ and $f: F \rightarrow \mathbb{R}^{m}$ is a bi-Lipschitz transformation, that is,
+        $$
+        c_{1}|x-y| \leq|f(x)-f(y)| \leq c|x-y| \quad(x, y \in F),
+        $$
+        where $0<c_{1} \leq c<\infty$, then $\underline{\operatorname{dim}_{B}} f(F)=\underline{\operatorname{dim}}_{B} F$ and
+        $\overline{\operatorname{dim}}_{\mathrm{B}} f(F)=\overline{\operatorname{dim}}_{\mathrm{B}} F .$
+        
+    \end{enumerate}
+\end{proposition}
+
+
+\newpage
+\section{May 28-31}
 \subsection{Exercises and Solutions}
 
 \begin{customexercise}{1.18}
