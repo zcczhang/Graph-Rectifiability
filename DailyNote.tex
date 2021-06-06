@@ -60,7 +60,7 @@
 }
 
 \newpage
-\section{May 3}
+\section{May 4}
 \subsection{Exercises and Solutions}
 
 \begin{customexercise}{2.1}
@@ -95,7 +95,7 @@ with the other terms disappearing in the limit. Thus, the definition of lower bo
     |f(U_i\cap F)|\leq c|U_i\cap F|^\alpha\leq c|U_i|^\alpha\leq c\delta^\alpha
     $$
     (this can be understood as taking $x, y\in U_i\cap F$ or $x, y\in U_i$ where $|x-y|<\delta$ by construction)
-    s.t. $\{f(U_i\cap F)\}$ is a $c\delta^\alpha$ cover of $f(F)$, and hence $N_{c\delta^\alpha}(f(F)) \leq N_\delta(F), \forall \delta>0$(equal when $f$ is injective). Thus,
+    s.t. $\{f(U_i\cap F)\}$ is a $c\delta^\alpha$ cover of $f(F)$, and hence $N_{c\delta^\alpha}(f(F)) \leq N_\delta(F), \forall \delta>0$(consider $f$ is injective, or, we may have a better cover when considered overall for the image). Thus,
     $$
     \begin{aligned} \underline{\operatorname{dim}}_{B} f(F) &=\varliminf_{c \delta^{\alpha} \rightarrow 0} \frac{\log N_{c \delta^{\alpha}}(f(F))}{-\log c \delta^{\alpha}} \\
         &\leq \varliminf_{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\alpha \log \delta-\log c} \\ &=\frac{1}{\alpha} \varliminf_{\delta \rightarrow 0} \frac{\log N_{\delta}(F)}{-\log \delta}\\
@@ -141,14 +141,27 @@ with the other terms disappearing in the limit. Thus, the definition of lower bo
 \end{customexercise}
 
 \begin{customsol}{2.5}
-
+    Let $\delta_k = 3^{-k}$, for $E_k$, there are $4^k$ line segments so taking any plane set with diameter at most $\delta_k$ centered at the midpoint of each line segment can cover all points in $F$ so $N_{\delta_k}(F)\leq 4^k$. Then,
+    $$
+    \overline{\operatorname{dim}}_\mathrm{B}F = \uplim_{k\rightarrow\infty} \frac{\log N_{\delta_k(F)}}{-\log \delta_k}\leq \uplim_{k\rightarrow\infty}\frac{\log 4^k}{\log 3^k} = \frac{\log 4}{\log 3}
+    $$
+    On the other hand, there are $4^k+1$ vertices of $E_k$ and if we take each vertices as centers of balls with radius $\delta_k = 3^{-k}/2$(it is also sufficient to take $\delta_k = 3^{-k-1}$), there would be at least $4^k+1$ disjoint balls of radius $\delta_k$ with centers in $F$. Then,
+    $$
+    \begin{aligned}
+        \underline{\operatorname{dim}}_{B} F &=\lowlim_{k \rightarrow \infty} \frac{\log N_{\delta_{k}}(F)}{-\log \delta_{k}} \\
+        & \geq \lowlim_{k \rightarrow \infty} \frac{\log \left(4^{k}+1\right)}{\log 3^{k+1}} \\
+        & \geq \lowlim_{k \rightarrow \infty} \frac{\log \left(4^{k}\right)}{\log 3^{k+1}} \\
+        & = \lowlim_{k \rightarrow \infty} \frac{k \log 4}{(k+1) \log 3}\\
+        & =\frac{\log 4}{\log 3}
+        \end{aligned}
+    $$
 \end{customsol}
 
 
 
 
 \newpage
-\section{May 1-2}
+\section{May 2-3}
 \subsection{Box-Counting Dimensions}
 
 \begin{definition}[$\delta$-mesh]
