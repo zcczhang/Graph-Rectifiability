@@ -126,10 +126,34 @@ Thus, Hausdorff measures are \textit{translation invarient}(i.e. $\mathcal{H}^s(
 \newpage
 \subsection{Hausdorff dimension}
 
-\begin{property}[]
-    
+\begin{property}[$\mathcal{H}^s(F)$ is non-increasing]
+    If $t<s$ and $\{U_i\}$ is a $\delta$ cover of $F$, then
+    $$
+    \sum_{i}\left|U_{i}\right|^{t} \leq \sum_{i}\left|U_{i}\right|^{\mid-s}\left|U_{i}\right|^{s} \leq  \sum_{i}\left|U_{i}\right|^{s}\delta^{t-s} = \delta^{t-s} \sum_{i}\left|U_{i}\right|^{s}
+    $$
+    taking infima over all $\delta$-covers,
+    $$
+    \mathcal{H}^t_\delta(F)\leq \delta^{t-s}\mathcal{H}^s_\delta(F)
+    $$
+    which is non-increasing when $\delta\leq 1$.
 \end{property}
 
+\begin{definition}[Hausdorff Dimension]
+    $$\operatorname{dim}_{\mathrm{H}} F=\inf \left\{s \geq 0: \mathcal{H}^{s}(F)=0\right\}=\sup \left\{s: \mathcal{H}^{s}(F)=\infty\right\}$$
+(taking the supremum of the empty set to be o), so that
+$$
+\mathcal{H}^{s}(F)=\left\{\begin{array}{ll}
+\infty & \text { if } 0 \leq s<\operatorname{dim}_{\mathrm{H}} F \\
+0 & \text { if } s>\operatorname{dim}_{\mathrm{H}} F
+\end{array}\right.
+$$
+If $s=\operatorname{dim}_{\mathrm{H}} F$, then $\mathcal{H}^{s}(F)$ may be zero or infinite or may satisfy
+$$
+0<\mathcal{H}^{s}(F)<\infty .
+$$
+\end{definition}
+
+\textbf{Note: }Conisder that when $\delta\rightarrow 0$, if $\mathcal{H}^s<\infty$ then $\mathcal{H}^t(F) = 0$ for $t>s$, s.t. there is a critical value of $s$ at which measure "jumps" from $\infty$ to $0$, named \textit{Hausdorff dimension}.
 
 
 \newpage
