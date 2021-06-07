@@ -58,9 +58,82 @@
     \hypersetup{linkcolor=black}
     \tableofcontents
 }
+\newpage
+\section{May 7}
+\subsection{Hausdorff Measure}
+\begin{definition}[Hausdorff Measure]
+    Suppose that $F$ is a subset of $\mathbb{R}^n$ and $s\geq 0$. For each $\delta >0$,
+    $$
+    \mathcal{H}_{\delta}^{s}(F)=\inf \left\{\sum_{i=1}^{\infty}\left|U_{i}\right|^{s}:\left\{U_{i}\right\} \text { is a } \delta \text {-cover of } F\right\} .
+    $$
+    And we write
+    $$
+    \mathcal{H}^s (F) = \lim_{\delta\rightarrow 0} \mathcal{H}^s_\delta(F)
+    $$
+    as the s-dimensional Hausdorff measure on $F$.
+\end{definition}
+
+\textbf{Note:}
+Thus, we look at all covers of $F$ by sets of diameter at most $\delta$ and seek to minimise the sum of the  $s^{th}$ powers of the diameters.
+
+It can be shown as a measure as: $\mathcal{H}^s(\emptyset) = 0$; if $E$ is contained in $F$, then $\mathcal{H}^s(E)\leq \mathcal{H}^s(F)$; if $\{F_i\}$ is any countable collection of sets, then $\displaystyle \mathcal{H}^{s}\left(\bigcup_{i=1}^{\infty} F_{i}\right) \leq \sum_{i=1}^{\infty} \mathcal{H}^{s}\left(F_{i}\right)$.
+
+\begin{property}[Equivalence of Hausdorff Measure] $ $
+    \begin{enumerate}[(i)]
+        \item with $n-$dimensional Lebesgue measure: $\mathcal{H}^n(F) = c_n^{-1} \text{vol}^n(F)$ where $c_n$ is the volume of an $n$-dimensional ball of diameter 1, so that $c_{n}=\pi^{n / 2} / 2^{n}(n / 2) !$ if $n$ is even and $c_{n}=\pi^{n / 2} / 2^{n}(n / 2) !$ if odd.
+        \item $\mathcal{H}^0(F)$ is the number of points
+        \item $\mathcal{H}^1(F)$ is the length of a smooth curve $F$
+        \item $\mathcal{H}^2(F) = (4/\pi\times \operatorname{area}(F)$ if $F$ is a smooth surface
+        \item $\mathcal{H}^{3}(F)=(6 / \pi) \times \operatorname{vol}(F)$
+        \item $\mathcal{H}^{m}(F)=c_{m}^{-1} \times \operatorname{vol}^{m}(F)$ if $F$ is a smooth $m-$
+        dimensional submanifold of $\mathbb{R}^{n}$ (i.e. an $m$-dimensional surface in the classical sense).
+    \end{enumerate}
+\end{property}
+
+\begin{proposition}[Hölder condition of exponent $\alpha$]\label{Haus-holder}
+    Let $F \subset \mathbb{R}^{n}$ and $f: F \rightarrow \mathbb{R}^{m}$ be a mapping such that
+$$
+|f(x)-f(y)| \leq c|x-y|^{\alpha} \quad(x, y \in F)
+$$
+for constants $\alpha>0$ and $c>0 .$ Then for each $s$
+$$
+\mathcal{H}^{s / \alpha}(f(F)) \leq c^{s / \alpha} \mathcal{H}^{s}(F)
+$$
+In particular, if $f$ is a Lipschitz mapping, that is, if $\alpha=1$, then
+$$
+\mathcal{H}^{s}(f(F)) \leq c^{s} \mathcal{H}^{s}(F)
+$$
+\end{proposition}
+
+\textbf{\textit{Proof:}} If $\left\{U_{i}\right\}$ is a $\delta$-cover of $F$, 
+then since $\left|f\left(F \cap U_{i}\right)\right| \leq c\left|F \cap U_{i}\right|^{\alpha} \leq c\left|U_{i}\right|^{a}$, 
+it follows that $\left\{f\left(F \cap U_{i}\right)\right\}$ is a $c \delta^{a}$-cover of $f(F)$. 
+Thus, $\displaystyle\sum_{i}\left|f\left(F \cap U_{i}\right)\right|^{s / \alpha} \leq c^{s / \alpha} \sum_{i}\left|U_{i}\right|^{s}$, so that $\mathcal{H}_{c \delta^{\prime}}^{s / \alpha}(f(F)) \leq c^{s / \alpha} \mathcal{H}_{\delta}^{s}(F)$. Letting
+$\delta \rightarrow 0$ gives the result. 
+The result for the Lipschitz case is immediate on setting $\alpha=1$.
+
+\begin{property}[Scaling Property]
+    Let $f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ be a similarity transformation of scale factor $\lambda>0$. If $F \subset \mathbb{R}^{n}$, then
+$$
+\mathcal{H}^{s}(f(F))=\lambda^{s} \mathcal{H}^{s}(F)
+$$
+\end{property}
+
+\textbf{\textit{Proof:}} $|f(x)-f(y)|=\lambda|x-y|$ and so $\left|f^{-1}(x)-f^{-1}(y)\right|=\lambda^{-1}|x-y| \quad(x, y \in F)$ and apply Proposition \ref{Haus-holder} for $c=\lambda$.
+
+\textbf{Note: } property above can be considered as scaling of a length, area, or a volume by mutiplying $\lambda, \lambda^2, \lambda^3$ respectively. And if $f$ is congruence or isometry, that is, $|f(x)-f(y)| = |x-y|$, then $\mathcal{H}^s(f(F)) = \mathcal{H}^s(F)$. 
+Thus, Hausdorff measures are \textit{translation invarient}(i.e. $\mathcal{H}^s(F+z) = \mathcal{H}^s(F)$ where $F+z = \{x+z:x\in F\}$) and \textit{rotation invariant}. 
+\newpage
+\subsection{Hausdorff dimension}
+
+\begin{property}[]
+    
+\end{property}
+
+
 
 \newpage
-\section{May 4}
+\section{May 4-6}
 \subsection{Exercises and Solutions}
 
 \begin{customexercise}{2.1}
@@ -389,7 +462,7 @@ As $\epsilon\mu(E_\mu)\leq 0$ while $\epsilon>0$, we have $\mu(E_\epsilon) = 0 \
 
 \newpage
 \section{May 27}
-\subsection{Measeres and Mass Distributions(1.3)}
+\subsection{Measures and Mass Distributions(1.3)}
 
 \begin{definition}[Measure]\label{measure}
     We call $\mu$ a measure on $\mathbb{R}^{n}$ if $\mu$ assigns a non-negative number, possibly $\infty$, to each subset of $\mathbb{R}^{n}$ such that\\
