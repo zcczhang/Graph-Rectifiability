@@ -58,8 +58,29 @@
     \hypersetup{linkcolor=black}
     \tableofcontents
 }
+
+
 \newpage
-\section{May 7}
+\section{June 8}
+\subsection{Exercises and Solutions}
+\begin{customexercise}{3.7}
+    Let $f:[0,1] \rightarrow \mathbb{R}$ be a Lipschitz function. Writing $\operatorname{graph} f=\{(x, f(x)): 0 \leq x \leq 1\}$, show that $\operatorname{dim}_{\mathrm{H}}$ graph $f=1 .$ Note, in
+particular, that this is true if $f$ is continuously differentiable, see Exercise $1.13 .$
+\end{customexercise}
+\begin{customsol}{3.7}
+   Let $g(x)=(x, f(x))$ where $g:[0,1] \rightarrow \operatorname{graph} f$. Then $g$ is bi-Lipschitz, since:
+$$
+|g(x)-g(y)|^{2}=|x-y|^{2}+|f(x)-f(y)|^{2}
+$$
+Then,
+$$
+|x-y|^{2} \leq|g(x)-g(y)|^{2} \leq|x-y|^{2}+c^{2}|x-y|^{2}=\left(1+c^{2}\right)|x-y|^{2}
+$$
+since $|f(x)-f(y)| \leq c|x-y|$ for some $c>0$. Thus $g$ is bi-Lipschitz, so $1=$ $\operatorname{dim}_{\mathrm{H}}([0,1])=\operatorname{dim}_{\mathrm{H}} g([0,1])=\operatorname{dim}_{\mathrm{H}} \operatorname{graph} f$.
+\end{customsol}
+
+\newpage
+\section{June 7}
 \subsection{Hausdorff Measure}
 \begin{definition}[Hausdorff Measure]
     Suppose that $F$ is a subset of $\mathbb{R}^n$ and $s\geq 0$. For each $\delta >0$,
@@ -157,7 +178,7 @@ $$
 
 
 \newpage
-\section{May 4-6}
+\section{June 4-6}
 \subsection{Exercises and Solutions}
 
 \begin{customexercise}{2.1}
@@ -258,7 +279,7 @@ with the other terms disappearing in the limit. Thus, the definition of lower bo
 
 
 \newpage
-\section{May 2-3}
+\section{June 2-3}
 \subsection{Box-Counting Dimensions}
 
 \begin{definition}[$\delta$-mesh]
