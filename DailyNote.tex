@@ -76,7 +76,37 @@ Then,
 $$
 |x-y|^{2} \leq|g(x)-g(y)|^{2} \leq|x-y|^{2}+c^{2}|x-y|^{2}=\left(1+c^{2}\right)|x-y|^{2}
 $$
-since $|f(x)-f(y)| \leq c|x-y|$ for some $c>0$. Thus $g$ is bi-Lipschitz, so $1=$ $\operatorname{dim}_{\mathrm{H}}([0,1])=\operatorname{dim}_{\mathrm{H}} g([0,1])=\operatorname{dim}_{\mathrm{H}} \operatorname{graph} f$.
+since $|f(x)-f(y)| \leq c|x-y|$ for some $c>0$. Thus by taking the square root, $g$ is bi-Lipschitz. Therefore, by Proposition \ref{H-under-L} b., 
+$$\operatorname{dim}_{\mathrm{H}} \operatorname{graph} f = \operatorname{dim}_{\mathrm{H}} g([0,1]) = \operatorname{dim}_{\mathrm{H}}([0,1]) = 1$$
+\end{customsol}
+
+\textbf{Note: }If $f$ is Lipschitz(or $f$ is continuously differentiable), then graph $f$ is bi-Lipschitz. 
+
+
+\begin{customexercise}{}
+    Prove Proposition \ref{H-under-L}:
+    \begin{enumerate}[(a)]
+        \item Let $F \subset \mathbb{R}^{n}$ and suppose that $f: F \rightarrow \mathbb{R}^{m}$ satisfies the Hölder condition
+$$
+|f(x)-f(y)| \leq c|x-y|^{\alpha} \quad(x, y \in F) .
+$$
+Then $\operatorname{dim}_{\mathrm{H}} f(F) \leq(1 / \alpha) \operatorname{dim}_{\mathrm{H}} F .$ In particular, if $f$ is a Lipschitz
+mapping, that is, if $\alpha=1$, then $\operatorname{dim}_{H} f(F) \leq \operatorname{dim}_{H} F$.
+\item If $f: F \rightarrow \mathbb{R}^{m}$ is a bi-Lipschitz transformation, that is,
+$$
+c_{1}|x-y| \leq|f(x)-f(y)| \leq c|x-y| \quad(x, y \in F),
+$$
+where $0<c_{1} \leq c<\infty$, then $\operatorname{dim}_{\mathrm{H}} f(F)=\operatorname{dim}_{\mathrm{H}} F$.
+    \end{enumerate}
+\end{customexercise}
+
+\begin{customsol}{} $ $
+    \begin{enumerate}[(a)]
+        \item If $s>\operatorname{dim}_{\mathrm{H}} F$, then by Proposition 3.1 $\mathcal{H}^{s / \alpha}(f(F)) \leq c^{s / \alpha} \mathcal{H}^{s}(F)=0$,
+        implying that $\operatorname{dim}_{\mathrm{H}} f(F) \leq s / \alpha$ for all $s>\operatorname{dim}_{\mathrm{H}} F$. The conclusion for
+        Lipschitz mappings is immediate on taking $\alpha=1$.
+        \item For the bi-Lipschitz case, just as in Proposition $2.5$ for box dimension, applying the Lipschitz result to $f^{-1}: f(F) \rightarrow F$ yields the reverse inequality $\operatorname{dim}_{\mathrm{H}} F \leq \operatorname{dim}_{\mathrm{H}} f(F)$.
+    \end{enumerate}
 \end{customsol}
 
 \newpage
@@ -176,6 +206,23 @@ $$
 
 \textbf{Note: }Conisder that when $\delta\rightarrow 0$, if $\mathcal{H}^s<\infty$ then $\mathcal{H}^t(F) = 0$ for $t>s$, s.t. there is a critical value of $s$ at which measure "jumps" from $\infty$ to $0$, named \textit{Hausdorff dimension}.
 
+
+
+\begin{proposition}[Hausdorff Dimension under Lipschitz Mapping]\label{H-under-L} $ $
+    \begin{enumerate}[a.]
+        \item Let $F \subset \mathbb{R}^{n}$ and suppose that $f: F \rightarrow \mathbb{R}^{m}$ satisfies the Hölder condition
+$$
+|f(x)-f(y)| \leq c|x-y|^{\alpha} \quad(x, y \in F) .
+$$
+Then $\operatorname{dim}_{\mathrm{H}} f(F) \leq(1 / \alpha) \operatorname{dim}_{\mathrm{H}} F .$ In particular, if $f$ is a Lipschitz
+mapping, that is, if $\alpha=1$, then $\operatorname{dim}_{H} f(F) \leq \operatorname{dim}_{H} F$.
+\item If $f: F \rightarrow \mathbb{R}^{m}$ is a bi-Lipschitz transformation, that is,
+$$
+c_{1}|x-y| \leq|f(x)-f(y)| \leq c|x-y| \quad(x, y \in F),
+$$
+where $0<c_{1} \leq c<\infty$, then $\operatorname{dim}_{\mathrm{H}} f(F)=\operatorname{dim}_{\mathrm{H}} F$.
+    \end{enumerate}
+\end{proposition}
 
 \newpage
 \section{June 4-6}
