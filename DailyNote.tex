@@ -13,8 +13,6 @@
 \usepackage{amsmath}
 \DeclareMathOperator*\lowlim{\underline{lim}}
 \DeclareMathOperator*\uplim{\overline{lim}}
-% \usepackage{amsthm}
-% \theoremstyle{definition}
 \newtheorem{definition}{Definition}[subsection]
 \newtheorem{theorem}{Theorem}[subsection]
 \newtheorem{corollary}{Corollary}[subsection]
@@ -59,13 +57,23 @@
     \tableofcontents
 }
 
+\newpage
+\section{June 9 Local Structure of Fractals}
+\subsection{Densities(5.1)}
+
+
+\subsubsection{Structure of 1-sets(5.2)}
+
+
+
+\subsubsection{Tangents to s-sets(5.3)}
 
 \newpage
 \section{June 8}
 \subsection{Exercises and Solutions}
 \begin{customexercise}{3.7}
     Let $f:[0,1] \rightarrow \mathbb{R}$ be a Lipschitz function. Writing $\operatorname{graph} f=\{(x, f(x)): 0 \leq x \leq 1\}$, show that $\operatorname{dim}_{\mathrm{H}}$ graph $f=1 .$ Note, in
-particular, that this is true if $f$ is continuously differentiable, see Exercise $1.13 .$
+particular, that this is true if $f$ is continuously differentiable, see Exercise \ref{1.13}.
 \end{customexercise}
 \begin{customsol}{3.7}
    Let $g(x)=(x, f(x))$ where $g:[0,1] \rightarrow \operatorname{graph} f$. Then $g$ is bi-Lipschitz, since:
@@ -110,8 +118,8 @@ where $0<c_{1} \leq c<\infty$, then $\operatorname{dim}_{\mathrm{H}} f(F)=\opera
 \end{customsol}
 
 \newpage
-\section{June 7}
-\subsection{Hausdorff Measure}
+\section{June 7 Hausdorff and packing measures and dimensions}
+\subsection{Hausdorff Measure(3.1)}
 \begin{definition}[Hausdorff Measure]
     Suppose that $F$ is a subset of $\mathbb{R}^n$ and $s\geq 0$. For each $\delta >0$,
     $$
@@ -174,8 +182,9 @@ $$
 
 \textbf{Note: } property above can be considered as scaling of a length, area, or a volume by mutiplying $\lambda, \lambda^2, \lambda^3$ respectively. And if $f$ is congruence or isometry, that is, $|f(x)-f(y)| = |x-y|$, then $\mathcal{H}^s(f(F)) = \mathcal{H}^s(F)$. 
 Thus, Hausdorff measures are \textit{translation invarient}(i.e. $\mathcal{H}^s(F+z) = \mathcal{H}^s(F)$ where $F+z = \{x+z:x\in F\}$) and \textit{rotation invariant}. 
+
 \newpage
-\subsection{Hausdorff dimension}
+\subsection{Hausdorff dimension(3.2)}
 
 \begin{property}[$\mathcal{H}^s(F)$ is non-increasing]
     If $t<s$ and $\{U_i\}$ is a $\delta$ cover of $F$, then
@@ -326,8 +335,8 @@ with the other terms disappearing in the limit. Thus, the definition of lower bo
 
 
 \newpage
-\section{June 2-3}
-\subsection{Box-Counting Dimensions}
+\section{June 2-3 Box-Counting Dimension}
+\subsection{Box-Counting Dimensions(2.1)}
 
 \begin{definition}[$\delta$-mesh]
     The family of cubes of the form
@@ -457,7 +466,7 @@ Taking logarithms and letting $\delta \rightarrow 0$ gives the opposite inequali
 
 
 \newpage
-\subsection{Properties and Problems of Box-Counting Dimension}
+\subsection{Properties and Problems of Box-Counting Dimension(2.2)}
 
 
 
@@ -553,7 +562,7 @@ As $\epsilon\mu(E_\mu)\leq 0$ while $\epsilon>0$, we have $\mu(E_\epsilon) = 0 \
 \end{definition}
 
 \newpage
-\section{May 27}
+\section{May 27 Mathematical Background}
 \subsection{Measures and Mass Distributions(1.3)}
 
 \begin{definition}[Measure]\label{measure}
@@ -638,7 +647,7 @@ By above, $x$ is in the support if and only if $\forall r > 0, \mu(B(x, r)) > 0$
 \end{enumerate}
 
 
-\begin{customexercise}{1.13}
+\begin{customexercise}{1.13(Rademacher's theorem)}\label{1.13}
     Let $f: \mathbb{R} \rightarrow \mathbb{R}$ be differentiable 
     with $\left|f^{\prime}(x)\right| \leq c$ for all $x$. 
     Show, using the mean value theorem, that $f$ is a Lipschitz function.
@@ -702,7 +711,7 @@ Therefore, $f$ is a Lipschitz function.
 
 
 \newpage
-\section{May 25}
+\section{May 25 Mathematical Background}
 \subsection{Basic Set Theory(1.1)}
 
 Review and summary of some definitions and theorems:
