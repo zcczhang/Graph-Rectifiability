@@ -61,8 +61,8 @@
 \section{June 9 Local Structure of Fractals}
 \subsection{Densities(5.1)}
 
-\begin{definition}[$s$-sets]
-    
+\begin{definition}[$s$-sets] $ $\\
+    Borel sets of Hausdorff dimension $s$ with positive finite s-dimensional Hausdorff measure.
 \end{definition}
 \begin{definition}[Density]
     The density of F at x is:
@@ -74,6 +74,18 @@
 
 By the classical Lebesgue density theorem, for a Borel set $F$, this limit exists and equals $1$ when $x\in F$ and 0 when $x\notin F$, except area $=0$. Similarly, if $F$ is a smooth curve in the plane and $x\in F$, then $F\cap B(x, r)$ is close to a diameter of $B(x,r)$ for small $r$ and $\displaystyle \lim_{r\rightarrow 0}\frac{\operatorname{length}(F\cap B(x, t))}{2r} = 1$(If $x\notin F$, $\lim$ = 0)
 
+
+\begin{definition}[Density of an $s$-set]
+    We define the lower and upper densities of an $s$ -set $F$ at a point $x \in \mathbb{R}^{n}$ as
+$$
+\underline{D}^{s}(F, x)=\varliminf_{r \rightarrow 0} \frac{\mathcal{H}^{s}(F \cap B(x, r))}{(2 r)^{s}}
+$$
+and
+$$
+\bar{D}(F, x)=\varlimsup_{r \rightarrow 0} \frac{\mathcal{H}^{s}(F \cap B(x, r))}{(2 r)^{s}}
+$$
+respectively (note that $|B(x, r)|=2 r)$. If $\underline{D}^{s}(F, x)=\bar{D}^{s}(F, x)$, we say that the density of $F$ at $x$ exists and we write $D^{s}(F, x)$ for the common value.
+\end{definition}
 \subsubsection{Structure of 1-sets(5.2)}
 
 
@@ -154,7 +166,7 @@ It can be shown as a measure as: $\mathcal{H}^s(\emptyset) = 0$; if $E$ is conta
         \item with $n-$dimensional Lebesgue measure: $\mathcal{H}^n(F) = c_n^{-1} \text{vol}^n(F)$ where $c_n$ is the volume of an $n$-dimensional ball of diameter 1, so that $c_{n}=\pi^{n / 2} / 2^{n}(n / 2) !$ if $n$ is even and $c_{n}=\pi^{n / 2} / 2^{n}(n / 2) !$ if odd.
         \item $\mathcal{H}^0(F)$ is the number of points
         \item $\mathcal{H}^1(F)$ is the length of a smooth curve $F$
-        \item $\mathcal{H}^2(F) = (4/\pi\times \operatorname{area}(F)$ if $F$ is a smooth surface
+        \item $\mathcal{H}^2(F) = (4/\pi) \times \operatorname{area}(F)$ if $F$ is a smooth surface
         \item $\mathcal{H}^{3}(F)=(6 / \pi) \times \operatorname{vol}(F)$
         \item $\mathcal{H}^{m}(F)=c_{m}^{-1} \times \operatorname{vol}^{m}(F)$ if $F$ is a smooth $m-$
         dimensional submanifold of $\mathbb{R}^{n}$ (i.e. an $m$-dimensional surface in the classical sense).
