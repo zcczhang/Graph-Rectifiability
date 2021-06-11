@@ -5,28 +5,61 @@
 \begin{definition}[$s$-sets] $ $\\
     Borel sets of Hausdorff dimension $s$ with positive finite s-dimensional Hausdorff measure.
 \end{definition}
-\begin{definition}[Density]
-    The density of F at x is:
-    $$
-    \lim _{r \rightarrow 0} \frac{\operatorname{area}(F \cap B(x, r))}{\operatorname{area}(B(x, r))}=\lim _{r \rightarrow 0} \frac{\operatorname{area}(F \cap B(x, r))}{\pi r^{2}}
-    $$
-    where $B(x, r)$ is the closed disc of radius $r$ and center $x$.
-\end{definition}
-
-By the classical Lebesgue density theorem, for a Borel set $F$, this limit exists and equals $1$ when $x\in F$ and 0 when $x\notin F$, except area $=0$. Similarly, if $F$ is a smooth curve in the plane and $x\in F$, then $F\cap B(x, r)$ is close to a diameter of $B(x,r)$ for small $r$ and $\displaystyle \lim_{r\rightarrow 0}\frac{\operatorname{length}(F\cap B(x, t))}{2r} = 1$(If $x\notin F$, $\lim$ = 0)
-
 
 \begin{definition}[Density of an $s$-set]
     We define the lower and upper densities of an $s$ -set $F$ at a point $x \in \mathbb{R}^{n}$ as
-$$
-\underline{D}^{s}(F, x)=\varliminf_{r \rightarrow 0} \frac{\mathcal{H}^{s}(F \cap B(x, r))}{(2 r)^{s}}
-$$
-and
-$$
-\bar{D}(F, x)=\varlimsup_{r \rightarrow 0} \frac{\mathcal{H}^{s}(F \cap B(x, r))}{(2 r)^{s}}
-$$
-respectively (note that $|B(x, r)|=2 r)$. If $\underline{D}^{s}(F, x)=\bar{D}^{s}(F, x)$, we say that the density of $F$ at $x$ exists and we write $D^{s}(F, x)$ for the common value.
+        $$
+        \underline{D}^{s}(F, x)=\varliminf_{r \rightarrow 0} \frac{\mathcal{H}^{s}(F \cap B(x, r))}{(2 r)^{s}}
+        $$
+    and
+        $$
+        \bar{D}^s(F, x)=\varlimsup_{r \rightarrow 0} \frac{\mathcal{H}^{s}(F \cap B(x, r))}{(2 r)^{s}}
+        $$
+    respectively (note that $|B(x, r)|=2 r)$. If $\underline{D}^{s}(F, x)=\bar{D}^{s}(F, x)$, we say that the density of $F$ at $x$ exists and we write $D^{s}(F, x)$ for the common value.
 \end{definition}
+
+\begin{definition}[Regular Point]
+    A regular point $x$ of $F$ is a point at which $$\underline{D}^s(F, x) = \overline{D}^s(F, x) = 1$$
+    otherwise, $x$ is an irregular point. 
+\end{definition}
+
+\begin{definition}[Regular of $s$-set]
+    An $s$-set is termed regular if $\mathcal{H}^{s}$-almost all of its points (i.e. all of its points except for a set of $\mathcal{H}^{s}-$measure 0) are regular and irregular if $\mathcal{H}^{s}$-almost all of its points are irregular.
+\end{definition}
+
+\textbf{Note: }\begin{enumerate}
+    \item 'irregular' does not mean 'not regular'
+    \item $s$-set $F$ must be irregular unless $s$ is an integers
+    \item a regular 1-set consists of portions of rectifiable curves of finite length, whereas an irregular 1-set is totally disconnected and dust-like and typically of fractalform.
+\end{enumerate}
+
+
+\begin{proposition}\label{prop4.9}
+    Let $\mu$ be a mass distribution on $\mathbb{R}^{n}$, let $F \subset \mathbb{R}^{n}$ be a Borel set and let $0<c<\infty$ be a constant.
+    \begin{enumerate}[a.]
+        \item\label{prop4.9a}  If $\varlimsup_{r \rightarrow 0} \mu(B(x, r)) / r^{s}<c$ for all $x \in F$, then $\mathcal{H}^{s}(F) \geq \mu(F) / c$.
+        \item\label{prop4.9b} If $\uplim_{r \rightarrow 0} \mu(B(x, r)) / r^{s}>c \text { for all } x \in F, \text { then } \mathcal{H}^{s}(F) \leq 2^{s} \mu\left(\mathbb{R}^{n}\right) / c$
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    Let $F$ be an $s$-set in $\mathbb{R}^{n}$. Then
+    \begin{enumerate}[a.]
+        \item $\underline{D}^{s}(F, x)=\bar{D}^{s}(F, x)=0$ for $\mathcal{H}^{s}$-almost all $x \notin F$
+        \item $2^{-s} \leq \bar{D}^{s}(F, x) \leq 1$ for $\mathcal{H}^{s}$-almost all $x \in F$.
+    \end{enumerate}
+\end{proposition}
+\textbf{\textit{Partial Proof: }}\begin{enumerate}[a.]
+    \item If $F$ is closed and $x \notin F$, then $B(x, r) \cap F=\emptyset$ if $r$ is small enough. Hence, $\lim _{r \rightarrow 0} \mathcal{H}^{s}(F \cap B(x, r)) /(2 r)^{s}=0$. If $F$ is not closed, the proof is a little more involved and we omit it here.
+    \item This follows quickly from Proposition \ref{prop4.9} \ref{prop4.9a} by taking $\mu$ as the restriction of $\mathcal{H}^{s}$ to $F$, that is, $\mu(A)=\mathcal{H}^{s}(F \cap A):$ if
+    $$
+    F_{1}=\left\{x \in F: \bar{D}^{s}(F, x)=\varlimsup_{r \rightarrow 0} \frac{\mathcal{H}^{s}(F \cap B(x, r))}{(2 r)^{s}}<2^{-s} c\right\},
+    $$
+    then $\mathcal{H}^{s}\left(F_{1}\right) \geq \mathcal{H}^{s}(F) / c \geq \mathcal{H}^{s}\left(F_{1}\right) / c$. If $0<c<1$, this is only
+    possible if $\mathcal{H}^{s}\left(F_{1}\right)=0$; thus, for almost all $x \in F$, we have $\bar{D}^{s}(F, x) \geq 2^{-s}$. The upper bound follows in essentially the same way using Proposition \ref{prop4.9} \ref{prop4.9b}.
+\end{enumerate}
+
+
 \subsubsection{Structure of 1-sets(5.2)}
 
 
