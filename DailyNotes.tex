@@ -1,0 +1,65 @@
+\documentclass[12pt, a4paper]{article}
+
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{amsmath}
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}{Corollary}[subsection]
+\newtheorem{exercise}{Exercise}
+\newtheorem{property}{Property}[subsection]
+\newtheorem{proposition}{Proposition}[subsection]
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{float}
+\usepackage{enumerate} 
+
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{customexercise}{Exercise}
+\newcustomtheorem{customsol}{Solution}
+
+
+\title{\textbf{Graph Rectifiability Summer Research} \\ [0.5cm] \sffamily{Daily Report\\(in reverse chronological order)}}
+
+\author{\textbf{\textit{Charles Zhang}}}
+
+\date{Summer 2021}
+
+\begin{document}
+
+\maketitle
+
+{
+    \hypersetup{linkcolor=black}
+    \tableofcontents
+}
+
+\newpage
+
+\input{Readings.tex}
+\newpage
+\input{Exercises.tex}
+\end{document}
