@@ -7,3 +7,5 @@
 *.gz
 *.toc
 .ipynb_checkpoints/Box-Counting Dimension Algorithm-checkpoint.ipynb
+DailyNotes.bbl
+DailyNotes.blg
