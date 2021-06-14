@@ -42,7 +42,7 @@
     \end{enumerate}
 \end{proposition}
 
-\begin{proposition}
+\begin{proposition}\label{prop5.1}
     Let $F$ be an $s$-set in $\mathbb{R}^{n}$. Then
     \begin{enumerate}[a.]
         \item $\underline{D}^{s}(F, x)=\bar{D}^{s}(F, x)=0$ for $\mathcal{H}^{s}$-almost all $x \notin F$
@@ -59,12 +59,121 @@
     possible if $\mathcal{H}^{s}\left(F_{1}\right)=0$; thus, for almost all $x \in F$, we have $\bar{D}^{s}(F, x) \geq 2^{-s}$. The upper bound follows in essentially the same way using Proposition \ref{prop4.9} \ref{prop4.9b}.
 \end{enumerate}
 
+\begin{proposition}\label{5.4}
+    Let $F$ be an $s$-set and let $E$ be a Borel set of $F$, then:
+    $$
+\frac{\mathcal{H}^{s}(F \cap B(x, r))}{(2 r)^{s}}=\frac{\mathcal{H}^{s}(E \cap B(x, r))}{(2 r)^{s}}+\frac{\mathcal{H}^{s}((F \backslash E) \cap B(x, r))}{(2 r)^{s}}
+$$
+for almost all $x$ in $E$, we have
+$$
+\frac{\mathcal{H}^{s}((F \backslash E) \cap B(x, r))}{(2 r)^{s}} \rightarrow 0 \quad \text { as } r \rightarrow 0
+$$
+by Proposition \ref{prop5.1} a., so letting $r \rightarrow 0$ gives
+$$
+\underline{D}^{s}(F, x)=\underline{D}^{s}(E, x) ; \quad \bar{D}^{s}(F, x)=\bar{D}^{s}(E, x)
+$$
+for $\mathcal{H}^s$-almost all $x$ in $E$.
+\end{proposition} 
+\textbf{Note: } 
+\begin{enumerate}[(i)]
+    \item if $E$ is a subset of an $s-$set $F$ with $\mathcal{H}^s(E)>0$, then $E$ is regular if $F$ is regular and vice versa. 
+    \item intersection of a regular and an irrgular set has $\HH^s$-measuer zero. 
+\end{enumerate}
 
+\begin{theorem}
+    Let $F$ be an s-set in $\RR^2$. Then $F$ is irregular unless $s$ is an integer.
+\end{theorem}
+
+\newpage
 \subsubsection{Structure of 1-sets(5.2)}
+\begin{theorem}[Decomposition Theorem]
+    Let $F$ be a 1 -set. The set of regular points of $F$ forms a regular set, the set of irregular points forms an irregular set.
+\end{theorem}
+\proof: By Proposition \ref{5.4} taking $E$ as the set of regular and irregular points. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.66\textwidth]{images/decomp1set.png}
+    \caption{Decomposition of a 1-set into a regular ‘curve-like’ part and an irregular ‘curve-free’ part}
+    \label{fig:decomp1set}
+\end{figure}
+
+\textbf{Note: }Regular 1-sets are made up from \textit{pieces of curve}, whereas irregular 1-sets are dust- like and \textit{‘curve-free’}, that is, intersect any (finite length) curve in length zero, illustrated in Figure \ref{fig:decomp1set}.
+
+\begin{definition}[Curve(Jordan Curve)]
+    A Jordan curve C is the image of a continuous injection(one-to-one) $\psi:[a,b]\rightarrow\RR^2$, where $[a, b]\subset \RR$ is a proper closed interval. 
+\end{definition}
+
+\textit{Length}: 
+$$
+\LL(C) = \sup \sum_{i=1}^\infty |x_i - x_{i-1}|
+$$
+where the supremum is taken over all dissections of $C$ by points $x_0, x_1, \dots, x_m$ in that order along the curve. 
+
+\begin{definition}[Rectifiable Curve]
+    If $\LL(C)$ is positive and finite, $C$ is a rectifiable curve. 
+\end{definition}
+
+\begin{lemma}\label{lemma5.4}
+    If $C$ is a rectifiable curve, then $\HH^1(C) = \LL(C)$
+\end{lemma}
+\proof:
+For $x, y \in C$, let $C_{x, y}$ denote that part of $C$ between $x$ and $y$. As orthogonal projection onto the line through $x$ and $y$ does not increase distances, Proposition \ref{Haus-holder} gives $\mathcal{H}^{1}\left(C_{x, y}\right) \geq \mathcal{H}^{1}[x, y]=|x-y|$, where $[x, y]$ is the straight-line segment joining $x$ to $y$. Hence, for any dissection $x_{0}, x_{1}, \ldots, x_{m}$ of $C$
+$$
+\sum_{i=1}^{m}\left|x_{i}-x_{i-1}\right| \leq \sum_{i=1}^{m} \mathcal{H}^{1}\left(C_{x_{i}, x_{i-1}}\right) \leq \mathcal{H}^{1}(C)
+$$
+so taking the supremum over all dissections gives $\mathcal{L}(C) \leq \mathcal{H}^{\prime}(C)$. On the other hand, let $f:[0, \mathcal{L}(C)] \rightarrow C$ be the mapping that takes to the point on $C$ at distance $t$ along the curve from one of its ends. Clearly, $|f(t)-f(u)| \leq|t-u|$ for $0 \leq t, u \leq \mathcal{L}(C)$, that is, $f$ is Lipschitz with $\mathcal{H}^{1}(C) \leq \mathcal{H}^{1}[0, \mathcal{L}(C)]=\mathcal{L}(C)$ by Proposition \ref{Haus-holder} as required.
+
+\begin{lemma}\label{lemma5.5}
+    A rectifiable curve is a regular 1-set. 
+\end{lemma}
+\proof: As $C$ is rectifiable $\mathcal{L}(C)<\infty$, and because $C$ has distinct end points $p$ and $q$, it is clear that $\mathcal{L}(C) \geq|p-q|>0$. By Lemma \ref{lemma5.4}, $0<\mathcal{H}^{1}(C)<\infty$, so $C$ is a 1-set.
+
+A point $x$ of $C$ that is not an end point divides $C$ into two parts $C_{p, x}$ and $C_{x, q} .$ If $r$ is sufficiently small, then moving away from $x$ along the curve $C_{x, q}$, we reach a first point $y$ on $C$ with $|x-y|=r$. Then $C_{x, v} \subset B(x, r)$ and
+$$
+r=|x-y| \leq \mathcal{L}\left(C_{x, y}\right)=\mathcal{H}^{1}\left(C_{x, y}\right) \leq \mathcal{H}^{1}\left(C_{x, q} \cap B(x, r)\right) .
+$$
+Similarly, $r \leq \mathcal{H}^{1}\left(C_{p, x} \cap B(x, r)\right)$, so, adding, $2 r \leq \mathcal{H}^{1}(C \cap B(x, r))$, if $r$ is
+small enough. Thus
+$$
+\underline{D}^{1}(C, x)=\lim _{r \rightarrow 0} \frac{\mathcal{H}^{1}(C \cap B(x, r))}{2 r} \geq 1 .
+$$
+By Proposition \ref{prop5.1}(a) $\underline{D}^{1}(C, x) \leq \bar{D}^{1}(C, x) \leq 1$ for $\mathcal{H}^{1}$ -almost all $x$, so
+$D^{1}(C, x)$ exists and equals 1 for almost all $x \in C$, so $C$ is regular.
+
+\begin{proposition}\label{prop5.6}
+    A curve like 1-set is a regular 1-set. 
+\end{proposition}
+\proof: If $F$ is a curve-like 1 -set, then $F \subset \bigcup_{i=1}^{\infty} C_{i}$ where the $C_{i}$ are rectifiable curves. For each $i$ and $\mathcal{H}^{1}$ -almost all $x \in F \cap C_{i}$, we have, using Lemma \ref{lemma5.5} and \ref{lemma5.4},
+$$
+1=\underline{D}^{1}\left(C_{i}, x\right)=\underline{D}^{1}\left(F \cap C_{i}, x\right) \leq \underline{D}^{1}(F, x)
+$$
+and, hence, $1 \leq \underline{D}^{1}(F, x)$ for almost all $x \in F$. But for almost all $x \in F$, we have $\underline{D}^{1}(F, x) \leq \bar{D}^{1}(F, x) \leq 1$ by Proposition \ref{prop5.1}, so
+$D^{1}(F, x)=1$ almost everywhere, and $F$ is regular.
+
+
+\begin{proposition}Let $F$ be a curve-free 1 -set in $\mathbb{R}^{2}$. Then $\underline{D}^{1}(F, x) \leq \frac{3}{4}$ at almost all $x \in F .$
+\end{proposition}
+
+\begin{theorem}\label{thm5.9} $ $
+    \begin{enumerate}[a.]
+        \item A $1$-set in $\RR^2$ is irregular if and only if it is curve-free.
+        \item A 1-set in $\RR^2$ is regular if and only if it is the union of a curve-like set and a set of $\HH^1$-measure zero. 
+    \end{enumerate}
+\end{theorem}
 
 
 
+\newpage
 \subsubsection{Tangents to s-sets(5.3)}
+
+
+
+
+
+
+
+
 
 \newpage
 
