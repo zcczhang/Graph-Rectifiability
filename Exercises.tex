@@ -29,7 +29,7 @@
     Next, we claim that: 
     $$B(f(x),(c-\epsilon) r) \subset f(B(x, r)) \subset B(f(x),(c+\epsilon) r)$$
     $$\Rightarrow f(F)\cap B(f(x), (c-\epsilon)r) \subset f(F\cap B(x, r)) \subset f(F)\cap B(f(x), (c+\epsilon)r)$$
-    this is because TODOTODOTODOTODOTODO\\
+    Proof: if $f(m) \in B(f(x),(c-\epsilon) r), (c-\epsilon)|x-m|\leq |f(x)-f(m)| \leq |c-\epsilon|r \Rightarrow m\in B(x, r)$ $\Rightarrow f(m)\in f(B(x, r))\Rightarrow B(f(x),(c-\epsilon) r) \subset f(B(x, r))$ . On the other hand, if $n\in f(B(x, r)), \exists s\in B(x,r)$ s.t. $f(s) = n$, so $|f(x)-n|\leq (c+\epsilon)|x-s| \leq (c+\epsilon) r \Rightarrow n\in B(f(x),(c+\epsilon) r) \Rightarrow f(B(x, r)) \subset B(f(x),(c+\epsilon) r)$. Then, by adding intersection for preimage and image, the containment will not changed. 
     Then, by property of measure, we have:
     $$
     \begin{aligned}
@@ -51,12 +51,13 @@
     $$
     This inequality holds for all chosen $0 < \epsilon < c$,
     $$
-    \left(\frac{c-\epsilon}{c+\epsilon}\right)^s \leq \frac{\underline{D}^{s}(F, x)}{\underline{D}^{s}(f(F), f(x))}, \quad \left(\frac{c-\epsilon}{c+\epsilon}\right)^s < 1, \quad \left(\frac{c-\epsilon}{c+\epsilon}\right)^s \leq \frac{\underline{D}^{s}(f(F), f(x))}{\underline{D}^{s}(F, x)}
+    \left(\frac{c-\epsilon}{c+\epsilon}\right)^{s} \in (0, 1) \leq \frac{\underline{D}^{s}(F, x)}{\underline{D}^{s}(f(F), f(x))} \leq (1,\infty) \ni \left(\frac{c+\epsilon}{c-\epsilon}\right)^{s}
     $$
     Therefore,
     $$
     \underline{D}^{s}(f(F), f(x))=\underline{D}^{s}(F, x)
     $$
+
     Similar for upper densities. 
     A figure for varaibles relationship is shown below.
     \begin{figure}[H]
@@ -67,7 +68,7 @@
 \end{customsol}
     
 
-
+\newpage
 \begin{customexercise}{5.8}
     Let $F_{1}, F_{2}, \ldots$ be 1-sets in the plane such that $F=\bigcup_{k=1}^{\infty} F_{k}$ is a 1-set. Show that if $F_{k}$ is regular for all $k$, then $F$ is regular, and if $F_{k}$ is irregular for all $k$, then $F$ is irregular.
 \end{customexercise}
