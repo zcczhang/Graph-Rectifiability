@@ -7,15 +7,79 @@
 \end{customexercise}
 
 \begin{customsol}{5.2}
+    As $f$ is continuously differentiable, $f'$ is also continuous. Then, $$\displaystyle \lim_{w\rightarrow x}f^\prime (w) = f^\prime(x) = c, \text{ assuming }f^\prime(x) = c, \forall x\in \RR$$
+    $$
+    \Rightarrow \forall \epsilon >0, \exists \delta>0\text{ s.t. whenever }|w-x|<\delta, |f^\prime(w) - c| < \epsilon $$
+    $$\Rightarrow c-\epsilon < f^\prime(w) < c+\epsilon
+    $$
+    Besides, by Mean Value Theorem, for $y<w<z$ where $y, w, z \in B(x, \delta)$, chosing $0<\epsilon<c$,
+    $$|f(y)-f(z)| = |f^\prime(w)||y - z|$$
+    $$\Rightarrow (c-\epsilon) |y-z| \leq |f(y)-f(z)|\leq (c+\epsilon)|y-z|$$
+    Thus, $f\text{ is bi-Lipschitz on }B(x, \delta)$.\\
+    Consider a Lemma for Proposition \ref{Haus-holder}: 
+    if $p|x-y|\leq |g(x)-g(y)|\leq q|x-y|$, $$p^s\HH^s(g(U))\leq \HH^s(U) \leq q^s\HH^s(g(U))$$
+    where $p,q$ are constants and $g: U\subset \RR \rightarrow \RR^m$. The proof for this is just adding the left side for the proof of Proposition \ref{Haus-holder}.\\
+    Then, let $0<r<\delta$ s.t. $F\cap B(x, r)\subset B(x, r)\subset B(x,\delta)$ and let $f=g, p=c-\epsilon, q=c+\epsilon, U = F\cap B(x, r)$ which satisfied the lemma above. Hence,
+    $$
+    (c-\epsilon)^{s} \mathcal{H}^{s}(F \cap B(x, r)) \leq \mathcal{H}^{s}(f(F \cap B(x, r))) \leq(c+\epsilon)^{s} \mathcal{H}^{s}(F \cap B(x, r))
+    $$
+    $$
+    \Leftrightarrow \frac{\mathcal{H}^{s}(f(F \cap B(x, r)))}{(c+\epsilon)^{s}}  \leq \mathcal{H}^{s}(F \cap B(x, r)) \leq \frac{\mathcal{H}^{s}(f(F \cap B(x, r)))}{(c-\epsilon)^{s}} 
+    $$
+    Next, we claim that: 
+    $$B(f(x),(c-\epsilon) r) \subset f(B(x, r)) \subset B(f(x),(c+\epsilon) r)$$
+    $$\Rightarrow f(F)\cap B(f(x), (c-\epsilon)r) \subset f(F\cap B(x, r)) \subset f(F)\cap B(f(x), (c+\epsilon)r)$$
+    this is because TODOTODOTODOTODOTODO\\
+    Then, by property of measure, we have:
+    $$
+    \begin{aligned}
+        &\frac{\mathcal{H}^{s}(f(F) \cap B(f(x),(c-\epsilon) r))}{(c+\epsilon)^{s}}\leq \frac{\mathcal{H}^{s}(f(F \cap B(x, r)))}{(c+\epsilon)^{s}} \\
+        \leq & \mathcal{H}^{s}(F \cap B(x, r)) \\
+        \leq & \frac{\mathcal{H}^{s}(f(F \cap B(x, r)))}{(c-\epsilon)^{s}} \leq \frac{\mathcal{H}^{s}(f(F) \cap B(f(x),(c+\epsilon) r))}{(c-\epsilon)^{s}}
+    \end{aligned}
+    $$
+    $$
+    \begin{aligned}
+        \Rightarrow &\left(\frac{c-\epsilon}{c+\epsilon}\right)^{s} \frac{\mathcal{H}^{s}(f(F) \cap B(f(x),(c-\epsilon) r))}{(2\cdot((c-\epsilon) r))^{s}} \\
+        \leq & \frac{\mathcal{H}^{s}(F \cap B(x, r))}{(2 r)^{s}} \\
+        \leq &\left(\frac{c+\epsilon}{c-\epsilon}\right)^{s} \frac{\mathcal{H}^{s}(f(F) \cap B(f(x),(c+\epsilon) r))}{(2\cdot(c+\epsilon) r))^{s}}
+    \end{aligned}
+    $$
+    Taking lower limit for $r\rightarrow 0$, we have:
+    $$
+    \left(\frac{c-\epsilon}{c+\epsilon}\right)^{s} \underline{D}^{s}(f(F), f(x)) \leq \underline{D}^{s}(F, x) \leq\left(\frac{c+\epsilon}{c-\epsilon}\right)^{s} \underline{D}^{s}(f(F), f(x))
+    $$
+    As this inequality holds for all chosen $0 < \epsilon < c$, it must true that:
+    $$
+    \underline{D}^{s}(f(F), f(x))=\underline{D}^{s}(F, x)
+    $$
+    otherwise, TODOTODOTODOTODO.
+    Similar for upper densities. 
+    A figure for varaibles relationship is shown below.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=.35\textwidth]{images/5_2.png}
+        \label{fig:e5.2}
+    \end{figure}
 
+    Next,
+    $$
+    d
+    $$
 \end{customsol}
+    
+
 
 \begin{customexercise}{5.8}
     Let $F_{1}, F_{2}, \ldots$ be 1-sets in the plane such that $F=\bigcup_{k=1}^{\infty} F_{k}$ is a 1-set. Show that if $F_{k}$ is regular for all $k$, then $F$ is regular, and if $F_{k}$ is irregular for all $k$, then $F$ is irregular.
 \end{customexercise}
 
-\begin{customsol}{5.8}
-    
+\begin{customsol}{5.8} $ $
+    \begin{enumerate}[i.]
+    \item If each $F_k$ is regular and 1-set for all k, by Theorem \ref{thm5.9} b., it is the union of a curve-like set(i.e. contained in a countable union of rectifiable curves) and a set of $\HH^1$-measure zero. Then, a 1-set $F = \displaystyle \bigcup_{k=1}^\infty F_k$ is union of a curve-like set which is contained in a countable union of rectifiable curves, and, a countable union of a set of $\HH^1$-measure zero which is a set of $\HH^1$-measure zero. By Theorem \ref{thm5.9} b., $F$ is regular. 
+    \item If each $F_k$ is irrgular, by definition of curve-free, $\HH^1(C\cap F_k) = 0$ where $C$ is a rectifiable curve. Then, $\displaystyle 0\leq\HH^1(C\cap \bigcup_{k=1}^\infty F_k) = \HH^1(\bigcup_{k=1}^\infty (C\cap F_k))\leq \sum_{k=1}^\infty \HH^1(C\cap F_k) = 0$, such that $F$ is curve-free. By Theorem \ref{thm5.9} b., $F$ is irregular. 
+\end{enumerate}
+
 \end{customsol}
 
 \newpage

@@ -141,6 +141,11 @@ $$
 By Proposition \ref{prop5.1}(a) $\underline{D}^{1}(C, x) \leq \bar{D}^{1}(C, x) \leq 1$ for $\mathcal{H}^{1}$ -almost all $x$, so
 $D^{1}(C, x)$ exists and equals 1 for almost all $x \in C$, so $C$ is regular.
 
+
+\begin{definition}[Curve-like Curve]
+    A 1-set is curve-like if it is contained in a countable union of rectifiable curves.
+\end{definition}
+
 \begin{proposition}\label{prop5.6}
     A curve like 1-set is a regular 1-set. 
 \end{proposition}
@@ -150,6 +155,10 @@ $$
 $$
 and, hence, $1 \leq \underline{D}^{1}(F, x)$ for almost all $x \in F$. But for almost all $x \in F$, we have $\underline{D}^{1}(F, x) \leq \bar{D}^{1}(F, x) \leq 1$ by Proposition \ref{prop5.1}, so
 $D^{1}(F, x)=1$ almost everywhere, and $F$ is regular.
+
+\begin{definition}[Curve-free]
+    A 1-set is called curve-free if its intersection with every rectifiable curve has $\HH^1$-measure zero. 
+\end{definition}
 
 
 \begin{proposition}Let $F$ be a curve-free 1 -set in $\mathbb{R}^{2}$. Then $\underline{D}^{1}(F, x) \leq \frac{3}{4}$ at almost all $x \in F .$
@@ -693,6 +702,15 @@ $$
 \lim _{h \rightarrow 0} \frac{\left|f(x+h)-f(x)-f^{\prime}(x) h\right|}{|h|}=0 .
 $$
 \end{definition}
+
+
+\begin{theorem}[Mean Value Theorem]\label{mvt}
+    Given $x < y$ and a real-value function $f$ that is differentiable over an interval containing x and y, there exists w with $x<w<y$ s.t. 
+    $$
+    \frac{f(y)-f(x)}{y-x} = f^\prime(w)
+    $$
+\end{theorem}
+\note: A consequence of the mean value theorem is that if $|f^\prime (x)|$ is bounded over an interval, then $f$ is Lipschitz over that interval.
 
 \begin{definition}[Pointwise Convergence]
     For a sequence of functions: $f_k : X\rightarrow Y$ where $X$ and $Y$ are subsets 
