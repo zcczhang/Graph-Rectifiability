@@ -12,12 +12,12 @@
         \mu(C_\mathcal{B}(x, V, \alpha)) = 0
     \end{equation}
 \end{problem}
-\textit{Proof}. For better notation, we write $Q_{k}$ as the dyadic cube with side length $2^{-k}, k\in\mathbb{N}$ in the fixed cube system. Then for any two different points in $Q_k$, we have $0<|x_1-x_2|\leq \sqrt{C}\cdot 2^{-k}, \forall x_1, x_2\in Q_k$ where $C$ is the constant and particularly $C=n$ when in $\RR^n$. When $k\rightarrow \infty, 2^{-k}\rightarrow 0$ so there exists $N\in\NN$ such that whenever $k\geq N$, we have $|x_1-x_2|<\alpha\epsilon/2<\epsilon/2, \forall \epsilon >0$ for choosing $x_1, x_2$ still in the $Q_k\ni x$. Now consider that if $y\in C_\mathcal{B}(x_1, V, \alpha)$, we have $\operatorname{dist}(y-x_1, V) > \alpha|y-x_1|$ by definition of bad cones. Choose
-$$\epsilon\leq \frac{\operatorname{dist}(y-x_1, V)-\alpha|y-x_1|}{\alpha}\Rightarrow \operatorname{dist}(y-x_1, V) \geq \alpha (|y-x_1|+\epsilon),$$
+\textit{Proof}. For better notation, we write $Q_{k}$ as the dyadic cube with side length $2^{-k}, k\in\mathbb{N}$ in the fixed cube system. Then for any two different points in $Q_k$, we have $0<|x_1-x_2|\leq \sqrt{C}\cdot 2^{-k}, \forall x_1, x_2\in Q_k$ where $C$ is the constant and particularly $C=n$ when in $\rr^n$. When $k\rightarrow \infty, 2^{-k}\rightarrow 0$ so there exists $N\in\nn$ such that whenever $k\geq N$, we have $|x_1-x_2|<\alpha\epsilon/2<\epsilon/2, \forall \epsilon >0$ for choosing $x_1, x_2$ still in the $Q_k\ni x$. Now consider that if $y\in C_\mathcal{B}(x_1, V, \alpha)$, we have $\dist(y-x_1, V) > \alpha|y-x_1|$ by definition of bad cones. Choose
+$$\epsilon\leq \frac{\dist(y-x_1, V)-\alpha|y-x_1|}{\alpha}\Rightarrow \dist(y-x_1, V) \geq \alpha (|y-x_1|+\epsilon),$$
 so that
 \begin{equation*}
     \begin{aligned} 
-        \operatorname{dist}\left(y-x_{2}, V\right) & \geq \operatorname{dist}(y-x_1, V)-\left|x_1-x_2\right| \\ 
+        \dist\left(y-x_{2}, V\right) & \geq \dist(y-x_1, V)-\left|x_1-x_2\right| \\ 
         & \geq \alpha(|y-x_1|+\epsilon)-\alpha(\epsilon / 2) \\ 
         & =\alpha(|y-x_1|+\epsilon / 2) \\ 
         & >\alpha\left(|y-x_1|+\left|x_2-x_1\right|\right) \\ 
@@ -39,12 +39,12 @@ For any $Q\ni x$, we can do this process for any $Q_k\in Q, Q_k\ni x$, so applyi
     \end{aligned}
 \end{equation*}
 Therefore, by doing the same process for all $Q\ni x$, we have (\ref{muBx=0}). \\
-An example of this proof illustrated in $\RR^2$ is shwon in Figure \ref{fig:CB1=CB2}.
+An example of this proof illustrated in $\rr^2$ is shwon in Figure \ref{fig:CB1=CB2}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.6\textwidth]{images/CB1=CB2.png}
-    \caption{Example visulization of proof in $\RR^2$}
+    \caption{Example visulization of proof in $\rr^2$}
     \label{fig:CB1=CB2}
 \end{figure}
 
@@ -72,7 +72,7 @@ $$
 \begin{figure}[H]
     \centering
     \includegraphics[width=.66\textwidth]{images/cubebadconeDef.png}
-    \caption{Visulize two definitions of bad cone at a cube in $\RR^2$}
+    \caption{Visulize two definitions of bad cone at a cube in $\rr^2$}
 \end{figure}
 
 \begin{problem}
@@ -87,7 +87,7 @@ $$
 \subsection{June 15 A Proposition of Doubling Measure for Cubes}
 
 \begin{proposition}
-    If $\forall x\in \RR^2, \mu(B(x, 2r))\leq K\mu(B(x,r)), K\in\ZZ^+$, then $\exists R\in \ZZ^+$ s.t. $\mu(3Q)\leq R\mu(Q)$ where $Q$ is the cube, 3$Q$ is the cube with triple side length with same center as $Q$. 
+    If $\forall x\in \rr^2, \mu(B(x, 2r))\leq K\mu(B(x,r)), K\in\zz^+$, then $\exists R\in \zz^+$ s.t. $\mu(3Q)\leq R\mu(Q)$ where $Q$ is the cube, 3$Q$ is the cube with triple side length with same center as $Q$. 
 \end{proposition}
 \proof  $\mu(3Q) \leq \mu(B(x, 4r)) \leq K^2\mu(B(x, r))\leq K^2 \mu(Q)$ due to doubling measure and containment. 
 
@@ -103,7 +103,7 @@ $$
 \begin{definition}[Good Cone]
     Let $V$ be a m-dimensional plane in Hilbert space $H$, then we can define the good cone at $x$ with respect to $V$ and $\alpha$ by:
     $$
-    C_\mathcal{G}(x, V, \alpha) := \{y\in H: \operatorname{dist}(y-x, V) \leq \alpha |x-y|\}
+    C_\mathcal{G}(x, V, \alpha) := \{y\in H: \dist(y-x, V) \leq \alpha |x-y|\}
     $$
     another notation:
     $$
@@ -121,7 +121,7 @@ $$
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{images/conedef.png}
-    \caption{Example visualization of definitions related to cones in $\RR^2$}
+    \caption{Example visualization of definitions related to cones in $\rr^2$}
 \end{figure}
 
 \begin{definition}[Carried $\&$ Singular]
@@ -166,11 +166,11 @@ $$
 \mu\left(F \backslash F^{\prime}\right)=\mu\left(F \backslash \bigcap_{i=1}^{\infty} F_{i}\right)=\mu\left(\bigcup_{i=1}^{\infty} F \backslash F_{i}\right) \leq \sum_{i=1}^{\infty} \mu\left(F \backslash F_{i}\right)=0
 $$
 We claim that $F^{\prime} \cap C_{\mathcal{B}}(x, V, \alpha)=\emptyset$ for every $x \in F^{\prime} .$ Fix $x \in F^{\prime}$, and let $y \in C_{\mathcal{B}}(x, V, \alpha)$.
-By definition of bad cone we have that $\operatorname{dist}(y-x, V)>\alpha|y-x|$. Now let $\epsilon>0$ such that $\operatorname{dist}(y-x, V) \geq \alpha(|y-x|+\epsilon)$. Recalling that $0<\alpha<1$, choose $x_{i}$ such that $\left|x_{i}-x\right|<\alpha \epsilon / 2<$
+By definition of bad cone we have that $\dist(y-x, V)>\alpha|y-x|$. Now let $\epsilon>0$ such that $\dist(y-x, V) \geq \alpha(|y-x|+\epsilon)$. Recalling that $0<\alpha<1$, choose $x_{i}$ such that $\left|x_{i}-x\right|<\alpha \epsilon / 2<$
 $\epsilon / 2 .$ Then
 $$
 \begin{aligned}
-\operatorname{dist}\left(y-x_{i}, V\right) & \geq \operatorname{dist}(y-x, V)-\left|x-x_{i}\right| \\
+\dist\left(y-x_{i}, V\right) & \geq \dist(y-x, V)-\left|x-x_{i}\right| \\
 & \geq \alpha(|y-x|+\epsilon)-\alpha(\epsilon / 2) \\
 &=\alpha(|y-x|+\epsilon / 2) \\
 &>\alpha\left(|y-x|+\left|x_{i}-x\right|\right) \\

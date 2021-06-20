@@ -7,7 +7,7 @@
 \end{customexercise}
 
 \begin{customsol}{5.2}
-    As $f$ is continuously differentiable, $f'$ is also continuous. Then, $$\displaystyle \lim_{w\rightarrow x}f^\prime (w) = f^\prime(x) = c, \text{ assuming }f^\prime(x) = c, \forall x\in \RR$$
+    As $f$ is continuously differentiable, $f'$ is also continuous. Then, $$\displaystyle \lim_{w\rightarrow x}f^\prime (w) = f^\prime(x) = c, \text{ assuming }f^\prime(x) = c, \forall x\in \rr$$
     $$
     \Rightarrow \forall \epsilon >0, \exists \delta>0\text{ s.t. whenever }|w-x|<\delta, |f^\prime(w) - c| < \epsilon $$
     $$\Rightarrow c-\epsilon < f^\prime(w) < c+\epsilon
@@ -17,8 +17,8 @@
     $$\Rightarrow (c-\epsilon) |y-z| \leq |f(y)-f(z)|\leq (c+\epsilon)|y-z|$$
     Thus, $f\text{ is bi-Lipschitz on }B(x, \delta)$.\\
     Consider a Lemma for Proposition \ref{Haus-holder}: 
-    if $p|x-y|\leq |g(x)-g(y)|\leq q|x-y|$, $$p^s\HH^s(g(U))\leq \HH^s(U) \leq q^s\HH^s(g(U))$$
-    where $p,q$ are constants and $g: U\subset \RR \rightarrow \RR^m$. The proof for this is just adding the left side for the proof of Proposition \ref{Haus-holder}.\\
+    if $p|x-y|\leq |g(x)-g(y)|\leq q|x-y|$, $$p^s\calH^s(g(U))\leq \calH^s(U) \leq q^s\calH^s(g(U))$$
+    where $p,q$ are constants and $g: U\subset \rr \rightarrow \rr^m$. The proof for this is just adding the left side for the proof of Proposition \ref{Haus-holder}.\\
     Then, let $0<r<\delta$ s.t. $F\cap B(x, r)\subset B(x, r)\subset B(x,\delta)$ and let $f=g, p=c-\epsilon, q=c+\epsilon, U = F\cap B(x, r)$ which satisfied the lemma above. Hence,
     $$
     (c-\epsilon)^{s} \mathcal{H}^{s}(F \cap B(x, r)) \leq \mathcal{H}^{s}(f(F \cap B(x, r))) \leq(c+\epsilon)^{s} \mathcal{H}^{s}(F \cap B(x, r))
@@ -75,8 +75,8 @@
 
 \begin{customsol}{5.8} $ $
     \begin{enumerate}[i.]
-    \item If each $F_k$ is regular and 1-set for all k, by Theorem \ref{thm5.9} b., it is the union of a curve-like set(i.e. contained in a countable union of rectifiable curves) and a set of $\HH^1$-measure zero. Then, a 1-set $F = \displaystyle \bigcup_{k=1}^\infty F_k$ is union of a curve-like set which is contained in a countable union of rectifiable curves, and, a countable union of a set of $\HH^1$-measure zero which is a set of $\HH^1$-measure zero. By Theorem \ref{thm5.9} b., $F$ is regular. 
-    \item If each $F_k$ is irrgular, by definition of curve-free, $\HH^1(C\cap F_k) = 0$ where $C$ is a rectifiable curve. Then, $\displaystyle 0\leq\HH^1(C\cap \bigcup_{k=1}^\infty F_k) = \HH^1(\bigcup_{k=1}^\infty (C\cap F_k))\leq \sum_{k=1}^\infty \HH^1(C\cap F_k) = 0$, such that $F$ is curve-free. By Theorem \ref{thm5.9} b., $F$ is irregular. 
+    \item If each $F_k$ is regular and 1-set for all k, by Theorem \ref{thm5.9} b., it is the union of a curve-like set(i.e. contained in a countable union of rectifiable curves) and a set of $\calH^1$-measure zero. Then, a 1-set $F = \displaystyle \bigcup_{k=1}^\infty F_k$ is union of a curve-like set which is contained in a countable union of rectifiable curves, and, a countable union of a set of $\calH^1$-measure zero which is a set of $\calH^1$-measure zero. By Theorem \ref{thm5.9} b., $F$ is regular. 
+    \item If each $F_k$ is irrgular, by definition of curve-free, $\calH^1(C\cap F_k) = 0$ where $C$ is a rectifiable curve. Then, $\displaystyle 0\leq\calH^1(C\cap \bigcup_{k=1}^\infty F_k) = \calH^1(\bigcup_{k=1}^\infty (C\cap F_k))\leq \sum_{k=1}^\infty \calH^1(C\cap F_k) = 0$, such that $F$ is curve-free. By Theorem \ref{thm5.9} b., $F$ is irregular. 
 \end{enumerate}
 
 \end{customsol}

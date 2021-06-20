@@ -77,11 +77,11 @@ for $\mathcal{H}^s$-almost all $x$ in $E$.
 \textbf{Note: } 
 \begin{enumerate}[(i)]
     \item if $E$ is a subset of an $s-$set $F$ with $\mathcal{H}^s(E)>0$, then $E$ is regular if $F$ is regular and vice versa. 
-    \item intersection of a regular and an irrgular set has $\HH^s$-measuer zero. 
+    \item intersection of a regular and an irrgular set has $\calH^s$-measuer zero. 
 \end{enumerate}
 
 \begin{theorem}
-    Let $F$ be an s-set in $\RR^2$. Then $F$ is irregular unless $s$ is an integer.
+    Let $F$ be an s-set in $\rr^2$. Then $F$ is irregular unless $s$ is an integer.
 \end{theorem}
 
 \newpage
@@ -101,21 +101,21 @@ for $\mathcal{H}^s$-almost all $x$ in $E$.
 \textbf{Note: }Regular 1-sets are made up from \textit{pieces of curve}, whereas irregular 1-sets are dust- like and \textit{‘curve-free’}, that is, intersect any (finite length) curve in length zero, illustrated in Figure \ref{fig:decomp1set}.
 
 \begin{definition}[Curve(Jordan Curve)]
-    A Jordan curve C is the image of a continuous injection(one-to-one) $\psi:[a,b]\rightarrow\RR^2$, where $[a, b]\subset \RR$ is a proper closed interval. 
+    A Jordan curve C is the image of a continuous injection(one-to-one) $\psi:[a,b]\rightarrow\rr^2$, where $[a, b]\subset \rr$ is a proper closed interval. 
 \end{definition}
 
 \textit{Length}: 
 $$
-\LL(C) = \sup \sum_{i=1}^\infty |x_i - x_{i-1}|
+\calL(C) = \sup \sum_{i=1}^\infty |x_i - x_{i-1}|
 $$
 where the supremum is taken over all dissections of $C$ by points $x_0, x_1, \dots, x_m$ in that order along the curve. 
 
 \begin{definition}[Rectifiable Curve]
-    If $\LL(C)$ is positive and finite, $C$ is a rectifiable curve. 
+    If $\calL(C)$ is positive and finite, $C$ is a rectifiable curve. 
 \end{definition}
 
 \begin{lemma}\label{lemma5.4}
-    If $C$ is a rectifiable curve, then $\HH^1(C) = \LL(C)$
+    If $C$ is a rectifiable curve, then $\calH^1(C) = \calL(C)$
 \end{lemma}
 \proof:
 For $x, y \in C$, let $C_{x, y}$ denote that part of $C$ between $x$ and $y$. As orthogonal projection onto the line through $x$ and $y$ does not increase distances, Proposition \ref{Haus-holder} gives $\mathcal{H}^{1}\left(C_{x, y}\right) \geq \mathcal{H}^{1}[x, y]=|x-y|$, where $[x, y]$ is the straight-line segment joining $x$ to $y$. Hence, for any dissection $x_{0}, x_{1}, \ldots, x_{m}$ of $C$
@@ -157,7 +157,7 @@ and, hence, $1 \leq \underline{D}^{1}(F, x)$ for almost all $x \in F$. But for a
 $D^{1}(F, x)=1$ almost everywhere, and $F$ is regular.
 
 \begin{definition}[Curve-free]
-    A 1-set is called curve-free if its intersection with every rectifiable curve has $\HH^1$-measure zero. 
+    A 1-set is called curve-free if its intersection with every rectifiable curve has $\calH^1$-measure zero. 
 \end{definition}
 
 
@@ -166,8 +166,8 @@ $D^{1}(F, x)=1$ almost everywhere, and $F$ is regular.
 
 \begin{theorem}\label{thm5.9} $ $
     \begin{enumerate}[a.]
-        \item A $1$-set in $\RR^2$ is irregular if and only if it is curve-free.
-        \item A 1-set in $\RR^2$ is regular if and only if it is the union of a curve-like set and a set of $\HH^1$-measure zero. 
+        \item A $1$-set in $\rr^2$ is irregular if and only if it is curve-free.
+        \item A 1-set in $\rr^2$ is regular if and only if it is the union of a curve-like set and a set of $\calH^1$-measure zero. 
     \end{enumerate}
 \end{theorem}
 
