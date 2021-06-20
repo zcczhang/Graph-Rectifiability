@@ -1,11 +1,52 @@
 \section{Research}
 
 
-\subsection{June 17 \texorpdfstring{$\mu(C_\mathcal{B}(Q, V, \alpha)) = 0 \Rightarrow \mu(C_\mathcal{B}(x, V, \alpha)) = 0$}{Lg}}
+\subsection{June 17-20 \texorpdfstring{$\mu(C_\mathcal{B}^2(Q, V, \alpha)) = 0 \Rightarrow \mu(C_\mathcal{B}(x, V, \alpha)) = 0$}{Lg}}
 \begin{problem}
-    For every $Q\ni x$, $\mu(C_\mathcal{B}(Q, V, \alpha)) = 0$ shwo that $\mu(C_\mathcal{B}(x, V, \alpha)) = 0$
+    Let $x\in H, \alpha\in(0,1)$ and $V$ be an $m$-dimensional linear plane. If for every dyadic cube $Q\ni x$ with side length $2^{-k}, k\in\mathbb{N}$
+    \begin{equation}\label{muB2=0}
+        \mu(C_\mathcal{B}^2(Q, V, \alpha)) = 0
+    \end{equation}
+    then
+    \begin{equation}\label{muBx=0}
+        \mu(C_\mathcal{B}(x, V, \alpha)) = 0
+    \end{equation}
 \end{problem}
-\textit{Solution. } 
+\textit{Proof}. For better notation, we write $Q_{k}$ as the dyadic cube with side length $2^{-k}, k\in\mathbb{N}$ in the fixed cube system. Then for any two different points in $Q_k$, we have $0<|x_1-x_2|\leq \sqrt{C}\cdot 2^{-k}, \forall x_1, x_2\in Q_k$ where $C$ is the constant and particularly $C=n$ when in $\RR^n$. When $k\rightarrow \infty, 2^{-k}\rightarrow 0$ so there exists $N\in\NN$ such that whenever $k\geq N$, we have $|x_1-x_2|<\alpha\epsilon/2<\epsilon/2, \forall \epsilon >0$ for choosing $x_1, x_2$ still in the $Q_k\ni x$. Now consider that if $y\in C_\mathcal{B}(x_1, V, \alpha)$, we have $\operatorname{dist}(y-x_1, V) > \alpha|y-x_1|$ by definition of bad cones. Choose
+$$\epsilon\leq \frac{\operatorname{dist}(y-x_1, V)-\alpha|y-x_1|}{\alpha}\Rightarrow \operatorname{dist}(y-x_1, V) \geq \alpha (|y-x_1|+\epsilon),$$
+so that
+\begin{equation*}
+    \begin{aligned} 
+        \operatorname{dist}\left(y-x_{2}, V\right) & \geq \operatorname{dist}(y-x_1, V)-\left|x_1-x_2\right| \\ 
+        & \geq \alpha(|y-x_1|+\epsilon)-\alpha(\epsilon / 2) \\ 
+        & =\alpha(|y-x_1|+\epsilon / 2) \\ 
+        & >\alpha\left(|y-x_1|+\left|x_2-x_1\right|\right) \\ 
+        & \geq \alpha\left(\left|y-x_2\right|\right) 
+\end{aligned}
+\end{equation*}
+It follows that $y\in C_{\mathcal{B}}(x_2, V, \alpha)$, so $ C_{\mathcal{B}}(x_1, V, \alpha)\subseteq C_{\mathcal{B}}(x_2, V, \alpha)$. If we exchange $x_1$ and $x_2$ for the proof, it is also true that $ C_{\mathcal{B}}(x_2, V, \alpha)\subseteq C_{\mathcal{B}}(x_1, V, \alpha)$. Thus, $ C_{\mathcal{B}}(x_1, V, \alpha)=C_{\mathcal{B}}(x_2, V, \alpha)$. Since $x_1, x_2$ are arbitrary points in $Q_k$, we have 
+\begin{equation}\label{CB2=CB1}
+    \lim_{k\rightarrow \infty} C_\mathcal{B}^2(Q_k, V, \alpha) = \lim_{k\rightarrow \infty} \bigcap_{x\in Q_k} C_\mathcal{B}(x, V, \alpha) = \lim_{k\rightarrow \infty} \bigcup_{x\in Q_k}C_\mathcal{B}(x, V, \alpha) = \lim_{k\rightarrow\infty}C_\mathcal{B}^1(Q_k, V, \alpha)
+\end{equation}
+For any $Q\ni x$, we can do this process for any $Q_k\in Q, Q_k\ni x$, so applyin (\ref{CB2=CB1}) and (\ref{muB2=0}), for each $Q\ni x$,
+\begin{equation*}
+    \begin{aligned}
+        \mu(\bigcup_{x\in Q}C_\mathcal{B}(x, V, \alpha))
+        &= \mu(C_\mathcal{B}^1(Q, V, \alpha)) \\
+        &= \lim_{k\rightarrow\infty}\mu(\bigcup_{Q_k\in Q} C_\mathcal{B}^1(Q_k, V, \alpha))\\
+        &= \lim_{k\rightarrow\infty}\mu(\bigcup_{Q_k\in Q} C_\mathcal{B}^2(Q_k, V, \alpha))\\
+        &= 0
+    \end{aligned}
+\end{equation*}
+Therefore, by doing the same process for all $Q\ni x$, we have (\ref{muBx=0}). \\
+An example of this proof illustrated in $\RR^2$ is shwon in Figure \ref{fig:CB1=CB2}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.6\textwidth]{images/CB1=CB2.png}
+    \caption{Example visulization of proof in $\RR^2$}
+    \label{fig:CB1=CB2}
+\end{figure}
 
 
 
