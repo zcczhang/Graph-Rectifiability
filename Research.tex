@@ -2,7 +2,7 @@
 
 
 \subsection{June 17-20 \texorpdfstring{$\mu(C_\mathcal{B}^2(Q, V, \alpha)) = 0 \Rightarrow \mu(C_\mathcal{B}(x, V, \alpha)) = 0$}{Lg}}
-\begin{problem}
+\begin{lemma}\label{lemmaCQ1=CQ2}
     Let $x\in H, \alpha\in(0,1)$ and $V$ be an $m$-dimensional linear plane. If for every dyadic cube $Q\ni x$ with side length $2^{-k}, k\in\mathbb{N}$
     \begin{equation}\label{muB2=0}
         \mu(C_\mathcal{B}^2(Q, V, \alpha)) = 0
@@ -11,8 +11,8 @@
     \begin{equation}\label{muBx=0}
         \mu(C_\mathcal{B}(x, V, \alpha)) = 0
     \end{equation}
-\end{problem}
-\textit{Proof}. For better notation, we write $Q_{k}$ as the dyadic cube with side length $2^{-k}, k\in\mathbb{N}$ in the fixed cube system. Then for any two different points in $Q_k$, we have $0<|x_1-x_2|\leq \sqrt{C}\cdot 2^{-k}, \forall x_1, x_2\in Q_k$ where $C$ is the constant and particularly $C=n$ when in $\rr^n$. When $k\rightarrow \infty, 2^{-k}\rightarrow 0$ so there exists $N\in\nn$ such that whenever $k\geq N$, we have $|x_1-x_2|<\alpha\epsilon/2<\epsilon/2, \forall \epsilon >0$ for choosing $x_1, x_2$ still in the $Q_k\ni x$. Now consider that if $y\in C_\mathcal{B}(x_1, V, \alpha)$, we have $\dist(y-x_1, V) > \alpha|y-x_1|$ by definition of bad cones. Choose
+\end{lemma}
+\textit{Proof}. Let $Q_{k}$ denote a dyadic cube with side length $2^{-k}, k\in\mathbb{N}$ in the fixed cube system. Then for any two different points in $Q_k$, we have $0<|x_1-x_2|\leq \sqrt{C}\cdot 2^{-k}, \forall x_1, x_2\in Q_k$ where $C$ is the constant and particularly $C=n$ when in $\rr^n$. When $k\rightarrow \infty, 2^{-k}\rightarrow 0$ so there exists $N\in\nn$ such that whenever $k\geq N$, we have $|x_1-x_2|<\alpha\epsilon/2<\epsilon/2, \forall \epsilon >0$ for choosing $x_1, x_2$ still in the $Q_k\ni x$. Now consider that if $y\in C_\mathcal{B}(x_1, V, \alpha)$, we have $\dist(y-x_1, V) > \alpha|y-x_1|$ by definition of bad cones. Choose
 $$\epsilon\leq \frac{\dist(y-x_1, V)-\alpha|y-x_1|}{\alpha}\Rightarrow \dist(y-x_1, V) \geq \alpha (|y-x_1|+\epsilon),$$
 so that
 \begin{equation*}
@@ -49,6 +49,27 @@ An example of this proof illustrated in $\rr^2$ is shwon in Figure \ref{fig:CB1=
 \end{figure}
 
 
+\begin{corollary}[{\cite[Corollary 7.1]{naples2020}}]\label{LisaCoro7.1}
+    Let $\mu$ be a Radon measure on $H, V$ be an $m$-dimensional linear plane in $H$, $\alpha \in(0,1)$, and $0<r<\infty$. If for $\mu$ -a.e. $x \in H$
+   $$
+   \mu\left(C_{\mathcal{B}}(x, r, V, \alpha)\right)=0
+   $$
+   then $\mu$ is carried by $m$-Lipschitz graphs.
+\end{corollary}
+
+   
+
+\begin{corollary}
+    Suppose that at $\mu$-a.e. $x$, $\alpha\in(0, 1)$, for all $k$, for every cube $Q\ni x$ of side length $2^{-k}, k\in\nn$ satisfies
+    $$
+    \mu(C^2_\mathcal{B}(Q, V, \alpha)) = 0
+    $$ 
+    then $\mu$ is carried by $m$-Lipschitz graphs
+\end{corollary}
+\begin{proof}
+    Applying Lemma \ref{lemmaCQ1=CQ2}, we have $\mu(C_\calB(x, V, \alpha)) = 0$ and applying corollary \ref{LisaCoro7.1}, we obtain the desired conclusion. 
+\end{proof}
+
 
 \newpage
 \subsection{June 16 New Cone Definition for Dyadic Cubes}
@@ -79,7 +100,7 @@ $$
     Suppose that at $\mu$-a.e. $x$, $\alpha\in(0, 1)$, for all $k$, for every cube $Q\ni x$ of side length $2^{-k}$ satisfies
     $$
     \mu(C^2_\mathcal{B}(Q, V, \alpha)) = 0
-    $$
+    $$ 
     is $\mu$-carried Lipschitz by Lipschitz graphs?
 \end{problem}
 
