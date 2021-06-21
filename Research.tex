@@ -17,31 +17,22 @@
     \begin{equation}\label{muBx=0}
         \mu(C_\calB(y, V, \alpha)) = 0
     \end{equation}
-    Note that each $y\in E$ is contained in no more than one half open $Q$. Let $Q_{E_i}$ denote the dyadic cube that contains $E_i\subset E$ such that $E_i$ consists of all $y\in E$ in $Q_{E_i}$ and $E$ is the countable union of disjoint $E_i$. For any two points $x_1, x_2$ in $Q$, we have $|x_1-x_2|\leq \sqrt{n}\cdot 2^{-|k|}$. When $|k|\rightarrow \infty, 2^{-|k|}\rightarrow 0$, so there exists $N\in\nn$ such that whenever $|k|\geq N$, for $x_1, x_2\in Q$ we have $|x_1-x_2|<\alpha\epsilon/2<\epsilon/2, \forall \epsilon >0$, recalling that $\alpha\in(0,1)$. Now consider that if any $p\in C_\calB(x_1, V, \alpha)$, we have $\dist(p-x_1, V) > \alpha|p-x_1|$ by definition of bad cones. Choose $\epsilon$ such that $\dist(p-x_1, V) \geq \alpha (|p-x_1|+\epsilon)$ then
+    Note that each $y\in E$ is contained in no more than one half open $Q$. Let $Q_{E_i}$ denote the dyadic cube that contains $E_i\subset E$ such that $E_i$ consists of all $y\in E$ in $Q_{E_i}$ and $E$ is the countable union of disjoint $E_i$. For any two points $x_1\in Q_{E_i}, y_1\in E_i\in Q_{E_i}$, we have $|x_1-y_1|\leq \sqrt{n}\cdot 2^{-|k|}$. Consider that if any $p\in C_\calB(y_1, V, \alpha)$, we have $\dist(p-y_1, V) > \alpha|p-y_1|$ by definition of bad cones. Now let $\epsilon>0$ such that $\dist(p-y_1, V) \geq \alpha (|p-y_1|+\epsilon)$. When $|k|\rightarrow \infty, 2^{-|k|}\rightarrow 0$, so there exists $N\in\nn$ such that whenever $|k|\geq N$, for $x_1, y_1\in Q$ we have $|x_1-y_1|<\alpha\epsilon/2<\epsilon/2$, recalling that $\alpha\in(0,1)$. Then
 \begin{equation*}
     \begin{aligned} 
-        \dist\left(p-x_{2}, V\right) & \geq \dist(p-x_1, V)-\left|x_1-x_2\right| \\ 
-        & \geq \alpha(|p-x_1|+\epsilon)-\alpha(\epsilon / 2) \\ 
-        & =\alpha(|p-x_1|+\epsilon / 2) \\ 
-        & >\alpha\left(|p-x_1|+\left|x_2-x_1\right|\right) \\ 
-        & \geq \alpha\left(\left|p-x_2\right|\right) 
+        \dist\left(p-x_1, V\right) & \geq \dist(p-y_1, V)-\left|x_1-y_1\right| \\ 
+        & \geq \alpha(|p-y_1|+\epsilon)-\alpha(\epsilon / 2) \\ 
+        & =\alpha(|p-y_1|+\epsilon / 2) \\ 
+        & >\alpha\left(|p-y_1|+\left|x_1-y_1\right|\right) \\ 
+        & \geq \alpha\left(\left|p-x_1\right|\right) 
 \end{aligned}
 \end{equation*}
-It follows that $p\in C_{\calB}(x_2, V, \alpha)$, so $ C_{\calB}(x_1, V, \alpha)\subseteq C_{\calB}(x_2, V, \alpha)$. If we exchange $x_1$ and $x_2$ for the proof, $ C_{\calB}(x_2, V, \alpha)\subseteq C_{\calB}(x_1, V, \alpha)$ similarly. Thus, $ C_{\calB}(x_1, V, \alpha)=C_{\calB}(x_2, V, \alpha)$. Since $x_1, x_2$ are arbitrary points in $Q$, we have when $|k|\rightarrow \infty$
-\begin{equation}\label{CB2=CB1}
-    \begin{split}
-        C_\calB^2(Q_{E_i}, V, \alpha) 
-        = \bigcap_{x\in Q_{E_i}} C_\calB(x, V, \alpha) 
-        = \bigcap_{y\in Q_{E_i}} C_\calB(y, V, \alpha)
-        = \bigcup_{y\in Q_{E_i}}C_\calB(y, V, \alpha) 
-    \end{split}
-\end{equation}
-Note that $y\in E$ and $x$ is any point in $Q_{E_i}$. Thus, applying (\ref{CB2=CB1}) and (\ref{muB2=0}), 
+It follows that $p\in C_{\calB}(x_1, V, \alpha)$, and as $x_1$ is arbitrary point in $Q_{E_i}$, $p\in C_\calB^2(Q_{E_i}, V, \alpha)$. Thus $C_{\calB}(y_1, V, \alpha)\subset C_\calB(Q_{E_i}, V, \alpha), \forall y_1\in E_i\in Q_{E_i}$. Then applying (\ref{muB2=0}), 
 \begin{equation*}
     \begin{split}
         \mu(\bigcup_{y\in E}C_\calB(y, V, \alpha))
         = \lim_{|k|\rightarrow \infty}\mu\left( \bigcup_{E_i\in E}\bigcup_{y\in Q_{E_i}} C_\calB(y, V, \alpha) \right)  
-        = \lim_{|k|\rightarrow\infty}\mu\left( \bigcup_{E_i\in E} C_\calB^2(Q_{E_i}, V, \alpha) \right)
+        \leq \lim_{|k|\rightarrow\infty}\mu\left( \bigcup_{E_i\in E} C_\calB^2(Q_{E_i}, V, \alpha) \right)
         = 0
     \end{split}
 \end{equation*}
