@@ -1,6 +1,56 @@
 \section{Research}
 
+\subsection{June 21 \texorpdfstring{$\lim_{Q\rightarrow x}\mu(C_\calB(Q, V, \alpha))/\mu(sQ) = 0$}{Lg}}
 
+\begin{lemma}
+    If $\mu$-a.e. $x\in \rr^n, \mu(B(x, 2r))\leq K\mu(B(x,r)), K\in\zz^+$, then $\exists R\in \zz^+$ s.t. $\mu(2Q)\leq R\mu(Q)$ where $Q$ is the dyadic cube, 2$Q$ is the cube with double side length of $Q$. 
+\end{lemma}
+\begin{proof} Let $\side Q$ denote the side length of $Q$. Assume $x$ is the middle point of the one side of a cube. Then by doubling measure and containment
+    \begin{equation}
+        \mu(2Q)\leq\mu(B(x, 2\side Q))\leq K^2 \mu\left(B\left(x, \frac{1}{2} \side Q\right)\right)\leq K^2\mu\left(\bigcup Q_i \right)\leq 2^{n-1}K^2 \mu(Q)
+    \end{equation}
+    where $\bigcup Q_i$ represents $2^{n-1}$ cubes nearby $x$.
+\end{proof}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.55\textwidth]{images/doubleMucube.png}
+    \caption{An example of containment in the proof on $\rr^2$}
+\end{figure}
+
+
+\begin{definition}[Alternative Definition for Bad Cones at a Cube] For the dyadic cube $Q$, let $R$ denote the dyadic cube with the same side length as $Q$ in the cube system. Then definitions of bad cones at a cube can be 
+    \begin{equation*}
+        C_\calB^{k,1}(Q, V, \alpha) = \{R: R\cap C_\calB^k(Q, V, \alpha) \neq \emptyset\}, \quad
+        C_\calB^{k,2}(Q, V, \alpha) = \{R: R\subset C_\calB^k(Q, V, \alpha)\} 
+    \end{equation*}
+for $k=1,2$.
+\end{definition}
+
+
+
+
+\begin{customthm}{A}\label{thmA} 
+    Let $\mu$ be a pointwise doubling measure on $\rr^n$. For $\mu$-a.e. $x \in \rr^n$, $Q$ that contains $x$, there is an $m$-plane $V$ and an $\alpha \in(0,1)$ such that with a scaling constant $s$,
+    \begin{equation}\label{thmAeq}
+        \lim_{Q \downarrow x} \frac{\mu\left(C_\calB(Q, V, \alpha)\right)}{\mu(sQ))}=0
+    \end{equation}
+    if and only if $\mu$ is carried by Lipschitz graphs.
+\end{customthm}
+\textit{Proof for Sufficient Condition.} With the same notation in Lemma \ref{lemma:CBQ2carried}, where $E = \bigcup_{i=1}^\infty E_i$ and for some $y_i\in E$, $E_i=\{y_i\}\subset Q_{E_i}$. Fix $y_0\in Q_{E_i}$ and by (\ref{eq:CysubsetCQ}), when $|k|\downarrow 0$, $C_\calB(y_0, V, \alpha)\subset C_\calB^2(Q_{E_i}, V, \alpha)$. Then if $r=s\cdot 2^{-|k|}$, we have $Q_{E_i}\subset B(y_0, r)$ and $C_\calB(y_0, r, V, \alpha)\subset C_\calB(y_0, V, \alpha)\subset C_\calB^2(Q_{E_i}, V, \alpha)$. Now as $|k|\downarrow 0\Leftrightarrow r\downarrow 0$ by (\ref{thmAeq}),
+\begin{equation}\label{eq:thmAeq1}
+    \lim_{r\downarrow 0} \frac{\mu(C_\calB(y_i, r, V, \alpha))}{\mu(B(y_i, r))} = 0
+\end{equation} 
+Applying \ref{eq:thmAeq1} for every $y$ in every $Q_{E_i}$, and \ref{thm:NaplesthmD}, the conclusion holds.
+
+\begin{customthm}{{\cite[Theorem D]{naples2020}}}\label{thm:NaplesthmD}
+    Let $\mu$ be a pointwise doubling measure on a separable, finite or infinite dimensional Hilbert space $H$. For $\mu$ -a.e. $x \in H$ there is an $m$ -plane $V$ and an $\alpha \in(0,1)$ such that
+$$
+\lim _{r \downarrow 0} \frac{\mu\left(C_{\mathcal{B}}(x, r, V, \alpha)\right)}{\mu(B(x, r))}=0
+$$
+if and only if $\mu$ is carried by Lipschitz graphs.
+\end{customthm}
+
+\newpage
 \subsection{June 17-20 \texorpdfstring{$\mu(C_\mathcal{B}^2(Q, V, \alpha)) = 0 \Rightarrow \mu$ Carried by Lipschitz Graphs}{Lg}}
 
 \begin{lemma}\label{lemma:CBQ2carried}
@@ -27,7 +77,11 @@
         & \geq \alpha\left(\left|p-x_1\right|\right) 
 \end{aligned}
 \end{equation*}
-It follows that $p\in C_{\calB}(x_1, V, \alpha)$, and as $x_1$ is arbitrary point in $Q_{E_i}$, $p\in C_\calB^2(Q_{E_i}, V, \alpha)$. Thus $C_{\calB}(y_1, V, \alpha)\subset C_\calB(Q_{E_i}, V, \alpha), \forall y_1\in E_i\in Q_{E_i}$. Then applying (\ref{muB2=0}), 
+It follows that $p\in C_{\calB}(x_1, V, \alpha)$, and as $x_1$ is arbitrary point in $Q_{E_i}$, $p\in C_\calB^2(Q_{E_i}, V, \alpha)$. Thus 
+\begin{equation}\label{eq:CysubsetCQ}
+    C_{\calB}(y_1, V, \alpha)\subset C_\calB(Q_{E_i}, V, \alpha),\quad \forall y_1\in E_i\in Q_{E_i}
+\end{equation}
+Then applying (\ref{muB2=0}), 
 \begin{equation*}
     \begin{split}
         \mu(\bigcup_{y\in E}C_\calB(y, V, \alpha))
@@ -101,11 +155,11 @@ An example of this proof illustrated in $\rr^2$ is shwon in Figure \ref{fig:CB1=
 \begin{proposition}
     If $\forall x\in \rr^2, \mu(B(x, 2r))\leq K\mu(B(x,r)), K\in\zz^+$, then $\exists R\in \zz^+$ s.t. $\mu(3Q)\leq R\mu(Q)$ where $Q$ is the cube, 3$Q$ is the cube with triple side length with same center as $Q$. 
 \end{proposition}
-\proof  $\mu(3Q) \leq \mu(B(x, 4r)) \leq K^2\mu(B(x, r))\leq K^2 \mu(Q)$ due to doubling measure and containment. 
+\proof  $\mu(3Q) \leq \mu(B(x, 4\side Q)) \leq K^3\mu(B(x, \frac{1}{2} \side r))\leq K^3 \mu(Q)$ due to doubling measure and containment. 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.66\textwidth]{images/doubleMcube.png}
+    \includegraphics[width=.66\textwidth]{images/tripleMcube.png}
 \end{figure}
 
 
