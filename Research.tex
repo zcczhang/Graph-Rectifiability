@@ -1,22 +1,61 @@
 \section{Research}
 
-\subsection{June 21 \texorpdfstring{$\lim_{Q\rightarrow x}\mu(C_\calB(Q, V, \alpha))/\mu(sQ) = 0$}{Lg}}
+\subsection{June 22 Doubling Measure for Cubes and other Lemmas}
+
+\begin{lemma}\label{lemma:ofthmA} 
+    Let $\mu$ be a pointwise doubling measure on $\rr^n$. For $\mu$-a.e. $x \in \rr^n$, $Q$ with side length $2^{-|k|}$ containing $x$, there is an $m$-plane $V$ and an $\alpha \in(0,1)$ such that with a scaling constant $s$,
+    \begin{equation}\label{eq:lemmaofthmAeq}
+        \lim_{|k| \rightarrow \infty} \frac{\mu\left(C_\calB(Q, V, \alpha)\right)}{\mu(sQ))}=0
+    \end{equation}
+    if and only if $\mu$ is carried by Lipschitz graphs.
+\end{lemma}
+\textit{Proof for Sufficient Condition.} With the same notation in Lemma \ref{lemma:CBQ2carried}, where $E = \bigcup_{i=1}^\infty E_i$ and for $\mu$-a.e. $y\in E$, $E_i = Q_{E_i}\cap E$. Fix a $Q_{E_i}$, by (\ref{eq:lemmaofthmAeq}), for any $\epsilon>0$, there exists $N_i\in\nn$ such that when $k\geq N_i$, 
+$$\left |\frac{\mu\left(C_\calB^2(Q_{E_i}, V, \alpha)\right)}{\mu(sQ_{E_i}))}\right | < \epsilon$$
+Define $r = 2^{-|k|}s$, then $\lim_{|k|\rightarrow\infty} r = 0$. Thus, there exists $N^\prime\in \nn$ such that whenever $k\geq N^\prime$, $|r|<\epsilon$. Thus, choosing $N=\max\{\{N_i\}\cup\{N^\prime\}$, two inequalities hold for every $Q_{E_i}$ in the meanwhile. Then for $\mu$-a.e. $y\in Q_{E_i}$ and by (\ref{eq:CysubsetCQ}), $s\cdot Q_{E_i}\subset B(y, r)$ and $C_\calB(y, r, V, \alpha)\subset C_\calB(y, V, \alpha)\subset C_\calB^2(Q_{E_i}, V, \alpha)$. Thus, let $\delta = \epsilon$, we have for any $\epsilon>0$ there exists $\delta>0$ such that whenever $|r-0|<\delta$, by containment, 
+\begin{equation}
+    \left|  \frac{\mu(C_\calB(y, r, V, \alpha))}{\mu(B(y, r))} \right| \leq \left |\frac{\mu\left(C_\calB^2(Q_{E_i}, V, \alpha)\right)}{\mu(sQ_{E_i}))}\right| < \epsilon
+\end{equation}
+Therefore
+\begin{equation}\label{eq:lemmathmAeq2}
+    \lim_{r\downarrow 0} \frac{\mu(C_\calB(y, r, V, \alpha))}{\mu(B(y, r))} = 0
+\end{equation}
+Applying \ref{thm:NaplesthmD}, the conclusion holds.
+
+
+\begin{customthm}{{\cite[Theorem D]{naples2020}}}\label{thm:NaplesthmD}
+    Let $\mu$ be a pointwise doubling measure on a separable, finite or infinite dimensional Hilbert space $H$. For $\mu$-a.e. $x \in H$ there is an $m$ -plane $V$ and an $\alpha \in(0,1)$ such that
+$$
+\lim _{r \downarrow 0} \frac{\mu\left(C_{\mathcal{B}}(x, r, V, \alpha)\right)}{\mu(B(x, r))}=0
+$$
+if and only if $\mu$ is carried by Lipschitz graphs.
+\end{customthm}
+
+
+
 
 \begin{lemma}
-    If $\mu$-a.e. $x\in \rr^n, \mu(B(x, 2r))\leq K\mu(B(x,r)), K\in\zz^+$, then $\exists R\in \zz^+$ s.t. $\mu(2Q)\leq R\mu(Q)$ where $Q$ is the dyadic cube, 2$Q$ is the cube with double side length of $Q$. 
+    If $\mu$-a.e. $x\in \rr^n, \mu(B(x, 2r))\leq K\mu(B(x,r)), K\in\zz^+$, then
+    $\mu(2Q)\leq K^3 \mu(Q)$ where $Q$ is the dyadic cube, 2$Q$ is the cube with double dilation of $Q$. 
 \end{lemma}
-\begin{proof} Let $\side Q$ denote the side length of $Q$. Assume $x$ is the middle point of the one side of a cube. Then by doubling measure and containment
+\begin{proof} By the half open definition of the dyatic cube, for $\mu$-a.e. $x\in \rr^n$, $x$ must in only one cube, named $Q$ with $\side Q = 2^{-|k|}$. Let $r = \frac{1}{2}\side Q$, then by the containment
     \begin{equation}
-        \mu(2Q)\leq\mu(B(x, 2\side Q))\leq K^2 \mu\left(B\left(x, \frac{1}{2} \side Q\right)\right)\leq K^2\mu\left(\bigcup Q_i \right)\leq 2^{n-1}K^2 \mu(Q)
+        \mu(4Q)\leq \mu(B(x, 8r))\leq K^3 \mu(B(x, r)) \leq K^3 \mu(2Q)
     \end{equation}
-    where $\bigcup Q_i$ represents $2^{n-1}$ cubes nearby $x$.
+
+    \begin{equation}
+        \mu(5Q) \leq \mu(B(x, 16r)) \leq K^4\mu(B(x,r))\leq K^4\mu(3Q)
+    \end{equation}
 \end{proof}
+There always exists $k$ such that any $\mu$-a.e. $x$ must in $1/2 Q$ with side length $2^{-|k|}$. Then similarly we have $\mu(2Q)\leq K^3\mu(Q)$.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.55\textwidth]{images/doubleMucube.png}
+    \includegraphics[width=.66\textwidth]{images/doubleMucube.png}
     \caption{An example of containment in the proof on $\rr^2$}
 \end{figure}
 
+\newpage
+\subsection{June 21 \texorpdfstring{$\lim_{Q\rightarrow x}\mu(C_\calB(Q, V, \alpha))/\mu(sQ) = 0$}{Lg}}
 
 \begin{definition}[Alternative Definition for Bad Cones at a Cube] For the dyadic cube $Q$, let $R$ denote the dyadic cube with the same side length as $Q$ in the cube system. Then definitions of bad cones at a cube can be 
     \begin{equation*}
@@ -36,19 +75,14 @@ for $k=1,2$.
     \end{equation}
     if and only if $\mu$ is carried by Lipschitz graphs.
 \end{customthm}
-\textit{Proof for Sufficient Condition.} With the same notation in Lemma \ref{lemma:CBQ2carried}, where $E = \bigcup_{i=1}^\infty E_i$ and for some $y_i\in E$, $E_i=\{y_i\}\subset Q_{E_i}$. Fix $y_0\in Q_{E_i}$ and by (\ref{eq:CysubsetCQ}), when $|k|\downarrow 0$, $C_\calB(y_0, V, \alpha)\subset C_\calB^2(Q_{E_i}, V, \alpha)$. Then if $r=s\cdot 2^{-|k|}$, we have $s\cdot Q_{E_i}\subset B(y_0, r)$ and $C_\calB(y_0, r, V, \alpha)\subset C_\calB(y_0, V, \alpha)\subset C_\calB^2(Q_{E_i}, V, \alpha)$. Now as $|k|\downarrow 0\Leftrightarrow r\downarrow 0$ by (\ref{thmAeq}),
+\textit{Proof for Sufficient Condition.} With the same notation in Lemma \ref{lemma:CBQ2carried}, where $E = \bigcup_{i=1}^\infty E_i$ and for some $y_i\in E$, $E_i=\{y_i\}\subset Q_{E_i}$. Fix $y_0\in Q_{E_i}$ and by (\ref{eq:CysubsetCQ}), when $|k|\downarrow 0$, $C_\calB(y_0, V, \alpha)\subset C_\calB^2(Q_{E_i}, V, \alpha)$. Then if $r=s\cdot 2^{-|k|}$, we have $s\cdot Q_{E_i}\subset B(y_0, r)$ and $C_\calB(y_0, r, V, \alpha)\subset C_\calB(y_0, V, \alpha)\subset C_\calB^2(Q_{E_i}, V, \alpha)$. Now as $|k|\downarrow 0\Rightarrow r\downarrow 0$ and by (\ref{thmAeq}),
 \begin{equation}\label{eq:thmAeq1}
-    \lim_{r\downarrow 0} \frac{\mu(C_\calB(y_i, r, V, \alpha))}{\mu(B(y_i, r))} = 0
+    \lim_{r\downarrow 0} \frac{\mu(C_\calB(y_i, r, V, \alpha))}{\mu(B(y_i, r))} \leq \lim_{Q \downarrow x} \frac{\mu\left(C_\calB(Q, V, \alpha)\right)}{\mu(sQ))}=0
 \end{equation} 
 Applying \ref{eq:thmAeq1} for every $y$ in every $Q_{E_i}$, and \ref{thm:NaplesthmD}, the conclusion holds.
 
-\begin{customthm}{{\cite[Theorem D]{naples2020}}}\label{thm:NaplesthmD}
-    Let $\mu$ be a pointwise doubling measure on a separable, finite or infinite dimensional Hilbert space $H$. For $\mu$ -a.e. $x \in H$ there is an $m$ -plane $V$ and an $\alpha \in(0,1)$ such that
-$$
-\lim _{r \downarrow 0} \frac{\mu\left(C_{\mathcal{B}}(x, r, V, \alpha)\right)}{\mu(B(x, r))}=0
-$$
-if and only if $\mu$ is carried by Lipschitz graphs.
-\end{customthm}
+
+
 
 \newpage
 \subsection{June 17-20 \texorpdfstring{$\mu(C_\mathcal{B}^2(Q, V, \alpha)) = 0 \Rightarrow \mu$ Carried by Lipschitz Graphs}{Lg}}
@@ -67,7 +101,7 @@ if and only if $\mu$ is carried by Lipschitz graphs.
     \begin{equation}\label{muBx=0}
         \mu(C_\calB(y, V, \alpha)) = 0
     \end{equation}
-    Note that each $y\in E$ is contained in no more than one half open $Q$. Let $Q_{E_i}$ denote the dyadic cube that contains $E_i\subset E$ such that $E_i$ consists of all $y\in E$ in $Q_{E_i}$ and $E$ is the countable union of disjoint $E_i$. For any two points $x_1\in Q_{E_i}, y_1\in E_i\in Q_{E_i}$, we have $|x_1-y_1|\leq \sqrt{n}\cdot 2^{-|k|}$. Consider that if any $p\in C_\calB(y_1, V, \alpha)$, we have $\dist(p-y_1, V) > \alpha|p-y_1|$ by definition of bad cones. Now let $\epsilon>0$ such that $\dist(p-y_1, V) \geq \alpha (|p-y_1|+\epsilon)$. When $|k|\rightarrow \infty, 2^{-|k|}\rightarrow 0$, so there exists $N\in\nn$ such that whenever $|k|\geq N$, for $x_1, y_1\in Q$ we have $|x_1-y_1|<\alpha\epsilon/2<\epsilon/2$, recalling that $\alpha\in(0,1)$. Then
+    Note that each $y\in E$ is contained in no more than one half open $Q$. Let $Q_{E_i}$ denote the dyadic cube that contains $E_i\subset E$ such that $E_i$ consists of all $y\in E\cap Q_{E_i}$ and $E$ is the countable union of disjoint $E_i$. For any two points $x_1\in Q_{E_i}, y_1\in E_i$, we have $|x_1-y_1|\leq \sqrt{n}\cdot 2^{-|k|}$. Consider that if any $p\in C_\calB(y_1, V, \alpha)$, we have $\dist(p-y_1, V) > \alpha|p-y_1|$ by definition of bad cones. Now let $\epsilon>0$ such that $\dist(p-y_1, V) \geq \alpha (|p-y_1|+\epsilon)$. When $|k|\rightarrow \infty, 2^{-|k|}\rightarrow 0$, so there exists $N\in\nn$ such that whenever $|k|\geq N$, for $x_1, y_1\in Q_{E_i}$ we have $|x_1-y_1|<\alpha\epsilon/2<\epsilon/2$, recalling that $\alpha\in(0,1)$. Then
 \begin{equation*}
     \begin{aligned} 
         \dist\left(p-x_1, V\right) & \geq \dist(p-y_1, V)-\left|x_1-y_1\right| \\ 
@@ -77,9 +111,9 @@ if and only if $\mu$ is carried by Lipschitz graphs.
         & \geq \alpha\left(\left|p-x_1\right|\right) 
 \end{aligned}
 \end{equation*}
-It follows that $p\in C_{\calB}(x_1, V, \alpha)$, and as $x_1$ is arbitrary point in $Q_{E_i}$, $p\in C_\calB^2(Q_{E_i}, V, \alpha)$. Thus 
+It follows that $p\in C_{\calB}(x_1, V, \alpha)$, and as $x_1$ is arbitrary point in $Q_{E_i}$, $p\in C_\calB^2(Q_{E_i}, V, \alpha)$. Thus, when $|k|\rightarrow \infty$
 \begin{equation}\label{eq:CysubsetCQ}
-    C_{\calB}(y_1, V, \alpha)\subset C_\calB(Q_{E_i}, V, \alpha),\quad \forall y_1\in E_i\in Q_{E_i}
+    C_{\calB}(y_1, V, \alpha)\subset C_\calB(Q_{E_i}, V, \alpha),\quad \forall y_1\in E_i \subset Q_{E_i}
 \end{equation}
 Then applying (\ref{muB2=0}), 
 \begin{equation*}
