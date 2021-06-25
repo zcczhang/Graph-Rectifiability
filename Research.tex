@@ -1,5 +1,47 @@
 \section{Research}
 
+
+\subsection{June 23 }
+
+
+\begin{lemma}
+    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, there is a $m$-plane in $\rr^n$ such that for a cube $Q$ with siede length $2^{-|k|}$, and a cube $R$ with the same side length as $Q$, how far of $R$ away from $Q$ needs to be guaranteed such that
+    \begin{equation}\label{eq:condition}
+        R\in C_\calB^{1,1}(Q, V, \alpha_1), \quad R\in  C_\calB^{1,2}(Q, V, \alpha_2)
+    \end{equation}
+\end{lemma}
+\begin{proof} 
+    By assumption, there are some $x\in R$ and $x\in C_\calB^{1, 1}$ such that there exists $q\in Q$ such that $y\in C_\calB(q, V, \alpha_1)$. Then $\dist(x-q, V) > \alpha_1|x-q|$. Now assume that $|x-q| = s\cdot 2^{|k|}$. Then to satisfy (\ref{eq:condition}), for any $y\in R$, there exists $q^\prime\in Q$ such that $y\in C_\calB(q^\prime, V, \alpha)$. Now we have $|x-y|\leq \sqrt{n}2^{-|k|}$, $|q-q^\prime|\leq \sqrt{n}2^{-|k|}$. Since
+    \begin{equation*}
+        \begin{split}
+            \dist(y-q^\prime, V) &\geq \dist(x-q, V)-|q-q^\prime|-|x-y| \\
+            &> \alpha_1|x-q| - \sqrt{n}2^{-|k|+1}\\
+            &= \alpha_1 s 2^{-|k|} - \sqrt{n}2^{-|k|+1}
+        \end{split}
+    \end{equation*}
+    to guarantee that $\dist(y-q^\prime, V) > \alpha_2|y-q^\prime|$, we let $\alpha_1 s 2^{-|k|} - \sqrt{n}2^{-|k|+1} \geq  \alpha_2|y-q^\prime|$ then the assumption holds. Equivalently,
+    \begin{equation*}
+        \begin{split}
+            \alpha_1 s 2^{-|k|} - \sqrt{n}2^{-|k|+1} &\geq  \alpha_2|y-q^\prime| \\
+            &= \alpha_2 |x-q+y-x+q-q^\prime| \\
+            &\geq \alpha_2||x-q|-|y-x|-|q-q^\prime||\\
+            &\geq \alpha_2|s2^{-|k|}-2^{-|k|+1}|
+        \end{split}
+    \end{equation*}
+    And we have 
+    $$s\geq \frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}$$
+    Assume that the center of $Q$ is $c$ and the center of $R$ is $c^\prime$. As $|q-c|\leq \sqrt{n}2^{-|k|-1}$ and $|x-c^\prime| \leq \sqrt{n}2^{-|k|-1}$. Thus,
+    \begin{equation*}
+        \begin{split}
+            |c-c^\prime| &\geq ||x-q|-|x-c^\prime|-|q-c||\\
+            &\geq (\frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}-\sqrt{n})\cdot 2^{-|k|}
+        \end{split}
+    \end{equation*}
+\end{proof}
+
+
+
+\newpage
 \subsection{June 22 Doubling Measure for Cubes and other Lemmas}
 
 \begin{lemma}\label{lemma:ofthmA} 
