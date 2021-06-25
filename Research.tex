@@ -5,13 +5,14 @@
 
 
 \begin{lemma}
-    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, there is a $m$-plane in $\rr^n$ such that for a cube $Q$ with siede length $2^{-|k|}$, and a cube $R$ with the same side length as $Q$, how far of $R$ away from $Q$ needs to be guaranteed such that
+    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, a $m$-plane in $\rr^n$, a cube $Q$ with side length $2^{-|k|}$, and a cube $R$ with the same side length as $Q$, to guarantee that
     \begin{equation}\label{eq:condition}
         R\in C_\calB^{1,1}(Q, V, \alpha_1), \quad R\in  C_\calB^{1,2}(Q, V, \alpha_2)
     \end{equation}
+    the distance bewteen the center of $R$ and the center of $Q$ is at least $ \displaystyle (\frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}-\sqrt{n})\cdot 2^{-|k|}$
 \end{lemma}
 \begin{proof} 
-    By assumption, there are some $x\in R$ and $x\in C_\calB^{1, 1}$ such that there exists $q\in Q$ such that $y\in C_\calB(q, V, \alpha_1)$. Then $\dist(x-q, V) > \alpha_1|x-q|$. Now assume that $|x-q| = s\cdot 2^{|k|}$. Then to satisfy (\ref{eq:condition}), for any $y\in R$, there exists $q^\prime\in Q$ such that $y\in C_\calB(q^\prime, V, \alpha)$. Now we have $|x-y|\leq \sqrt{n}2^{-|k|}$, $|q-q^\prime|\leq \sqrt{n}2^{-|k|}$. Since
+    By assumption, there are some $x\in R$ and $x\in C_\calB^{1, 1}$ such that there exists $q\in Q$ such that $y\in C_\calB(q, V, \alpha_1)$. Then $\dist(x-q, V) > \alpha_1|x-q|$. Now assume that $|x-q| = s\cdot 2^{|k|}$. Then to satisfy (\ref{eq:condition}), for any $y\in R$, there exists $q^\prime\in Q$ such that $y\in C_\calB(q^\prime, V, \alpha)$. Now we have $|x-y|\leq \sqrt{n}2^{-|k|}$, $|q-q^\prime|\leq \sqrt{n}2^{-|k|}$. Since $ |x-y| \geq|\dist (y-q^\prime, V)-\dist(x-q, V)| - |q-q^\prime|$, no matter $\dist (y-q^\prime, V)\lesseqgtr\dist(x-q, V)$,
     \begin{equation*}
         \begin{split}
             \dist(y-q^\prime, V) &\geq \dist(x-q, V)-|q-q^\prime|-|x-y| \\
@@ -30,10 +31,10 @@
     \end{equation*}
     And we have 
     $$s\geq \frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}$$
-    Assume that the center of $Q$ is $c$ and the center of $R$ is $c^\prime$. As $|q-c|\leq \sqrt{n}2^{-|k|-1}$ and $|x-c^\prime| \leq \sqrt{n}2^{-|k|-1}$. Thus,
+    As $|q-\centerof Q|\leq \sqrt{n}2^{-|k|-1}$ and $|x-\centerof R| \leq \sqrt{n}2^{-|k|-1}$,
     \begin{equation*}
         \begin{split}
-            |c-c^\prime| &\geq ||x-q|-|x-c^\prime|-|q-c||\\
+            |\centerof Q-\centerof R| &\geq ||x-q|-|x-\centerof R|-|q-\centerof Q|| \\
             &\geq (\frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}-\sqrt{n})\cdot 2^{-|k|}
         \end{split}
     \end{equation*}
