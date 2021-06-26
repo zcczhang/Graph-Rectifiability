@@ -1,18 +1,84 @@
 \section{Research}
 
 
-\subsection{June 23 }
-
-
+\subsection{June 25-27 Modified Lemmas and New Lemmas}
 \begin{lemma}
-    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, a $m$-plane in $\rr^n$, a cube $Q$ with side length $2^{-|k|}$, and a cube $R$ with the same side length as $Q$, to guarantee that
-    \begin{equation}\label{eq:condition}
-        R\in C_\calB^{1,1}(Q, V, \alpha_1), \quad R\in  C_\calB^{1,2}(Q, V, \alpha_2)
+    If for $\mu$-a.e. $x\in \rr^n, \mu(B(x, 2r))\leq K\mu(B(x,r)), K\in\rr^+$, then
+    $\mu(5Q)\leq K^4 \mu(3Q)$ where $Q$ is the dyadic cube, and $5Q$, $3Q$ are dilation cubes such that $\side 3Q = 3\side Q$, $\side 5Q = 5\side Q$, and $\centerof 5Q = \centerof 3Q = \centerof Q$.
+\end{lemma}
+\begin{proof} By the half open definition of the dyatic cube, for $\mu$-a.e. $x\in \rr^n$, $x$ must in only one cube $Q$. Let {\color{red} $r = \side Q /2$(in $\rr^2$)}. We first claim that $5Q\subset B(x, 16r)$ and $B(x, r)\subset 3Q$. As for any $q\in 5Q$, $|\centerof Q -x|\leq \sqrt{n}\cdot\side Q /2$ and $|\centerof 5Q -q|\leq \sqrt{n}\cdot\side 5Q /2 = 5\sqrt{n}\cdot \side Q/2$, 
+    \begin{equation*}
+        |x-q| = |x-\centerof Q + \centerof 5Q-q | \leq 3\sqrt{n}\cdot \side Q < 16r
+    \end{equation*}
+Then $q\in B(x, 16r)$ and thus $5Q\subset B(x, 16r)$. Similarly, for any $q^\prime\in B(x, r)$, 
+\begin{equation*}
+    |\centerof 3Q - q| = |\centerof Q - x + x-q| \leq \frac{\sqrt{n}\cdot\side Q}{2} + r < 3\side Q
+\end{equation*}
+{\color{red} but this implies $\displaystyle r < \frac{6 -\sqrt{n}}{2}\side Q$, which is impossible when $n>36$}
+Then $q\in 3Q$ and thus $B(x, r)\subset 3Q$. Therefore by the containments and the doubling measure condition, 
+    \begin{equation}
+        \mu(5Q) \leq \mu(B(x, 16r)) \leq K^4\mu(B(x,r))\leq K^4\mu(3Q)
     \end{equation}
-    the distance bewteen the center of $R$ and the center of $Q$ is at least $ \displaystyle (\frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}-\sqrt{n})\cdot 2^{-|k|}$
+\end{proof}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.56\textwidth]{images/doubleMucube.png}
+    \caption{An example of containment in the proof on $\rr^2$}
+\end{figure}
+
+
+\begin{lemma}\label{lemma:CBQ2=0-carried}
+    Let $\mu$ be a Radon measure on $\rr^n$, $V$ be an $m$-dimensional linear plane in $\rr^n$, $\alpha\in(0,1)$. Suppose $E\subset \rr^n$ such that for $\mu$-a.e. $x\in E$, and for every dyadic cube $Q$ containing $y$, 
+    \begin{equation}\label{eq:muB2Q=0}
+        \mu(C_\calB^2(Q, V, \alpha)) = 0
+    \end{equation}
+    Then $\mu$ is carried by $m$-Lipschitz graphs(i.e. $E$ is contained $\mu$-a.e. in an m-Lipschitz graph.)
+\end{lemma}
+
+\begin{proof}
+    we first claim that if every dyadic cube $Q_k\ni x$ in the form of (\ref{eq:dyadiccube}) with side length $2^{-|k|}$ satisfies (\ref{eq:muB2Q=0}), 
+    then
+    \begin{equation}\label{eq:CBx=0}
+        \mu(C_\calB(x, V, \alpha)) = 0
+    \end{equation}
+    Fix arbitrary $q_1\in Q_k$, if arbitrary $p\in C_\calB(q_1, V, \alpha)$, we have $\dist(p-q_1, V) > \alpha|p-q_1|$ by definition of bad cones. Now choose $\epsilon_p>0$ that satisfies $\dist(p-q_1, V) \geq \alpha (|p-q_1|+\epsilon_p)$. Then, for another point $q_2$ in $Q_k\ni q_1$, we have $|q_1-q_2|\leq \sqrt{n}\cdot 2^{-|k|}$. Hence, there exists a large enough $|k_p|$ such that $|q_1-q_2|<\alpha\epsilon_p/2<\epsilon_p/2$. Then,
+    \begin{equation*}
+        \begin{aligned} 
+            \dist\left(p-q_2, V\right) & \geq \dist(p-q_1, V)-\left|q_1-q_2\right| \\ 
+            & \geq \alpha(|p-q_1|+\epsilon_p)-\alpha(\epsilon_p / 2) \\ 
+            & =\alpha(|p-q_1|+\epsilon_p / 2) \\ 
+            & >\alpha\left(|p-q_1|+\left|q_2-q_1\right|\right) \\ 
+            & \geq \alpha\left(\left|p-q_2\right|\right) 
+    \end{aligned}
+    \end{equation*}
+    It follows that $p\in C_{\calB}^2(q_2, V, \alpha)$ and thus $p\in \bigcap_{q_i\in Q}C_\calB(q_i, V, \alpha) = C_\calB^2(Q_{k_p}, V, \alpha)$. Accordingly, for any $x\in E$, if any $p\in C_\calB(x, V, \alpha)$, then $p\in C_\calB(Q_k, V, \alpha)$, $x\in Q_k$ for some $|k|$, which implies
+    \begin{equation}\label{eq:CBx-subset-UCBQ}
+        p\in \bigcup_{|k|=1}^\infty C_\calB^2(Q_k, V, \alpha)\Rightarrow C_\calB(x, V, \alpha)\subset \bigcup_{|k|=1}^\infty \left\{C_\calB^2(Q_k, V, \alpha): Q_k\ni x\right\}
+    \end{equation}
+    Combining (\ref{eq:muB2Q=0}) and (\ref{eq:CBx-subset-UCBQ}), for $\mu$-a.e. $x\in E$,
+    \begin{equation*}
+        \mu(C_\calB(x, V, \alpha)) \leq \mu\left(\bigcup_{k=1}^\infty  \left\{C_\calB^2(Q_k, V, \alpha): Q_k\ni x \right \}\right) = 0
+    \end{equation*}
+    Therefore, (\ref{eq:CBx=0}) holds immediately and after applying corollary \ref{LisaCoro7.1}, we obtain the desired result.
+\end{proof}
+
+
+\newpage
+\subsection{June 23-24 Lemma of Guarantee Distance Between Cubes}
+
+\begin{lemma}\label{lemma:Guarantee-Distance-containQ-Between-2alpha}
+    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, a $m$-plane $V$ in $\rr^n$, a cube $Q$ with side length $2^{-|k|}$, and a cube $R$ with the same side length as $Q$, the distance bewteen the center of $R$ and the center of $Q$ has to satisfy
+    \begin{equation*}
+        |\centerof Q-\centerof R|\geq (\frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}-\sqrt{n})\cdot 2^{-|k|}
+    \end{equation*}
+    to guarantee
+    \begin{equation}\label{eq:condition-GDBC}
+        R\in C_\calB^{1,1}(Q, V, \alpha_1) \quad\text{and}\quad R\in  C_\calB^{1,2}(Q, V, \alpha_2)
+    \end{equation}
 \end{lemma}
 \begin{proof} 
-    By assumption, there are some $x\in R$ and $x\in C_\calB^{1, 1}$ such that there exists $q\in Q$ such that $y\in C_\calB(q, V, \alpha_1)$. Then $\dist(x-q, V) > \alpha_1|x-q|$. Now assume that $|x-q| = s\cdot 2^{|k|}$. Then to satisfy (\ref{eq:condition}), for any $y\in R$, there exists $q^\prime\in Q$ such that $y\in C_\calB(q^\prime, V, \alpha)$. Now we have $|x-y|\leq \sqrt{n}2^{-|k|}$, $|q-q^\prime|\leq \sqrt{n}2^{-|k|}$. Since $ |x-y| \geq|\dist (y-q^\prime, V)-\dist(x-q, V)| - |q-q^\prime|$, no matter $\dist (y-q^\prime, V)\lesseqgtr\dist(x-q, V)$,
+    By assumption, there are some $x\in R\cap C_\calB^{1, 1}$ such that there exists $q\in Q$ and $x\in C_\calB(q, V, \alpha_1)$. Then $\dist(x-q, V) > \alpha_1|x-q|$. Now assume that $|x-q| = s\cdot 2^{-|k|}$. Then to satisfy (\ref{eq:condition-GDBC}), for any $y\in R$, there exists $q^\prime\in Q$ such that $y\in C_\calB(q^\prime, V, \alpha)$. Now we have $|x-y|\leq \sqrt{n}2^{-|k|}$, $|q-q^\prime|\leq \sqrt{n}2^{-|k|}$. Since $ |x-y| \geq|\dist (y-q^\prime, V)-\dist(x-q, V)| - |q-q^\prime|$, no matter $\dist (y-q^\prime, V)\lesseqgtr\dist(x-q, V)$,
     \begin{equation*}
         \begin{split}
             \dist(y-q^\prime, V) &\geq \dist(x-q, V)-|q-q^\prime|-|x-y| \\
@@ -20,7 +86,7 @@
             &= \alpha_1 s 2^{-|k|} - \sqrt{n}2^{-|k|+1}
         \end{split}
     \end{equation*}
-    to guarantee that $\dist(y-q^\prime, V) > \alpha_2|y-q^\prime|$, we let $\alpha_1 s 2^{-|k|} - \sqrt{n}2^{-|k|+1} \geq  \alpha_2|y-q^\prime|$ then the assumption holds. Equivalently,
+    To guarantee that $\dist(y-q^\prime, V) > \alpha_2|y-q^\prime|$, we let $\alpha_1 s 2^{-|k|} - \sqrt{n}2^{-|k|+1} \geq  \alpha_2|y-q^\prime|$ then the assumption holds. Equivalently,
     \begin{equation*}
         \begin{split}
             \alpha_1 s 2^{-|k|} - \sqrt{n}2^{-|k|+1} &\geq  \alpha_2|y-q^\prime| \\
@@ -145,7 +211,7 @@ Applying \ref{eq:thmAeq1} for every $y$ in every $Q_{E_i}$, and \ref{thm:Naplest
 \end{lemma}
 
 \begin{proof}
-    we first claim that if every dyadic cube $Q\ni y$ in the form of (\ref{equ:dyadiccube}) with side length $2^{-|k|}$ satisfies (\ref{muB2=0}), 
+    we first claim that if every dyadic cube $Q\ni y$ in the form of (\ref{eq:dyadiccube}) with side length $2^{-|k|}$ satisfies (\ref{muB2=0}), 
     then
     \begin{equation}\label{muBx=0}
         \mu(C_\calB(y, V, \alpha)) = 0
@@ -202,7 +268,7 @@ An example of this proof illustrated in $\rr^2$ is shwon in Figure \ref{fig:CB1=
 \newpage
 \subsection{June 16 New Cone Definition for Dyadic Cubes}
 \begin{definition}[Dyadic Cubes] A dyadic cube $Q$ is a set of the form
-    \begin{equation}\label{equ:dyadiccube}
+    \begin{equation}\label{eq:dyadiccube}
         Q=\left[\frac{j_{1}}{2^{k}}, \frac{j_{1}+1}{2^{k}}\right) \times \cdots \times\left[\frac{j_{n}}{2^{k}}, \frac{j_{n}+1}{2^{k}}\right), \quad k, j_{1}, \ldots, j_{n} \in \mathbb{Z}
     \end{equation}
 \end{definition}
