@@ -1,6 +1,72 @@
 \section{Research}
 
-\subsection{June 28}
+
+\subsection{June 29 \texorpdfstring{$\lim_{Q\rightarrow x}\mu(C^{1,1}_\calB(Q, V, \alpha)\cap 2sQ)/\mu(2sQ) = 0$}{Lg}}
+
+\begin{lemma}\label{lemma:Guarantee-Distance-contain2R-Between-2alpha}
+    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, $V\in G(1,2)$, a cube $Q$ in $\rr^2$ with side length $2^{-|k|}$, and a cube $R$ with the same side length as $Q$. The distance between some point in $2R$ and any point in $Q$ denoted as $s\cdot \side Q$ satisfies
+    \begin{equation}\label{eq:lb4s}
+        s\geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}
+    \end{equation}
+    Now
+    \begin{equation}\label{eq:condition-2RinC}
+        \text{if}\quad 2R\in C_\calB^{1,1}(Q, V, \alpha_1) \quad\text{then}\quad 2R\in  C_\calB^{1,2}(Q, V, \alpha_2)
+    \end{equation}
+\end{lemma}
+\begin{proof} 
+    For some $x\in 2R \cap C_\calB^{1}(Q, V, \alpha_1)$, there exists $q\in Q$ such that $x\in C_\calB(q, V, \alpha_1)$. Then $\dist(x-q, V) > \alpha_1|x-q|$. For any $y\in 2R$, assume some $q^\prime\in Q$. Now we have $|x-y|\leq 2\sqrt{2}\side Q$, $|q-q^\prime|\leq \sqrt{2}\side Q$. Since $ |x-y| \geq|\dist (y-q^\prime, V)-\dist(x-q, V)| - |q-q^\prime|$, no matter $\dist (y-q^\prime, V)\lesseqgtr\dist(x-q, V)$,
+    \begin{equation*}
+        \begin{split}
+            \dist(y-q^\prime, V) &\geq \dist(x-q, V)-|q-q^\prime|-|x-y| \\
+            &> \alpha_1|x-q| - 3\sqrt{2}\cdot \side Q\\
+            &= (\alpha_1 s- 3\sqrt{2})\cdot\side Q\\
+            &\geq \alpha_2|s+3\sqrt{2}|\side Q \\
+            &\geq \alpha_2||x-q|+|y-x|+|q-q^\prime||\\
+            &\geq \alpha_2|y-q^\prime|
+        \end{split}
+    \end{equation*}
+    Thus, there exists $q^\prime\in Q$ such that $y\in C_\calB(q^\prime, V, \alpha_2)$ and (\ref{eq:condition-2RinC}) holds immediately. In particular, as $|q-\centerof Q|\leq \frac{\sqrt{2}}{2}\side Q$ and $|x-\centerof 2R| \leq \sqrt{2} \side Q$,
+    \begin{equation}
+        \begin{split}
+            |\centerof Q-\centerof R| \geq ||x-q|-|x-\centerof R|-|q-\centerof Q|| \geq\left(s-\frac{3}{2}\sqrt{2}\right)\side Q
+        \end{split}
+    \end{equation}
+\end{proof}
+
+\newpage 
+\begin{lemma}
+    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, $V\in G(1,2)$, a cube $Q\in \rr^2$ with side length $2^{-|k|}$, and a cube $2R$ with the double side length as $Q$. Assume that the distance between some points in $2R$ and any point in $Q$ is $s\cdot \side Q$ where $s\in\nn$ satisfies (\ref{eq:lb4s}). Then for $t\in\nn$ in the form of $2^n, n\in\nn$, to guarantee
+    \begin{equation}\label{eq:tRcover2sQcover2R-conclusion}
+        sQ\cap 2R = \emptyset \quad\text{ and }\quad 2R\subset 2sQ\subset tR
+    \end{equation}
+    we have constraints that for $d\cdot\side Q=|\centerof Q-\centerof R|$
+    \begin{equation}\label{eq:tRcover2sQcover2R-cond}
+        d+\frac{\sqrt{2}}{2}\leq s \leq \sqrt{2}d-1 \quad\text{ and }\quad t \geq 2d + 2\sqrt{2}s
+    \end{equation} 
+\end{lemma}
+\begin{proof}
+    Note that by Lemma \ref{lemma:Guarantee-Distance-contain2R-Between-2alpha}, we have (\ref{eq:condition-2RinC}) and $d\geq (s-3\sqrt{2}/2)$. And assume that For any $q\in sQ, q^\prime\in 2R$, by (\ref{eq:tRcover2sQcover2R-cond}), 
+    \begin{subequations}
+        \begin{align}
+            |\centerof sQ - q| &\leq \frac{\sqrt{2}s}{2}\side Q \leq 
+            \left|\left( d-\sqrt{2}\right )\right|\side Q  \notag \\
+            &\leq ||\centerof Q-\centerof 2R|-\frac{\sqrt{2}}{2}\side 2R| \notag \\
+            &\leq ||\centerof Q-\centerof 2R| - |\centerof 2R - q^\prime|| \notag \\
+            &\leq |\centerof Q-q^\prime| \label{eq:qprimeQaway} \\ 
+            &\leq \left (d + \frac{\sqrt{2}}{2}\right)\side Q \notag \\
+            &\leq s\cdot \side Q \notag \\
+            &= \frac{1}{2}\side 2sQ\label{eq:2Rinside2sQ}
+        \end{align}
+    \end{subequations}
+    Equation (\ref{eq:qprimeQaway}) implies that $sQ\subset B(\centerof Q, \frac{\sqrt{2}}{2}\side 2sQ)$, $q^\prime \notin B(\centerof Q, \frac{\sqrt{2}}{2}\side 2sQ)$ $\Rightarrow sQ\cap R = \emptyset$. Besides, (\ref{eq:qprimeQaway}) to (\ref{eq:2Rinside2sQ}) implies that $R\subset B(\centerof Q, \frac{1}{2}\side 2sQ)\subset 2sQ$. For the choice of t, assume $\forall q^{\prime\prime}\in 2sQ$, then
+    \begin{equation*}
+        |\centerof R - q^{\prime\prime}|\leq (d+\sqrt{2}s)\side Q \leq \frac{t}{2}\side R
+    \end{equation*}
+    which implies that $2sQ \subset B(\centerof R, \frac{1}{2}\side tR)\subset tR$. Then, (\ref{eq:tRcover2sQ-conclusion}) is concluded. 
+\end{proof}
+
+\newpage
+\subsection{June 28 tR cover 2sQ}
 \begin{lemma}
     For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, $V\in G(1,2)$, a cube $Q\in \rr^2$ with side length $2^{-|k|}$, and a cube $R$ with the same side length as $Q$ satisfies
     \begin{equation}\label{eq:condition-GDBC-2}
