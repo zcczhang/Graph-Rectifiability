@@ -1,21 +1,70 @@
 \section{Research}
 
+\subsection{June 28}
+\begin{lemma}
+    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, $V\in G(1,2)$, a cube $Q\in \rr^2$ with side length $2^{-|k|}$, and a cube $R$ with the same side length as $Q$ satisfies
+    \begin{equation}\label{eq:condition-GDBC-2}
+        R\in C_\calB^{1,1}(Q, V, \alpha_1) \quad\text{ and }\quad R\in  C_\calB^{1,2}(Q, V, \alpha_2)
+    \end{equation}
+    And if $s, t\in \nn$ are coefficients of the dilation cube and $d=|\centerof Q-\centerof R|$ such that 
+    \begin{equation}\label{eq:tRcover2sQ-cond}
+        d+\frac{\sqrt{2}}{2}\leq s \leq \sqrt{2}d-1 \quad\text{ and }\quad t \geq 2d + 2\sqrt{2}s
+    \end{equation} 
+    Then 
+    \begin{equation}\label{eq:tRcover2sQ-conclusion}
+        sQ\cap R = \emptyset \quad\text{ and }\quad R\subset 2sQ\subset tR
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Note that by Lemma \ref{lemma:Guarantee-Distance-containQ-Between-2alpha}, to satisfy (\ref{eq:condition-GDBC-2}),   
+    \begin{equation*}
+        \begin{split}
+            d \geq \left|\frac{2 - 2\alpha_2}{\alpha_1-\alpha_2}-\sqrt{2}\right|
+        \end{split}
+    \end{equation*}
+    For any $q\in sQ, q^\prime\in R$, by (\ref{eq:tRcover2sQ-cond}), 
+    \begin{subequations}
+        \label{s}
+        \begin{align}
+            |\centerof sQ - q| &\leq \frac{\sqrt{2}s}{2}\side Q \leq \left|\left( d-\frac{\sqrt{2}}{2}\right )\right|\side Q  \notag \\
+            &\leq ||\centerof Q-\centerof R|-\frac{\sqrt{2}}{2}\side R| \notag \\
+            &\leq ||\centerof Q-\centerof R| - |\centerof R - q^\prime|| \notag \\
+            &\leq |\centerof Q-q^\prime| \label{eq:qprimeQfaraway} \\ 
+            &\leq \left (d + \frac{\sqrt{2}}{2}\right)\side Q \notag \\
+            &\leq s\cdot \side Q \notag \\
+            &= \frac{1}{2}\side 2sQ\label{eq:Rinside2sQ}
+        \end{align}
+    \end{subequations}
+    Equation (\ref{eq:qprimeQfaraway}) implies that $sQ\subset B(\centerof Q, \frac{\sqrt{2}}{2}\side 2sQ)$, $q^\prime \notin B(\centerof Q, \frac{\sqrt{2}}{2}\side 2sQ)$ $\Rightarrow sQ\cap R = \emptyset$. Besides, (\ref{eq:qprimeQfaraway}) to (\ref{eq:Rinside2sQ}) implies that $R\subset B(\centerof Q, \frac{1}{2}\side 2sQ)\subset 2sQ$. For the choice of t, assume $\forall q^{\prime\prime}\in 2sQ$, then
+    \begin{equation*}
+        |\centerof R - q^{\prime\prime}|\leq (d+\sqrt{2}s)\side Q \leq \frac{t}{2}\side R
+    \end{equation*}
+    which implies that $2sQ \subset B(\centerof R, \frac{1}{2}\side tR)\subset tR$. Then, (\ref{eq:tRcover2sQ-conclusion}) is concluded. 
+\end{proof}
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{images/tRcover2sQ.png}
+    \caption{An example in the proof on $\rr^2$}
+\end{figure}
+
+
+\newpage
 \subsection{June 25-27 Modified Lemmas and New Lemmas}
 \begin{lemma}
-    If for $\mu$-a.e. $x\in \rr^n, \mu(B(x, 2r))\leq K\mu(B(x,r)), K\in\rr^+$, then
-    $\mu(5Q)\leq K^4 \mu(3Q)$ where $Q$ is the dyadic cube, and $5Q$, $3Q$ are dilation cubes such that $\side 3Q = 3\side Q$, $\side 5Q = 5\side Q$, and $\centerof 5Q = \centerof 3Q = \centerof Q$.
+    If for $\mu$-a.e. $x\in \rr^2, \mu(B(x, 2r))\leq K\mu(B(x,r)), K\in\rr^+$, then
+    $$\mu(5Q)\leq K^4 \mu(3Q)$$ where $Q$ is the dyadic cube, and $5Q$, $3Q$ are dilation cubes such that $\side 3Q = 3\side Q$, $\side 5Q = 5\side Q$, and $\centerof 5Q = \centerof 3Q = \centerof Q$.
 \end{lemma}
-\begin{proof} By the half open definition of the dyatic cube, for $\mu$-a.e. $x\in \rr^n$, $x$ must in only one cube $Q$. Let {\color{red} $r = \side Q /2$(in $\rr^2$)}. We first claim that $5Q\subset B(x, 16r)$ and $B(x, r)\subset 3Q$. As for any $q\in 5Q$, $|\centerof Q -x|\leq \sqrt{n}\cdot\side Q /2$ and $|\centerof 5Q -q|\leq \sqrt{n}\cdot\side 5Q /2 = 5\sqrt{n}\cdot \side Q/2$, 
+\begin{proof} By the half open definition of the dyatic cube, for $\mu$-a.e. $x\in \rr^2$, $x$ must in only one cube $Q$. Let $r = \side Q /2$(in $\rr^2$). We first claim that $5Q\subset B(x, 16r)$ and $B(x, r)\subset 3Q$. As for any $q\in 5Q$, $|\centerof Q -x|\leq \sqrt{2}\cdot\side Q /2$ and $|\centerof 5Q -q|\leq \sqrt{2}\cdot\side 5Q /2 = 5\sqrt{2}\cdot \side Q/2$, 
     \begin{equation*}
-        |x-q| = |x-\centerof Q + \centerof 5Q-q | \leq 3\sqrt{n}\cdot \side Q < 16r
+        |x-q| = |x-\centerof Q + \centerof 5Q-q | \leq 3\sqrt{2}\cdot \side Q < \frac{16\side Q}{2} = 16r
     \end{equation*}
 Then $q\in B(x, 16r)$ and thus $5Q\subset B(x, 16r)$. Similarly, for any $q^\prime\in B(x, r)$, 
 \begin{equation*}
-    |\centerof 3Q - q^\prime| = |\centerof Q - x + x-q^\prime| \leq \frac{\sqrt{n}\cdot\side Q}{2} + r < \frac{1}{2}\side 3Q = \frac{3\side Q}{2}
+    |\centerof 3Q - q^\prime| = |\centerof Q - x + x-q^\prime| \leq \frac{\sqrt{2}\cdot\side Q}{2} + r < \frac{3\side Q}{2} = \frac{1}{2}\side 3Q
 \end{equation*}
-{\color{red} but this implies $\displaystyle r < \frac{3 -\sqrt{n}}{2}\side Q$, which is impossible when $n>9$}
-Then $q\in 3Q$ and thus $B(x, r)\subset 3Q$. Therefore by the containments and the doubling measure condition, 
+Then $q^\prime\in 3Q$ and thus $B(x, r)\subset 3Q$. Therefore, by the containments and the doubling measure condition, 
     \begin{equation}
         \mu(5Q) \leq \mu(B(x, 16r)) \leq K^4\mu(B(x,r))\leq K^4\mu(3Q)
     \end{equation}
@@ -62,40 +111,14 @@ Then $q\in 3Q$ and thus $B(x, r)\subset 3Q$. Therefore by the containments and t
     \end{equation*}
     Therefore, (\ref{eq:CBx=0}) holds immediately and after applying corollary \ref{LisaCoro7.1}, we obtain the desired result.
 \end{proof}
-\newpage
-\begin{lemma}
-    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, a $m$-plane $V$ in $\rr^n$, a cube $Q$ with side length $2^{-|k|}$, and a cube $R$ with the same side length as $Q$ satisfies
-    \begin{equation}\label{eq:condition-GDBC-2}
-        R\in C_\calB^{1,1}(Q, V, \alpha_1) \quad\text{and}\quad R\in  C_\calB^{1,2}(Q, V, \alpha_2)
-    \end{equation}
-    Assume $s\in \nn$ is the largest coefficients of the dilation cube such that $sQ\cap R = \emptyset$, and $t\in\nn$ such that $2sQ\subset tR$. Then
-    \begin{equation}
-        s = SOMETHING, \quad t = SOMETHING
-    \end{equation} 
-\end{lemma}
-\begin{proof}
-    By Lemma \ref{lemma:Guarantee-Distance-containQ-Between-2alpha}, to satisify (\ref{eq:condition-GDBC-2}), assume    
-    \begin{equation*}
-        \begin{split}
-            d = |\centerof Q-\centerof R| \geq (\frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}-\sqrt{n})\cdot 2^{-|k|}
-        \end{split}
-    \end{equation*}
-    Then, for any $q\in sQ$
-\end{proof}
 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.66\textwidth]{images/tRcover2sQ.png}
-    \caption{An example in the proof on $\rr^2$}
-\end{figure}
 \newpage
 \subsection{June 23-24 Lemma of Guarantee Distance Between Cubes}
 
 \begin{lemma}\label{lemma:Guarantee-Distance-containQ-Between-2alpha}
     For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, a $m$-plane $V$ in $\rr^n$, a cube $Q$ with side length $2^{-|k|}$, and a cube $R$ with the same side length as $Q$, the distance bewteen the center of $R$ and the center of $Q$ has to satisfy
     \begin{equation*}
-        |\centerof Q-\centerof R|\geq (\frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}-\sqrt{n})\cdot 2^{-|k|}
+        |\centerof Q-\centerof R|\geq \left|\frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}-\sqrt{n}\right|\cdot 2^{-|k|}
     \end{equation*}
     to guarantee
     \begin{equation}\label{eq:condition-GDBC}
@@ -126,7 +149,7 @@ Then $q\in 3Q$ and thus $B(x, r)\subset 3Q$. Therefore by the containments and t
     \begin{equation*}
         \begin{split}
             |\centerof Q-\centerof R| &\geq ||x-q|-|x-\centerof R|-|q-\centerof Q|| \\
-            &\geq (\frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}-\sqrt{n})\cdot 2^{-|k|}
+            &\geq\left|\frac{2\sqrt{n} - 2\alpha_2}{\alpha_1-\alpha_2}-\sqrt{n}\right|\cdot 2^{-|k|}
         \end{split}
     \end{equation*}
 \end{proof}
