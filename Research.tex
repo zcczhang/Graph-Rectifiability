@@ -1,69 +1,260 @@
 \section{Research}
 
 
+\subsection{June 30 Wrapping everything up}
+\begin{definition}[Distance]
+    We define the distance $\dist(X, Y)$ from a set(or a point) $X$ to another set $Y$ by:
+    \begin{equation*}
+        \dist(X, Y) := \inf\{|x-y|:x\in X, y\in Y\}
+    \end{equation*}
+\end{definition}
+
+\begin{lemma}\label{lemma:s-guarantee-containQ-between-2alpha}
+    For $0<\alpha_2<\alpha_1<1$, $V\in G(1, 2)$, a dyadic cube $Q$ in $\rr^2$, and a dilation cube $2R$ where $R$ is the dyadic cube with the same side length as $Q$, Let $s\in\nn$ satisify
+    \begin{equation}
+        \dist(Q, 2R)\geq s\cdot \side Q \geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}\cdot \side Q
+    \end{equation}
+    Then
+    \begin{enumerate}[(i)]
+        \item \label{lemma-1:s-guarantee-containQ-between-2alpha} if $2R\subset C_\calB^{1,1}(Q, V, \alpha_1)$, then $2R\subset  C_\calB^{1,2}(Q, V, \alpha_2)$.
+        \item \label{lemma-2:s-guarantee-containQ-between-2alpha} suppose a dilation constant $t = 2^n, n\in\nn$, if $t\geq 2(\sqrt{2}+1)s + 3\sqrt{2}$, then $2sQ\subset tR $.
+        \item \label{lemma-3:s-guarantee-containQ-between-2alpha} another dilation constant $t^\prime = 2^m, m\in\nn$, if $t^\prime \geq (3\sqrt{2}+2)s + 3\sqrt{2}$, then $3sQ\subset t^\prime R$.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}[(i)]
+        \item When $2R\subset C_\calB^{1,1}(Q, V, \alpha_1)$, for some $r\in 2R\cap C_\calB^1(Q, V, \alpha_1)$, there exists $q\in Q$ such that $r\in C_\calB(q, V, \alpha_1)$, so $\dist(r-q, V)>\alpha_1|r-q|$. Besides, for any $r^\prime\in 2R$, consider some $q^\prime\in Q$ which must satisfy $|r-r^\prime|\leq 2\sqrt{2}\cdot\side R$ and $|q-q^\prime|\leq \sqrt{2}\cdot\side Q$. Assume that $|r-q| = s^\prime\cdot\side Q$ then $s^\prime \geq s$. Since $ |r-r^\prime| \geq|\dist (r^\prime-q^\prime, V)-\dist(r-q, V)| - |q-q^\prime|$, no matter $\dist (r^\prime-q^\prime, V)\lesseqgtr\dist(r-q, V)$,
+        \begin{equation*}
+            \begin{split}
+                \dist(r^\prime-q^\prime, V) &\geq \dist(r-q, V)-|q-q^\prime|-|r-r^\prime| \\
+                &> \alpha_1|r-q| - 3\sqrt{2} \cdot\side Q\\
+                &\geq (\alpha_1 s^\prime- 3\sqrt{2})\cdot\side Q\\
+                &\geq \alpha_2(s^\prime+3\sqrt{2})\cdot\side Q \\
+                &\geq \alpha_2(|r-q|+|r-r^\prime|+|q-q^\prime|)\\
+                &\geq \alpha_2|r^\prime-q^\prime|
+            \end{split}
+        \end{equation*}
+        Therefore, $2R\subset  C_\calB^{1,2}(Q, V, \alpha_2)$.
+        \item Assume $\forall q^{\prime\prime}\in 2sQ$, then
+        \begin{equation*}
+            \begin{split}
+                |\centerof 2R - q^{\prime\prime}| &\leq (\frac{1}{2}\diam 2R + \dist(2R, Q) + \frac{1}{2}\diam Q + \frac{1}{2}\diam 2sQ)\\
+                &\leq (\sqrt{2}+s+\frac{\sqrt{2}}{2} + \sqrt{2}s ) \side Q \\
+                &\leq \frac{t}{2}\side R = \frac{1}{2}\side tR
+            \end{split}
+        \end{equation*}
+        which implies that $\displaystyle 2sQ \subset B(\centerof R, \frac{1}{2}\side tR)\subset tR$.
+        \item Similarly, assume $\forall q^{\prime\prime\prime}\in 3sQ$, then
+        \begin{equation*}
+            \begin{split}
+                |\centerof 2R - q^{\prime\prime\prime}| &\leq (\frac{1}{2}\diam 2R + \dist(2R, Q) + \frac{1}{2}\diam Q + \frac{1}{2}\diam 3sQ)\\
+                &\leq (\sqrt{2}+s+\frac{\sqrt{2}}{2} + \frac{3}{2}\sqrt{2}s ) \side Q \\
+                &\leq \frac{t^\prime}{2}\side R = \frac{1}{2}\side t^\prime R
+            \end{split}
+        \end{equation*}
+        which implies that $\displaystyle 3sQ \subset B(\centerof R, \frac{1}{2}\side t^\prime R)\subset t^\prime R$.
+    \end{enumerate}
+\end{proof}
+
+
+\begin{lemma}\label{lemma:doubling-meaure-4cubes}
+    If for $\mu$-a.e. $x\in \rr^2, 0<r<\infty, \mu(B(x, 2r))\leq K\mu(B(x,r)), K\in\rr^+$, then for $n\in \nn, n\geq 2$,
+    \begin{equation}\label{eq:doubling4cubes}
+        \mu(2^n Q)\leq K^{3n-3} \mu(2Q)
+    \end{equation}
+    where $Q$ is the dyadic cube containing $\mu$-a.e. $x$, and $2^n Q$, $2Q$ are dilation cubes.
+\end{lemma}
+\begin{proof}
+    By the half open definition of the dyatic cube, for $\mu$-a.e. $x\in \rr^2$, $x$ must in only one cube $Q$. Let $r = \side Q /2$. We claim that $2^n Q\subset B(x, 8^{n-1}r)$ and $B(x, r)\subset 2Q$. For any $q\in 2^n Q$, $|\centerof Q -x|\leq \sqrt{2}/2\cdot\side Q $ and $|\centerof 2^n Q -q|\leq \sqrt{2}/2 \cdot\side 2^n Q  = 2^{n-1}\sqrt{2}\cdot \side Q$. Note that $n\geq 2$, so
+    \begin{equation*}
+        |x-q| \leq \left(\frac{\sqrt{2}}{2} + 2^{n-1}\sqrt{2}\right) \side Q < \frac{8^{n-1}}{2} \side Q = 8^{n-1}r
+    \end{equation*}
+Then $q\in B(x, 8^{n-1}r)$ and thus $2^n Q\subset B(x, 8^{n-1}r)$. Consider that for $\forall p\in \bigcup_{q\in Q} B(q, r)\setminus Q$, $\dist(p, \partial Q)\leq r = \dist(\partial 2Q, Q)$, so $B(x, r)\subset \bigcup_{q\in Q} B(q, r)\subset 2Q$. Therefore, by the containments and the doubling measure condition, 
+    \begin{equation*}
+        \mu(2^n Q) \leq \mu(B(x, 2^{3n-3}r)) \leq \prod_{i=1}^{3n-3} K \cdot \mu(B(x,r))\leq K^{3n-3}\mu(B(x,r))\leq K^{3n-3}\mu(2Q)
+    \end{equation*}
+\end{proof}
+
+
+
+
+
+\begin{lemma}\label{lemma:limQ-2sQ-0}
+    Let $\mu$ be a measure on $\rr^2$. Let $0<\alpha_2<\alpha_1<1$, $V\in G(1,2)$, any dyadic cube $Q_k$ contained $\mu$-a.e. $x$ in $\rr^2$ with the side length $2^{-|k|}, k\in\zz$, dilation constants $s\in\nn$, parameter $K>0$. Let $E$ denote the set of points $x\in\rr^2$ then
+    \begin{enumerate}[(i)]
+        \item \label{lemmq-1:limQ-2sQ-0} When $Q\downarrow x$ (i.e. $|k|\rightarrow\infty \Rightarrow 2^{-|k|}\downarrow 0$),
+        \begin{equation}\label{eq:limBC-2sQ-0}
+            \frac{\mu(C_\calB^{1,1}(Q, V, \alpha_2)\cap 2sQ)}{\mu(2sQ)} \rightarrow 0
+        \end{equation}
+        \item \label{lemmq-2:limQ-2sQ-0} $s$ satisfies
+        \begin{equation}  
+            s \geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}
+        \end{equation}
+        \item \label{lemmq-3:limQ-2sQ-0} For $\mu$-a.e $x\in E$, $0<r<\infty$
+        \begin{equation}
+            \mu(B(x, 2r))\leq K\mu(B(x,r))
+        \end{equation}
+    \end{enumerate}
+    if and only if $E$ is $\mu$-carried by Lipschitz graphs.
+\end{lemma}
+\begin{proof}
+    We first show the sufficient condition holds. By (\ref{eq:limBC-2sQ-0}) and $\lim_{|k|\rightarrow\infty} \side Q_k = 0$, there exists a large enough $k$ such that for any $\delta>0$,
+    \begin{equation}\label{eq:delta-4-limQ-2sQ-0}
+        \mu(C_\calB^{1,1}(Q_k, V, \alpha_2)\cap 2sQ) < \delta\mu(2sQ_k)
+    \end{equation}
+    Fix a $|k|$ and $Q_k\ni x$. Now construct sets:
+    \begin{equation*}
+        \begin{split}
+            S_{Q_k} &:= \{2R_k: \dist(2R_k, Q_k)\geq s\cdot\side Q_k, 2R_k\cap(2sQ_k\cap C_\calB^{1, 1} (Q_k, V, \alpha_1))\neq \emptyset\} \\
+            S_{Q_k}^\prime &:= \{2R_k: \dist(2R_k, Q_k)\geq s\cdot\side Q_k, 2R_k\subset 2sQ_k\cap C_\calB^{1, 1} (Q_k, V, \alpha_1)\} \\
+            S_{Q_k}^{\prime\prime} &:= S_{Q_k} \setminus S_{Q_k}^\prime
+        \end{split}
+    \end{equation*}
+    where $2R_k$ is the dilation cube of the dyadic cube $R_k$ with the same side length as $Q_k$. Then for any $2R_k\in S_{Q_k}^\prime$, by Lemma \ref{lemma:s-guarantee-containQ-between-2alpha} (\ref{lemma-1:s-guarantee-containQ-between-2alpha}), $2R_k\subset  C_\calB^{1,2}(Q_k, V, \alpha_2)$ and apparently $2R_k\subset  C_\calB^{1,1}(Q_k, V, \alpha_2)\cap 2sQ_k$ as well. Then, fix $t=2^n, n\in\nn$ such that $t\geq 2(\sqrt{2}+1)s + 3\sqrt{2}$ then by Lemma \ref{lemma:s-guarantee-containQ-between-2alpha} (\ref{lemma-2:s-guarantee-containQ-between-2alpha}), $tR_k\subset 2sQ_k$. Now assume that there are some $\mu$-a.e. $x$ are contained in $2R_k$, then by Lemma \ref{lemma:doubling-meaure-4cubes} and (\ref{eq:delta-4-limQ-2sQ-0}), 
+    \begin{equation*}
+        \mu(tR_k)\leq K^{3n-3}\mu(2R_k)\leq K^{3n-3}\mu(C_\calB^{1,1}(Q, V, \alpha_2)\cap 2sQ_k) < \delta K^{3n-3} \mu(2sQ_k)
+    \end{equation*}
+    which is a contradiction if we choose $\delta<K^{-3n+3}$. Thus, $0=\mu(2R_k) = \mu(\bigcup_{2R_k\in S_{Q_k}^\prime} 2R_k) = \mu(S_{Q_k}^\prime)$. Moreover, we will consider any $2R_k^\prime\in S^{\prime\prime}_{Q_k}$. Now fix $t^\prime = 2^m, m\in\nn$ such that $t\geq (3\sqrt{2}+2)s + 3\sqrt{2}$ and then by Lemma \ref{lemma:s-guarantee-containQ-between-2alpha} (\ref{lemma-2:s-guarantee-containQ-between-2alpha}), $2R_k^\prime \subset  3sQ_k \subset t^\prime R_k$. Then with the similar contradiction proof noting that $\mu(2sQ_k)\leq \mu(3sQ_k)$, we can say $0=\mu(2R_k^\prime) = \mu(\bigcup_{2R_k^\prime\in S_{Q_k}^{\prime\prime}} 2R_k^\prime) = \mu(S_{Q_k}^{\prime\prime})$. Hence, $\mu(S_{Q_k}) = \mu(S_{Q_k}^\prime \cup S_{Q_k}^{\prime\prime}) = 0$. 
+    
+    Assume that for $\mu$-a.e. $x\in Q_k$, any $y\in C_\calB(x, V, \alpha_1)$, we have $\dist(x-y,V)>\alpha_1|x-y|$. If $|x-y|\geq (\sqrt{2} +s)\side Q_k$ then $\dist(y, Q_k)|\geq |y-x|-\dist(x, Q_k)\geq (\sqrt{2} +s-\sqrt{2})\side Q_k = s\cdot\side Q$, so that $y\in S_{Q_k}$. On the other hand, if $|y-x|<(\sqrt{2} +s)\side Q_k$, then there exists $\epsilon_y>0$ such that $\epsilon_y\leq |y-x|$. There also exists a $|k^\prime|>>|k|$ such that for the dilation cube $Q_{k^\prime}, x\in Q_{k^\prime}\subset Q_k$, it satisfies $\epsilon_y\geq (\sqrt{2} +s)\cdot2^{-|k^\prime|}$, which similarly implies that $y\in S_{Q_k^\prime}$. Hence, $C_\calB(x, V, \alpha_1)\subset \bigcup_{i=k}^\infty \{S_{Q_i}: x\in Q_i\subseteq Q_k\}$. Thus, for each $\mu$-a.e. $x\in E$ where $x$ must be contained in only one $Q_k$,
+    \begin{equation*}
+        \begin{split}
+            \mu(C_\calB(x, V, \alpha_1))\leq \mu\left( \bigcup_{i=k}^\infty \left\{S_{Q_i}:x\in Q_i\subseteq Q_k\right\}\right) = 0
+        \end{split}
+    \end{equation*}
+    It follows immediately that for $\mu$-a.e. $x\in E$, $\mu(C_\calB(x, V, \alpha_1)) = 0$. Applying Corollary \ref{LisaCoro7.1}, the sufficient condition holds then.
+\end{proof}
+
+
+
+
+\newpage
 \subsection{June 29 \texorpdfstring{$\lim_{Q\rightarrow x}\mu(C^{1,1}_\calB(Q, V, \alpha)\cap 2sQ)/\mu(2sQ) = 0$}{Lg}}
 
-\begin{lemma}\label{lemma:Guarantee-Distance-contain2R-Between-2alpha}
-    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, $V\in G(1,2)$, a cube $Q$ in $\rr^2$ with side length $2^{-|k|}$, and a cube $R$ with the same side length as $Q$. The distance between some point in $2R$ and any point in $Q$ denoted as $s\cdot \side Q$ satisfies
-    \begin{equation}\label{eq:lb4s}
-        s\geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}
+\begin{lemma}
+    Suppose $0<\alpha_2<\alpha_1<1$, $V\in G(1,2)$, a dyadic cube $Q$ in $\rr^2$ with the side length $2^{-|k|}$, and a dilation constant $s\in\nn,s>1$. For doubling measure $\mu$-a.e. x with the doubling constant $K\in \zz^+$, if
+    \begin{equation}
+        \lim_{Q\rightarrow x}\frac{\mu(C_\calB^{1,1}(Q, V, \alpha_2)\cap 2sQ)}{\mu(2sQ)} = 0
     \end{equation}
-    Now
-    \begin{equation}\label{eq:condition-2RinC}
-        \text{if}\quad 2R\in C_\calB^{1,1}(Q, V, \alpha_1) \quad\text{then}\quad 2R\in  C_\calB^{1,2}(Q, V, \alpha_2)
-    \end{equation}
+    then $\mu$ is carried by Lipschitz graphs. 
 \end{lemma}
-\begin{proof} 
-    For some $x\in 2R \cap C_\calB^{1}(Q, V, \alpha_1)$, there exists $q\in Q$ such that $x\in C_\calB(q, V, \alpha_1)$. Then $\dist(x-q, V) > \alpha_1|x-q|$. For any $y\in 2R$, assume some $q^\prime\in Q$. Now we have $|x-y|\leq 2\sqrt{2}\side Q$, $|q-q^\prime|\leq \sqrt{2}\side Q$. Since $ |x-y| \geq|\dist (y-q^\prime, V)-\dist(x-q, V)| - |q-q^\prime|$, no matter $\dist (y-q^\prime, V)\lesseqgtr\dist(x-q, V)$,
+\begin{proof}
+    Fix a $Q\ni x$ with side length $2^{-|k|}$. For a dilation cube $2R\subset C_\calB^{1,1}(Q, V, \alpha_1)$ with the double side length as $Q$, we can say that for some $x\in 2R \cap C_\calB^{1}(Q, V, \alpha_1)$, there exists $q\in Q$ such that $x\in C_\calB(q, V, \alpha_1)$. Now if we choose
+    \begin{equation}\label{eq:lb4d}
+        s^\prime=|x-p| \geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}
+    \end{equation}
+    we claim that $2R\in  C_\calB^{1,2}(Q, V, \alpha_2)$. For any $y\in 2R$, assume some $q^\prime\in Q$. Now we have $|x-y|\leq 2\sqrt{2}\side Q$, $|q-q^\prime|\leq \sqrt{2}\side Q$. Since $ |x-y| \geq|\dist (y-q^\prime, V)-\dist(x-q, V)| - |q-q^\prime|$, no matter $\dist (y-q^\prime, V)\lesseqgtr\dist(x-q, V)$,
     \begin{equation*}
         \begin{split}
             \dist(y-q^\prime, V) &\geq \dist(x-q, V)-|q-q^\prime|-|x-y| \\
             &> \alpha_1|x-q| - 3\sqrt{2}\cdot \side Q\\
-            &= (\alpha_1 s- 3\sqrt{2})\cdot\side Q\\
-            &\geq \alpha_2|s+3\sqrt{2}|\side Q \\
-            &\geq \alpha_2||x-q|+|y-x|+|q-q^\prime||\\
+            &\geq (\alpha_1 s^\prime- 3\sqrt{2})\cdot\side Q\\
+            &\geq \alpha_2(s^\prime+3\sqrt{2})\side Q \\
+            &\geq \alpha_2(|x-q|+|y-x|+|q-q^\prime|)\\
             &\geq \alpha_2|y-q^\prime|
         \end{split}
     \end{equation*}
-    Thus, there exists $q^\prime\in Q$ such that $y\in C_\calB(q^\prime, V, \alpha_2)$ and (\ref{eq:condition-2RinC}) holds immediately. In particular, as $|q-\centerof Q|\leq \frac{\sqrt{2}}{2}\side Q$ and $|x-\centerof 2R| \leq \sqrt{2} \side Q$,
+    Thus, there exists $q^\prime\in Q$ such that $y\in C_\calB(q^\prime, V, \alpha_2)$ and $2R\in  C_\calB^{1,2}(Q, V, \alpha_2)$ holds immediately. In particular, in this case, 
     \begin{equation}
-        \begin{split}
-            |\centerof Q-\centerof R| \geq ||x-q|-|x-\centerof R|-|q-\centerof Q|| \geq\left(s-\frac{3}{2}\sqrt{2}\right)\side Q
-        \end{split}
+        d := |\centerof Q -\centerof 2R| \leq |q-x|+|\centerof 2R-x|+|q-\centerof Q|\leq s^\prime+\frac{3}{2}\sqrt{2}
     \end{equation}
-\end{proof}
 
-\newpage 
-\begin{lemma}
-    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, $V\in G(1,2)$, a cube $Q\in \rr^2$ with side length $2^{-|k|}$, and a cube $2R$ with the double side length as $Q$. Assume that the distance between some points in $2R$ and any point in $Q$ is $s\cdot \side Q$ where $s\in\nn$ satisfies (\ref{eq:lb4s}). Then for $t\in\nn$ in the form of $2^n, n\in\nn$, to guarantee
-    \begin{equation}\label{eq:tRcover2sQcover2R-conclusion}
+    Next, let the $s\in\nn, s\geq s^\prime$. With a $t\in\nn$ in the form of $2^n, n\in\nn$, we claim that 
+    \begin{equation}\label{eq:tRcover2sQcover2R}
         sQ\cap 2R = \emptyset \quad\text{ and }\quad 2R\subset 2sQ\subset tR
     \end{equation}
-    we have constraints that for $d\cdot\side Q=|\centerof Q-\centerof R|$
-    \begin{equation}\label{eq:tRcover2sQcover2R-cond}
-        d+\frac{\sqrt{2}}{2}\leq s \leq \sqrt{2}d-1 \quad\text{ and }\quad t \geq 2d + 2\sqrt{2}s
-    \end{equation} 
+    if $t\geq 2(\sqrt{2}+1)s + 3\sqrt{2}$. It is obvious for the choice of $t$, since assume $\forall q^{\prime\prime}\in 2sQ$, then
+    \begin{equation*}
+        |\centerof 2R - q^{\prime\prime}|\leq (d+\sqrt{2}s)\side Q \leq \frac{t}{2}\side R
+    \end{equation*}
+    which implies that $2sQ \subset B(\centerof R, \frac{1}{2}\side tR)\subset tR$. Then, (\ref{eq:tRcover2sQcover2R}) for $t$ is concluded. 
+    Assume that for any $p\in sQ, p^\prime\in 2R$, SOMETHING SOMETHING SOMETHING 
+
+
+
+    By (\ref{eq:limBC-2sQ-0}), there exists a large enough $k$ such that
+    \begin{equation}
+        \mu(C_\calB^{1,1}(Q, V, \alpha_2)\cap 2sQ) < \delta\mu(2sQ)
+    \end{equation}
+    As $2R\subset \mu(C_\calB^{1,1}(Q, V, \alpha_2)\cap 2sQ)$, $\mu(tR)\leq K^{3^{t/2}}\mu(2R)\leq K^{3^{t/2}}\mu(C_\calB^{1,1}(Q, V, \alpha_2)\cap 2sQ) < \delta K^{3^{t/2}} \mu(2sQ)$, which will be a contradiction if we choose $\delta<K^{-3^{t/2}}$ as $2sQ\subset tR$. Thus, $\mu(tR) = \mu(2R) = 0$ when fix the $\side Q$ and $s$.
+
+
+
+
+
+    Finally, we claim that $\mu(C_\calB^{1,1}(Q, V,\alpha_1)) = 0$
+
+
+    After that, for $\mu$-a.e. $x$ in each $Q$, it follows immediately that $C_\calB(x, V, \alpha) = 0$. Therefore, by Lemma \ref{LisaCoro7.1}, $\mu$ is carried by Lipschitz graphs. 
+\end{proof}
+
+
+
+
+
+
+
+
+\begin{lemma}\label{lemma:Guarantee-Distance-contain2R-Between-2alpha}
+    For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, $V\in G(1,2)$, a dyadic cube $Q$ in $\rr^2$, and a dilation cube $2R$ with the double side length as $Q$, assume that for some $x\in 2R \cap C_\calB^{1}(Q, V, \alpha_1)$, there exists $q\in Q$ such that $x\in C_\calB(q, V, \alpha_1)$(i.e. $2R\in C_\calB^{1,1}(Q, V, \alpha_1)$). Now if we choose
+    \begin{equation}
+        s=|x-p| \geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}
+    \end{equation}
+    then $2R\in  C_\calB^{1,2}(Q, V, \alpha_2)$.
 \end{lemma}
-\begin{proof}
-    Note that by Lemma \ref{lemma:Guarantee-Distance-contain2R-Between-2alpha}, we have (\ref{eq:condition-2RinC}) and $d\geq (s-3\sqrt{2}/2)$. And assume that For any $q\in sQ, q^\prime\in 2R$, by (\ref{eq:tRcover2sQcover2R-cond}), 
+\begin{proof} 
+    For any $y\in 2R$, assume some $q^\prime\in Q$. Now we have $|x-y|\leq 2\sqrt{2}\side Q$, $|q-q^\prime|\leq \sqrt{2}\side Q$. Since $ |x-y| \geq|\dist (y-q^\prime, V)-\dist(x-q, V)| - |q-q^\prime|$, no matter $\dist (y-q^\prime, V)\lesseqgtr\dist(x-q, V)$,
+    \begin{equation*}
+        \begin{split}
+            \dist(y-q^\prime, V) &\geq \dist(x-q, V)-|q-q^\prime|-|x-y| \\
+            &> \alpha_1|x-q| - 3\sqrt{2}\cdot \side Q\\
+            &\geq (\alpha_1 s- 3\sqrt{2})\cdot\side Q\\
+            &\geq \alpha_2(s+3\sqrt{2})\side Q \\
+            &\geq \alpha_2(|x-q|+|y-x|+|q-q^\prime|)\\
+            &\geq \alpha_2|y-q^\prime|
+        \end{split}
+    \end{equation*}
+    Thus, there exists $q^\prime\in Q$ such that $y\in C_\calB(q^\prime, V, \alpha_2)$ and $2R\in  C_\calB^{1,2}(Q, V, \alpha_2)$ holds immediately. In particularly, in this case, 
     \begin{subequations}
         \begin{align}
-            |\centerof sQ - q| &\leq \frac{\sqrt{2}s}{2}\side Q \leq 
-            \left|\left( d-\sqrt{2}\right )\right|\side Q  \notag \\
-            &\leq ||\centerof Q-\centerof 2R|-\frac{\sqrt{2}}{2}\side 2R| \notag \\
-            &\leq ||\centerof Q-\centerof 2R| - |\centerof 2R - q^\prime|| \notag \\
-            &\leq |\centerof Q-q^\prime| \label{eq:qprimeQaway} \\ 
-            &\leq \left (d + \frac{\sqrt{2}}{2}\right)\side Q \notag \\
-            &\leq s\cdot \side Q \notag \\
-            &= \frac{1}{2}\side 2sQ\label{eq:2Rinside2sQ}
+            d := |\centerof Q&-\centerof 2R| \leq |q-x|+|\centerof 2R-x|+|q-\centerof Q|\leq s+\frac{3}{2}\sqrt{2} \\
+            d &\geq ||q-x|-|\centerof 2R-x|-|q-\centerof Q| |\geq s-\frac{3}{2}\sqrt{2} 
         \end{align}
     \end{subequations}
-    Equation (\ref{eq:qprimeQaway}) implies that $sQ\subset B(\centerof Q, \frac{\sqrt{2}}{2}\side 2sQ)$, $q^\prime \notin B(\centerof Q, \frac{\sqrt{2}}{2}\side 2sQ)$ $\Rightarrow sQ\cap R = \emptyset$. Besides, (\ref{eq:qprimeQaway}) to (\ref{eq:2Rinside2sQ}) implies that $R\subset B(\centerof Q, \frac{1}{2}\side 2sQ)\subset 2sQ$. For the choice of t, assume $\forall q^{\prime\prime}\in 2sQ$, then
-    \begin{equation*}
-        |\centerof R - q^{\prime\prime}|\leq (d+\sqrt{2}s)\side Q \leq \frac{t}{2}\side R
-    \end{equation*}
-    which implies that $2sQ \subset B(\centerof R, \frac{1}{2}\side tR)\subset tR$. Then, (\ref{eq:tRcover2sQ-conclusion}) is concluded. 
 \end{proof}
+
+% \newpage 
+% \begin{lemma}
+%     For $\alpha_1, \alpha_2\in(0,1), \alpha_1>\alpha_2$, $V\in G(1,2)$, assume that $s\in \nn$ such that for a dyadic cube $Q\in \rr^2$, and a dilation cube $2R$ with the double side length as $Q$ satisfies $$d:=\frac{|\centerof Q-\centerof 2R|}{\side Q}= s+\frac{3}{2}\sqrt{2}\geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2} + \frac{3}{2}\sqrt{2}$$
+%     Then for $t\in\nn$ in the form of $2^n, n\in\nn$, to guarantee
+%     % \begin{equation}\label{eq:tRcover2sQcover2R-conclusion}
+%     %     sQ\cap 2R = \emptyset \quad\text{ and }\quad 2R\subset 2sQ\subset tR
+%     % \end{equation}
+%     we have constraints that for $d\cdot\side Q=|\centerof Q-\centerof R|$
+%     \begin{equation}\label{eq:tRcover2sQcover2R-cond}
+%         d+\frac{\sqrt{2}}{2}\leq s \leq \sqrt{2}d-1 \quad\text{ and }\quad t \geq 2d + 2\sqrt{2}s
+%     \end{equation} 
+% \end{lemma}
+% \begin{proof}
+%     Note that by Lemma \ref{lemma:Guarantee-Distance-contain2R-Between-2alpha}, we have $2R\in  C_\calB^{1,2}(Q, V, \alpha_2)$. And assume that for any $q\in sQ, q^\prime\in 2R$, by (\ref{eq:tRcover2sQcover2R-cond}), 
+%     \begin{subequations}
+%         \begin{align}
+%             |\centerof sQ - q| &\leq \frac{\sqrt{2}s}{2}\side Q \leq (\frac{\sqrt{2}}{2}d-\frac{3}{2})\side Q \notag\\   
+%             &< (d-\sqrt{2})\side Q \notag\\   
+%             &\leq ||\centerof Q-\centerof 2R| - |\centerof 2R - q^\prime|| \notag \\
+%             &\leq |\centerof sQ-q^\prime| \label{eq:qprimeQaway} \\ 
+%             &\leq \left (d + \sqrt{2}\right)\side Q \notag \\
+%             &\leq (s+\frac{5}{2}\sqrt{2})\cdot \side R \notag \\
+%             &= \frac{1}{2}\side 2sQ\label{eq:2Rinside2sQ}
+%         \end{align}
+%     \end{subequations}
+%     (\ref{eq:qprimeQaway}) implies that the distance from any point in $sQ$ to the center point of $sQ$ is smaller than any point in $2R$ to $\centerof sR$, so $2R\cap sR = \emptyset$. On the other hand, as $0<\alpha_2<\alpha_1<1$, $s>2$ apparently. Then, 
+%     % Equation (\ref{eq:qprimeQaway}) implies that $sQ\subset B(\centerof Q, \frac{\sqrt{2}}{2}\side 2sQ)$, $q^\prime \notin B(\centerof Q, \frac{\sqrt{2}}{2}\side 2sQ)$ $\Rightarrow sQ\cap R = \emptyset$. Besides, (\ref{eq:qprimeQaway}) to (\ref{eq:2Rinside2sQ}) implies that $R\subset B(\centerof Q, \frac{1}{2}\side 2sQ)\subset 2sQ$. For the choice of t, assume $\forall q^{\prime\prime}\in 2sQ$, then
+%     \begin{equation*}
+%         |\centerof R - q^{\prime\prime}|\leq (d+\sqrt{2}s)\side Q \leq \frac{t}{2}\side R
+%     \end{equation*}
+%     which implies that $2sQ \subset B(\centerof R, \frac{1}{2}\side tR)\subset tR$. Then, (\ref{eq:tRcover2sQ-conclusion}) is concluded. 
+% \end{proof}
 
 \newpage
 \subsection{June 28 tR cover 2sQ}
