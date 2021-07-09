@@ -1,7 +1,546 @@
 \section{Research}
 
+\subsection{July 8 Complete and Modify our Lemma}
 
-\subsection{June 30 Wrapping everything up}
+\begin{corollary}[{\cite[Corollary 7.1]{naples2020}}]\label{LisaCoro7.1}
+    Let $\mu$ be a Radon measure on $H, V$ be an $m$-dimensional linear plane in $H$, $\alpha \in(0,1)$, and $0<r<\infty$. If for $\mu$-a.e. $x \in H$
+    $$
+    \mu\left(C_{\mathcal{B}}(x, r, V, \alpha)\right)=0
+    $$
+    then $\mu$ is carried by $m$-Lipschitz graphs.
+\end{corollary}
+
+
+
+\begin{lemma}\label{lemma:s-guarantee-containQ-between-2alpha}
+    For $0<\alpha_2<\alpha_1<1$, $V\in G(1, 2)$, a dyadic cube $Q$ in $\rr^2$, and $s\geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}$, a dilation cube $2R$ such that $R$ is the dyadic cube with the same side length as $Q$ and
+    \begin{equation*}
+        \dist(Q, 2R)\geq s\cdot \side Q
+    \end{equation*}
+    then
+    \begin{enumerate}[(i)]
+        \item \label{lemma-1:s-guarantee-containQ-between-2alpha} {\color{red} if $2R\subset C_\calB^{2,1}(Q, V, \alpha_1)$, then $2R\subset  C_\calB^{2,2}(Q, V, \alpha_2)$.}
+        \item \label{lemma-2:s-guarantee-containQ-between-2alpha} if for $n = n(s) \in \nn$ such that $2^n\geq 2(\sqrt{2}+1)s + 3\sqrt{2}$, then $2sQ\subset 2^n R $.
+        \item \label{lemma-3:s-guarantee-containQ-between-2alpha} if for $m = m(s) \in \nn$ such that $2^m \geq (3\sqrt{2}+2)s + 3\sqrt{2}$, then $3sQ\subset 2^m R$. 
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}[(i)]
+        \item When {\color{red}$2R\subset C_\calB^{2,1}(Q, V, \alpha_1)$}, there exists some $r\in 2R\cap C_\calB^1(Q, V, \alpha_1)$ and hence {\color{red} for any} $q\in Q$ such that $r\in C_\calB(q, V, \alpha_1)$, so $\dist(r-q, V)>\alpha_1|r-q|$. Besides, {\color{red}arbitrary} $r^\prime\in 2R$ and $q^\prime\in Q$ must satisfy $|r-r^\prime|\leq 2\sqrt{2}\cdot\side R$ and $|q-q^\prime|\leq \sqrt{2}\cdot\side Q$, respectively. Assume that $|r-q| = s^\prime\cdot\side Q$ then $s^\prime \geq s$. Since $ |r-r^\prime| \geq|\dist (r^\prime-q^\prime, V)-\dist(r-q, V)| - |q-q^\prime|$, no matter $\dist (r^\prime-q^\prime, V)\leq \dist(r-q, V)$ or $\dist (r^\prime-q^\prime, V)\geq \dist(r-q, V)$,
+
+        \begin{align*}
+            \dist(r^\prime-q^\prime, V) &\geq \dist(r-q, V)-|q-q^\prime|-|r-r^\prime| \\
+            &> \alpha_1|r-q| - 3\sqrt{2} \cdot\side Q\\
+            &\geq (\alpha_1 s^\prime- 3\sqrt{2})\cdot\side Q\\
+            &\geq \alpha_2(s^\prime+3\sqrt{2})\cdot\side Q  &&(s^\prime \geq s \geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}) \\
+            &\geq \alpha_2(|r-q|+|r-r^\prime|+|q-q^\prime|)\\
+            &\geq \alpha_2|r^\prime-q^\prime|
+        \end{align*}
+
+        Therefore, {\color{red}$2R\subset \{R: R\subset \bigcap_{q^\prime\in Q} C_\calB(q^\prime, V, \alpha)\} =  C_\calB^{2,2}(Q, V, \alpha_2)$.}
+        \item Assume for all $q^{\prime\prime}\in 2sQ$, then
+        \begin{equation*}
+            \begin{split}
+                |\centerof 2R - q^{\prime\prime}| &\leq \left(\frac{1}{2}\diam 2R + \dist(2R, Q) + \frac{1}{2}\diam Q + \frac{1}{2}\diam 2sQ\right)\\
+                &\leq (\sqrt{2}+s+\frac{\sqrt{2}}{2} + \sqrt{2}s ) \side Q \\
+                &\leq \frac{2^n}{2}\side R = \frac{1}{2}\side 2^n R
+            \end{split}
+        \end{equation*}
+        which implies that $\displaystyle 2sQ \subset B(\centerof R, \frac{1}{2}\side 2^n R)\subset 2^n R$.
+        \item Similarly, assume $\forall q^{\prime\prime\prime}\in 3sQ$, then
+        \begin{equation*}
+            \begin{split}
+                |\centerof 2R - q^{\prime\prime\prime}| &\leq (\frac{1}{2}\diam 2R + \dist(2R, Q) + \frac{1}{2}\diam Q + \frac{1}{2}\diam 3sQ)\\
+                &\leq (\sqrt{2}+s+\frac{\sqrt{2}}{2} + \frac{3}{2}\sqrt{2}s ) \side Q \\
+                &\leq \frac{2^m}{2}\side R = \frac{1}{2}\side 2^m R
+            \end{split}
+        \end{equation*}
+        which implies that $\displaystyle 3sQ \subset B(\centerof R, \frac{1}{2}\side 2^m R)\subset 2^m R$.
+    \end{enumerate}
+\end{proof}
+
+
+\begin{lemma}\label{lemma:doubling-meaure-4cubes}
+    If there exist $K\geq1$, such that for $\mu$-a.e. $x\in \rr^2, 0<r<\infty$, 
+    \begin{equation}\label{eq:doubling}
+        \mu(B(x, 2r))\leq K\mu(B(x,r))
+    \end{equation} 
+    then for any dyadic cube $Q$ containing $x$ where (\ref{eq:doubling}) holds, {\color{red}$s, n\in \nn, n\geq 2$, $s\in \nn$
+    \begin{equation}\label{eq:doubling4cubes}
+        \mu(2^n sQ)\leq K^{3n-3} \mu(2sQ)
+    \end{equation}}
+\end{lemma}
+\begin{proof}
+    By the half open definition of the dyadic cube, for $\mu$-a.e. $x\in \rr^2$, $x$ must be in only one cube $Q$. Let {\color{red}$r = s\cdot \side Q /2$. We claim that $2^n sQ\subset B(x, 2^{3n-3}r)$ and $B(x, r)\subset 2sQ$. For any $q\in 2^n sQ$, $|\centerof Q -x|\leq \sqrt{2}/2\cdot\side Q $ and $|\centerof 2^n sQ -q|\leq \sqrt{2}/2 \cdot\side 2^n sQ  = 2^{n-1}\sqrt{2}s\cdot \side Q$. Note that $n\geq 2$, so
+    \begin{equation*}
+        |x-q| \leq \left(\frac{\sqrt{2}}{2} + 2^{n-1}\sqrt{2}s \right) \side Q < \frac{2^{3n-3} s}{2} \side Q = 2^{3n-3}r
+    \end{equation*}
+Then $q\in B(x, 2^{3n-3}r)$ and thus $2^n sQ\subset B(x, 2^{3n-3}r)$. Consider that for all $p\in \bigcup_{q\in Q} B(q, r)\setminus sQ$, $\dist(p, \partial sQ)\leq r = \dist(\partial 2sQ, sQ)$, so $B(x, r)\subset \bigcup_{q\in Q} B(q, r)\subset 2sQ$. Therefore, by the containments and (\ref{eq:doubling}), 
+    \begin{equation*}
+        \mu(2^n sQ) \leq \mu(B(x, 2^{3n-3}r)) \leq \prod_{i=1}^{3n-3} K \cdot \mu(B(x,r))\leq K^{3n-3}\mu(B(x,r))\leq K^{3n-3}\mu(2sQ)
+    \end{equation*}
+    }
+\end{proof}
+    
+
+\begin{lemma}\label{lemma:limQ-2sQ-0}
+    Let $\mu$ be a measure on $\rr^2$ and $E$ denote the set of points $\mu$-a.e. $x\in\rr^2$.For $x\in E$, there exists $K\geq 1$ such that $\mu(B(x, 2r))\leq K\mu(B(x,r))$. For $0<\alpha_2<\alpha_1<1$, $V\in G(1,2)$, any dyadic cube $Q_k$ contained $\mu$-a.e. $x$ in $E$ with the side length $2^{-k}, k\in\nn$, and a dilation constant $s\in\nn$ such that $s \geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}$, when $Q\downarrow x$ (i.e. $k\rightarrow\infty \Rightarrow 2^{-k}\downarrow 0$),
+    {\color{red}
+    \begin{equation}\label{eq:limBC-2sQ-0}
+        \frac{\mu(C_\calB^{2,1}(Q_k, V, \alpha_2)\cap 2sQ_k)}{\mu(2sQ_k)} \rightarrow 0
+    \end{equation}
+    }
+    if and only if $E$ is $\mu$-carried by Lipschitz graphs {\color{red}with respect to $V$ and the Lipschitz constant at most $\sqrt{\alpha_2^2/(1-\alpha_2^2)}$}
+\end{lemma}
+\begin{proof}
+    We first show the sufficient condition holds. By (\ref{eq:limBC-2sQ-0}) there exists a large enough $k$ such that for any $\delta>0$,
+    {\color{red}
+    \begin{equation}\label{eq:delta-4-limQ-2sQ-0}
+        \mu(C_\calB^{2,1}(Q_k, V, \alpha_2)\cap 2sQ) < \delta\mu(2sQ_k)
+    \end{equation}
+    }
+    Fix a $k$ and $Q_k\ni x$. Now construct sets:
+    {\color{red}
+    \begin{equation*}
+        \begin{split}
+            S_{Q_k} &:= \{2R_k: \dist(2R_k, Q_k)\geq s\cdot\side Q_k, 2R_k\cap(2sQ_k\cap C_\calB^{2, 1} (Q_k, V, \alpha_1))\neq \emptyset\} \\
+            S_{Q_k}^\prime &:= \{2R_k: \dist(2R_k, Q_k)\geq s\cdot\side Q_k, 2R_k\subset 2sQ_k\cap C_\calB^{2, 1} (Q_k, V, \alpha_1)\} \\
+            S_{Q_k}^{\prime\prime} &:= S_{Q_k} \setminus S_{Q_k}^\prime
+        \end{split}
+    \end{equation*}
+    }
+    where $2R_k$ is the dilation cube of the dyadic cube $R_k$ with the same side length as $Q_k$. Then for any $2R_k\in S_{Q_k}^\prime$, by Lemma \ref{lemma:s-guarantee-containQ-between-2alpha} (\ref{lemma-1:s-guarantee-containQ-between-2alpha}), $2R_k\subset  C_\calB^{2,2}(Q_k, V, \alpha_2)$ and apparently $2R_k\subset  C_\calB^{2,1}(Q_k, V, \alpha_2)\cap 2sQ_k$ as well{\color{red} ($2R_k\subset  C_\calB^{2}(Q_k, V, \alpha_2)\cap 2sQ_k$, too)}. Then, fix $2^n=n(s), n\in\nn$ such that $2^n\geq 2(\sqrt{2}+1)s + 3\sqrt{2}$, then by Lemma \ref{lemma:s-guarantee-containQ-between-2alpha} (\ref{lemma-2:s-guarantee-containQ-between-2alpha}), $2sQ_k\subset 2^n R_k$. Now assume that there are some $\mu$-a.e. $x$ are contained in $2R_k$, then by (\ref{eq:delta-4-limQ-2sQ-0}) and Lemma \ref{lemma:doubling-meaure-4cubes} (\ref{eq:doubling4cubes}), 
+    \begin{equation*}
+        \mu(2^n R_k)\leq K^{3n-3}\mu(2R_k)\leq K^{3n-3}\mu(C_\calB^{2,1}(Q, V, \alpha_2)\cap 2sQ_k) < \delta K^{3n-3} \mu(2sQ_k)
+    \end{equation*}
+    which is a contradiction if we choose $\delta<K^{-3n+3}$. Thus, 
+    \begin{equation*}
+        \mu(S_{Q_k}^\prime) = \mu(\bigcup_{2R_k\in S_{Q_k}^\prime} 2R_k)=\sum_{2R_K \in S^\prime_{Q_k}}\mu(2R_k)=0
+    \end{equation*}
+    Similarly, we will consider any $2R_k^\prime\in S^{\prime\prime}_{Q_k}$. Now fix $2^m = m(s), m\in\nn$ such that $2^m \geq (3\sqrt{2}+2)s + 3\sqrt{2}$ and then by Lemma \ref{lemma:s-guarantee-containQ-between-2alpha} (\ref{lemma-2:s-guarantee-containQ-between-2alpha}), $2R_k^\prime \subset  3sQ_k \subset 2^m R_k$. Then with the similar contradiction proof noting that $\mu(2sQ_k)\leq \mu(3sQ_k)$, we can say $\mu(S_{Q_k}^{\prime\prime})=0$. Hence, $\mu(S_{Q_k}) = \mu(S_{Q_k}^\prime \cup S_{Q_k}^{\prime\prime}) = 0$. {\color{red}Note that this will hold for all dyadic cubes with the smaller side length than $Q_k$.}
+    
+    Assume that for $\mu$-a.e. $x\in Q_k$, any $y\in C_\calB(x, V, \alpha_1)$, we have $\dist(x-y,V)>\alpha_1|x-y|$. {\color{red}Choose $k^\prime > k$, and then there exists dyadic cube $Q_{k^\prime}\ni x$ such that $(\sqrt{2}+s)\cdot 2^{-k^\prime} \leq |y-x|$. Then $\dist(y, Q_{k^\prime})|\geq |y-x|-\dist(x, \partial Q_{k^\prime})\geq (\sqrt{2} +s-\sqrt{2})\side Q_{k^\prime} = s\cdot\side Q_{k^\prime}$, so that $y\in S_{Q_{k^\prime}}$.}
+    Hence, $C_\calB(x, V, \alpha_1)\subset \bigcup_{i=k}^\infty \{S_{Q_i}: x\in Q_i\subset Q_k\}$. Thus, for $\mu$-a.e. $x\in E$ where $x$ must be contained in only one $Q_k$,
+    \begin{equation*}
+        \begin{split}
+            \mu(C_\calB(x, V, \alpha_1))\leq \mu\left( \bigcup_{i=k}^\infty \left\{S_{Q_i}:x\in Q_i\subset Q_k \right)\}\right) = 0
+        \end{split}
+    \end{equation*}
+    It follows immediately that for $\mu$-a.e. $x\in E$, $\mu(C_\calB(x, V, \alpha_1)) = 0$. Applying Corollary \ref{LisaCoro7.1}, the sufficient condition holds then.
+
+    {\color{red}
+    To prove the necessary condition, suppose that $E$ is contained in a collection of Lipschitz graphs $\{\Gamma_i\}$ where $\Gamma_i = \{(x, f_i(x)) : (x, f(x))\in E\cap \Gamma_i\}\subset V\times V^\perp = \rr^2$ where $f_i$ is a Lipschitz function $f_i: V\rightarrow V^\perp$ with Lipschitz constant $L_i$ at most $\sqrt{\alpha_2^2/(1-\alpha_2^2)}$. Let any point $p = (x_1, f_i(x_1)), q = (x_2, f_i(x_2))\in E\cap \Gamma_i$, then we have $|f_i(x_1)-f_i(x_2)| \leq L_i |x_1- x_2|$. Consider the good cone $C_\calG(p, V, \alpha_2)$, then, 
+    \begin{align*}
+        |p-q| = \sqrt{|x_1-x_2|^2 + |f_i(x_1) - f_i(x_2)|^2} 
+        \geq \sqrt{\frac{1}{L_i^2} + 1} |f_i(x_1) - f_i(x_2)|  
+        \geq \frac{1}{\alpha_2} \dist(p-q, V)
+    \end{align*}
+    Thus, $q\in C_\calG(p, V, \alpha_2)$. As $p,q, \Gamma_i$ arbitrary, $E\subset C_\calG(x, V, \alpha_2), \forall x\in E$. Now, for $Q_k\ni x$,
+    \begin{equation}\label{containment-necessary-condition}
+        C_\calB^{2}(Q_k, V, \alpha_2)\cap 2sQ_k \subset C_\calB(x,V, \alpha_2) \cap 2sQ_k \subset 2sQ_k \setminus C_\calG(x, V, \alpha_2) \subset 2sQ_k \setminus E   
+    \end{equation}
+    Next, we claim that
+    \begin{equation}\label{eq:muE/2sQ-/-mu2sQ-0}
+        \lim_{k\rightarrow \infty}\frac{\mu(2sQ_k \setminus E)}{\mu(2sQ_k)} =0
+    \end{equation}
+    We choose $r_k = (\sqrt{2}s + \sqrt{2}/2) \cdot 2^{-k}$ such that apparently $2sQ_k\subset B(x,r_k)\subset 4sQ_k$ for any $x\in Q_k$. Note that by our choice of $r_k$, when $k\rightarrow\infty$, then $r_k\rightarrow 0$. By Lemma \ref{lemma:doubling-meaure-4cubes} and Lemma \ref{coro:mattila-coro-2.14},
+    \begin{equation*}
+        \begin{split}
+            \lim_{k\rightarrow \infty} \frac{\mu(2sQ_k \setminus E)}{\mu(2sQ_k)} 
+            \leq \lim_{k\rightarrow \infty} \frac{\mu(2sQ_k \setminus E)}{K^{-3}\mu(4sQ_k)} 
+            \leq K^3 \lim_{k\rightarrow \infty} \frac{\mu(B(x, r_k) \setminus E)}{\mu(B(x, r_k))} = 
+            0
+        \end{split}
+    \end{equation*}
+    Therefore (\ref{eq:muE/2sQ-/-mu2sQ-0}) holds. Combining (\ref{containment-necessary-condition}),
+    \begin{equation*}
+        \lim_{k\rightarrow \infty}\frac{\mu(C_\calB^{2}(Q_k, V, \alpha_2)\cap 2sQ_k)}{\mu(2sQ_k)} =0
+    \end{equation*}
+    This completes the proof of the necessary condition. 
+    }
+\end{proof}
+
+
+
+
+\newpage
+\subsection{July 7 Complete Necessary Condition for the Lemma}
+\begin{lemma}[Sufficient Condition for Geometric Lemma]\label{lemma:Suf-4-Geo-Lemma} Let $V\in G(1,2)$, $\alpha\in(0,1)$, non-empty set $E\subset \rr^2$. If there exists a Lipschitz function $f: V\rightarrow V^\perp$ with Lipschitz constant at most $\alpha$, such that $E$ is contained in the Lipschitz graph $\Gamma = \{(x, f(x)) : x\in V\}\subset V\times V^\perp = \rr^2$, then $E\subset C_\calG(p, V, \alpha), \forall p\in E$.
+\end{lemma}
+\begin{proof}
+    Assume the Lipschitz constant is $L\leq \alpha$. Let any point $p = (x_1, f(x_1)), q = (x_2, f(x_2))\in E\subset \Gamma$, then we have $|f(x_1)-f(x_2)| \leq L |x_1- x_2|$. Consider the good cone $C_\calG(p, V, \alpha)$. Then, 
+    \begin{equation*}
+            \dist(p-q, V) = |f(x_1)- f(x_2)| 
+            \leq L|x_1-x_2| 
+            \leq \alpha \sqrt{|x_1-x_2|^2 + |f(x_1)-f(x_2)|^2}
+            = \alpha |p-q|
+    \end{equation*}
+    Thus, $q\in C_\calG(p, V, \alpha)$. As $p,q$ arbitrary, $E\subset C_\calG(p, V, \alpha), \forall p\in E$
+\end{proof}
+
+\begin{lemma}\label{lemma:limmuE/2sQ-/-mu2sQ-0}
+    Let $\mu$ be a Radon measure on $\rr^2$ and $E\subset \rr^2$ measurable. For $x\in E$, there exists $K\geq 1$ such that $\mu(B(x, 2r))\leq K\mu(B(x,r))$. For any dyadic cube $Q_k$ with side length $2^{-k}$ contained $\mu$-a.e. $x\in E$, $s>3\sqrt{2}$(this is just simply set for this proof)
+    \begin{equation*}
+        \lim_{k\rightarrow \infty}\frac{\mu(2sQ_k \setminus E)}{\mu(2sQ_k)} =0
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    We choose $r$ where $(\sqrt{2}s + \sqrt{2}/2) \cdot 2^{-k} \leq r \leq (2\sqrt{2}s - \sqrt{2}/2)\cdot 2^{-k} $ such that $2sQ_k\subset B(x,r)\subset 4sQ_k$ for any $x\in Q_k$. Note that by our choice of $r$, when $k$ is large enough, $r < \epsilon, \forall \epsilon > 0$. Recall that by Lemma \ref{coro:mattila-coro-2.14}, for existed $\epsilon > 0$, whenever $r<\epsilon$, 
+    \begin{equation}\label{eq:muE/B-/-muB-delta}
+        \frac{\mu(E \setminus B(x, r))}{\mu(B(x, r))} < \frac{\delta}{K^3}, \quad \forall\delta > 0
+    \end{equation}
+    Besides, considering Lemma \ref{lemma:doubling-meaure-4cubes} and containment, and combining (\ref{eq:muE/B-/-muB-delta}), there exists a large enough $k$ such that 
+    \begin{equation*}
+        \frac{\mu(2sQ_k \setminus E)}{\mu(2sQ_k)}\leq \frac{\mu(2sQ_k \setminus E)}{K^{-3}\mu(4sQ_k)} \leq K^3 \frac{\mu(B(x, r) \setminus E)}{\mu(B(x, r))} < K^3\frac{\delta}{K^3} = \delta
+    \end{equation*}
+    Therefore the conclusion holds. 
+\end{proof}
+
+\textit{Alternative Proof.} In the fixed dyadic cube system, we can divide $E$ into countable many $E_i$ such that $\bigcup_i E_i = E$ and $E_i$ is contained in only one dilation cube $2sQ_{E_i, k}$ with $\side Q_{E_i, k} = 2^{-k}$($E_i$ may not be disjoint).  Define the Radon measure $\lambda_i$ by $\lambda_i(E_i) = \int_{E_i} \chi_{E_i} d \mu$ such that $\mu(E_i) = \lambda_i(E_i)$, $\mu(2sQ_{E_i, k}\setminus E_i) = \lambda_i(2sQ_{E_i, k}\setminus E_i) = 0$. Then $\lambda_i \ll \mu$ and by {\cite[Theorem 2.12(2)]{mattila1999geometry}}, considering $\mu$-a.e. $x\in E_i$
+\begin{equation*}
+    \int_{2sQ_{E_i, k}} D(\lambda_i, \mu, x)d\mu x = \lambda(2sQ_{E_i, k}) = \int_{2sQ_{E_i, k}} \chi_{E_i} d\mu
+\end{equation*}
+Hence, for any dyadic $Q_k$ conatined $x\in E$,
+\begin{equation*}
+    \begin{split}
+        \lim_{k\rightarrow\infty} \frac{\mu(E\cap 2sQ_k)}{\mu(2sQ_k)} &=
+        \lim_{k\rightarrow \infty} \frac{1}{\mu(2sQ_{E_i, k})}\int_{2sQ_{E_i, k}} \chi_{E_i} d\mu \\
+        &= \lim_{k\rightarrow \infty} \frac{\lambda_i(2sQ_{E_i, k})}{\mu(2sQ_{E_i, k})} \\
+        &= \lim_{k\rightarrow\infty} \frac{\lambda_i(E_i\cup (2sQ_{E_i,k}\setminus E_i))}{\mu(E_i\cup (2sQ_{E_i,k}\setminus E_i))} \\
+        &= \lim_{k\rightarrow\infty} \frac{\lambda_i(E_i) +0}{\mu(E_i) +0} \\ 
+        &= 1
+    \end{split}
+\end{equation*}
+Therefore, 
+\begin{equation*}
+    \lim_{k\rightarrow\infty} \frac{\mu(2sQ_k\setminus E)}{\mu(2sQ_k)} = \lim_{k\rightarrow\infty} \frac{\mu(2sQ_k\setminus (2sQ_k\cap E))}{\mu(2sQ_k)} = \lim_{k\rightarrow\infty} \frac{\mu(2sQ_k)-\mu(2sQ_k\cap E)}{\mu(2sQ_k)} = 1 - 1 = 0
+\end{equation*}
+
+
+\begin{lemma}
+    Let $\mu$ be a measure on $\rr^2$ and $E$ denote the set of points $\mu$-a.e. $x\in\rr^2$. For $x\in E$, there exists $K\geq 1$ such that $\mu(B(x, 2r))\leq K\mu(B(x,r))$. For $0<\alpha_2<\alpha_1<1$, $V\in G(1,2)$, any dyadic cube $Q_k$ contained $\mu$-a.e. $x$ in $\rr^2$ with the side length $2^{-k}, k\in\nn$, and a dilation constant $s\in\nn$ such that $s \geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}$, when $Q\downarrow x$ (i.e. $k\rightarrow\infty \Rightarrow 2^{-k}\downarrow 0$),
+    \begin{equation}
+        \frac{\mu(C_\calB^{2}(Q_k, V, \alpha_2)\cap 2sQ_k)}{\mu(2sQ_k)} \rightarrow 0
+    \end{equation}
+    if and only if $E$ is $\mu$-carried by Lipschitz graphs with respect to $V$ and the Lipschitz constant at most $\alpha_2$
+\end{lemma}
+\begin{proof}
+    To prove the necessary condition, suppose that $E$ is conatined in the Lipschitz graph $\Gamma = \{(x, f(x)) : x\in V\}\subset V\times V^\perp = \rr^2$ where $f$ is a Lipschitz function $f: V\rightarrow V^\perp$ with Lipschitz constant at most $\alpha_2$. Assume the Lipschitz constant is $L\leq \alpha_2$. Let any point $p = (x_1, f(x_1)), q = (x_2, f(x_2))\in E\subset \Gamma$, then we have $|f(x_1)-f(x_2)| \leq L |x_1- x_2|$. Consider the good cone $C_\calG(p, V, \alpha_2)$, then, 
+    \begin{equation*}
+            \dist(p-q, V) = |f(x_1)- f(x_2)| 
+            \leq L|x_1-x_2| 
+            \leq \alpha_2 \sqrt{|x_1-x_2|^2 + |f(x_1)-f(x_2)|^2}
+            = \alpha |p-q|
+    \end{equation*}
+    Thus, $q\in C_\calG(p, V, \alpha)$. As $p,q$ arbitrary, $E\subset C_\calG(p, V, \alpha), \forall p\in E$. Now, for $Q_k\ni x$,
+    \begin{equation}
+        C_\calB^{2}(Q_k, V, \alpha_2)\cap 2sQ_k \subset C_\calB(x,V, \alpha_2) \cap 2sQ_k \subset 2sQ_k \setminus C_\calG(x, V, \alpha_2) \subset 2sQ_k \setminus E   
+    \end{equation}
+    Next, we claim that
+    \begin{equation}
+        \lim_{k\rightarrow \infty}\frac{\mu(2sQ_k \setminus E)}{\mu(2sQ_k)} =0
+    \end{equation}
+    We choose $r$ where $(\sqrt{2}s + \sqrt{2}/2) \cdot 2^{-k} \leq r \leq (2\sqrt{2}s - \sqrt{2}/2)\cdot 2^{-k} $ such that $2sQ_k\subset B(x,r)\subset 4sQ_k$ for any $x\in Q_k$. Note that by our choice of $r$, when $k$ is large enough, $r < \epsilon, \forall \epsilon > 0$. Recall that by Lemma \ref{coro:mattila-coro-2.14}, for existed $\epsilon > 0$, whenever $r<\epsilon$, 
+    \begin{equation}
+        \frac{\mu(E \setminus B(x, r))}{\mu(B(x, r))} < \frac{\delta}{K^3}, \quad \forall\delta > 0
+    \end{equation}
+    Besides, considering Lemma \ref{lemma:doubling-meaure-4cubes} and containment, and combining (\ref{eq:muE/B-/-muB-delta}), there exists a large enough $k$ such that 
+    \begin{equation*}
+        \frac{\mu(2sQ_k \setminus E)}{\mu(2sQ_k)}\leq \frac{\mu(2sQ_k \setminus E)}{K^{-3}\mu(4sQ_k)} \leq K^3 \frac{\mu(B(x, r) \setminus E)}{\mu(B(x, r))} < K^3\frac{\delta}{K^3} = \delta
+    \end{equation*}
+    Therefore (\ref{eq:muE/2sQ-/-mu2sQ-0}) holds. Combining (\ref{containment-necessary-condition}),
+    \begin{equation*}
+        \lim_{k\rightarrow \infty}\frac{\mu(C_\calB^{2}(Q_k, V, \alpha_2)\cap 2sQ_k)}{\mu(2sQ_k)} =0
+    \end{equation*}
+    This completes the proof of the necessary condition. 
+\end{proof}
+
+
+\newpage
+\subsection{July 6 Lemma for \texorpdfstring{$C^{2,1}_\calB(Q, V, \alpha)$}{Lg} and Notes for \texorpdfstring{\cite{mattila1999geometry}}{Lg}}
+
+\begin{definition}[Derivative of $\mu$]
+    Let $\mu$ and $\lambda$ be locally finite Borel measures on $\mathbf{R}^{n}$. The upper and lower derivatives of $\mu$ with respect to $\lambda$ at a point $x \in \mathbf{R}^{n}$ are defined by
+$$
+\begin{aligned}
+&\overline{D}(\mu, \lambda, x)=\limsup _{r \downarrow 0} \frac{\mu(B(x, r))}{\lambda(B(x, r))} \\
+&\underline{D}(\mu, \lambda, x)=\liminf _{r \downarrow 0} \frac{\mu(B(x, r))}{\lambda(B(x, r))}
+\end{aligned}
+$$
+At the points $x$ where the limit exists we define the derivative of $\mu$ by
+$$
+D(\mu, \lambda, x)=\overline{D}(\mu, \lambda, x)=\underline{D}(\mu, \lambda, x)
+$$
+\end{definition}
+
+\begin{definition}[absolutely continuous]
+    Let $\mu$ and $\lambda$ be measures on $\mathbf{R}^{n} .$ We say that $\mu$ is absolutely continuous with respect to $\lambda$ if
+$\lambda(A)=0 \quad$ implies $\mu(A)=0 \quad$ for all $A \subset \mathbf{R}^{n}$\\
+In this case we write
+$$
+\mu \ll \lambda
+$$
+\end{definition}
+
+
+\begin{theorem}[{\cite[Theorem 2.8]{mattila1999geometry}}]
+    Let $\mu$ be a Radon measure on $\mathbf{R}^{n}, A \subset \mathbf{R}^{n}$ and $\mathcal{B}$ a family of closed balls such that each point of $A$ is the centre of arbitrarily small balls of $\mathcal{B}$, that is,
+    $$
+    \inf \{r: B(x, r) \in \mathcal{B}\}=0 \quad \text { for } x \in A
+    $$
+    Then there are disjoint balls $B_{i} \in \mathcal{B}$ such that
+    $$
+    \mu\left(A \backslash \bigcup_{i} B_{i}\right)=0
+    $$    
+\end{theorem}
+
+
+
+\begin{lemma}[{\cite[Lemma 2.13]{mattila1999geometry}}]
+    Let $\mu$ and $\lambda$ be Radon measures on $\mathbf{R}^{n}, 0<t<\infty$ and $A \subset \mathbf{R}^{n}$.
+    \begin{enumerate}[(1)]
+        \item If $\underline{D}(\mu, \lambda, x) \leq t$ for all $x \in A$, then $\mu(A) \leq t \lambda(A)$
+        \item If $\overline{D}(\mu, \lambda, x) \geq t$ for all $x \in A$, then $\mu(A) \geq t \lambda(A)$
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    (1) Let $\varepsilon>0$. Using Definition $1.5(4)$ we find an open set $U$ such that $A \subset U$ and $\lambda(U) \leq \lambda(A)+\varepsilon .$ An application of Theorem $2.8$ gives disjoint closed balls $B_{i} \subset U$ such that
+$$
+\mu\left(B_{i}\right) \leq(t+\varepsilon) \lambda\left(B_{i}\right) \quad \text { and } \quad \mu\left(A \backslash \bigcup_{i} B_{i}\right)=0
+$$
+Then
+$$
+\begin{aligned}
+\mu(A) & \leq \sum_{i} \mu\left(B_{i}\right) \leq(t+\varepsilon) \sum_{i} \lambda\left(B_{i}\right) \\
+& \leq(t+\varepsilon) \lambda(U) \leq(t+\varepsilon)(\lambda(A)+\varepsilon)
+\end{aligned}
+$$
+Letting $\varepsilon \downarrow 0$, we get $\mu(A) \leq t \lambda(A)$, which proves $(1) .(2)$ can be proven in the same way.
+\end{proof}
+
+\begin{theorem}[{\cite[Theorem 2.12(2)]{mattila1999geometry}}]
+    Let $\mu$ and $\lambda$ be Radon measures on $\rr^n$. For all Borel sets $B\subset \rr^n$, 
+    $$\int_{B} D(\mu, \lambda, x) d \lambda x \leq \mu(B)$$
+    with equality if $\mu\ll\lambda$
+\end{theorem}
+
+\begin{corollary}[{\cite[Corollary 2.14]{mattila1999geometry}}]\label{coro:mattila-coro-2.14} $ $
+    \begin{enumerate}
+        \item If $A \subset \mathbf{R}^{n}$ is $\lambda$ measurable, then the limit
+        $$
+        \lim _{r \downarrow 0} \frac{\lambda(A \cap B(x, r))}{\lambda(B(x, r))}
+        $$
+        exists and equals 1 for $\lambda$ almost all $x \in A$ and equals 0 for $\lambda$ almost all $x \in \mathbf{R}^{n} \backslash A$.
+        \item If $f: \mathbf{R}^{n} \rightarrow \overline{\mathbf{R}}$ is locally $\lambda$ integrable, then
+        $\lim _{r \downarrow 0} \frac{1}{\lambda(B(x, r))} \int_{B(x, r)} f d \lambda=f(x) \quad$ for $\lambda$ almost all $x \in \mathbf{R}^{n}$.
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    (1) follows from (2) with $f=\chi_{A}$. To prove (2) we may assume $f \geq 0 .$ Define the Radon measure $\mu$ by $\mu(A)=\int_{A} f d \lambda .$ Then $\mu \ll \lambda$ and Theorem $2.12(2)$ gives
+$$
+\int_{B} D(\mu, \lambda, x) d \lambda x=\mu(B)=\int_{B} f d \lambda
+$$
+for all Borel sets $B$. Obviously this means that $f(x)=D(\mu, \lambda, x)$ for $\lambda$ almost all $x \in \mathbf{R}^{n}$, which proves (2).
+\end{proof}
+
+
+
+\newpage
+\begin{corollary}[{\cite[Corollary 7.1]{naples2020}}]
+    Let $\mu$ be a Radon measure on $H, V$ be an $m$-dimensional linear plane in $H$, $\alpha \in(0,1)$, and $0<r<\infty$. If for $\mu$-a.e. $x \in H$
+    $$
+    \mu\left(C_{\mathcal{B}}(x, r, V, \alpha)\right)=0
+    $$
+    then $\mu$ is carried by $m$-Lipschitz graphs.
+\end{corollary}
+
+
+
+\begin{lemma}
+    For $0<\alpha_2<\alpha_1<1$, $V\in G(1, 2)$, a dyadic cube $Q$ in $\rr^2$, and $s\geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}$, a dilation cube $2R$ such that $R$ is the dyadic cube with the same side length as $Q$ and
+    \begin{equation*}
+        \dist(Q, 2R)\geq s\cdot \side Q
+    \end{equation*}
+    then
+    \begin{enumerate}[(i)]
+        \item  {\color{red} if $2R\subset C_\calB^{2,1}(Q, V, \alpha_1)$, then $2R\subset  C_\calB^{2,2}(Q, V, \alpha_2)$.}
+        \item  if for $n = n(s) \in \nn$ such that $2^n\geq 2(\sqrt{2}+1)s + 3\sqrt{2}$, then $2sQ\subset 2^n R $.
+        \item if for $m = m(s) \in \nn$ such that $2^m \geq (3\sqrt{2}+2)s + 3\sqrt{2}$, then $3sQ\subset 2^m R$. 
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}[(i)]
+        \item When {\color{red}$2R\subset C_\calB^{2,1}(Q, V, \alpha_1)$}, there exists some $r\in 2R\cap C_\calB^1(Q, V, \alpha_1)$ and hence {\color{red} for any} $q\in Q$ such that $r\in C_\calB(q, V, \alpha_1)$, so $\dist(r-q, V)>\alpha_1|r-q|$. Besides, {\color{red}arbitrary} $r^\prime\in 2R$ and $q^\prime\in Q$ must satisfy $|r-r^\prime|\leq 2\sqrt{2}\cdot\side R$ and $|q-q^\prime|\leq \sqrt{2}\cdot\side Q$, respectively. Assume that $|r-q| = s^\prime\cdot\side Q$ then $s^\prime \geq s$. Since $ |r-r^\prime| \geq|\dist (r^\prime-q^\prime, V)-\dist(r-q, V)| - |q-q^\prime|$, no matter $\dist (r^\prime-q^\prime, V)\leq \dist(r-q, V)$ or $\dist (r^\prime-q^\prime, V)\geq \dist(r-q, V)$,
+
+        \begin{align*}
+            \dist(r^\prime-q^\prime, V) &\geq \dist(r-q, V)-|q-q^\prime|-|r-r^\prime| \\
+            &> \alpha_1|r-q| - 3\sqrt{2} \cdot\side Q\\
+            &\geq (\alpha_1 s^\prime- 3\sqrt{2})\cdot\side Q\\
+            &\geq \alpha_2(s^\prime+3\sqrt{2})\cdot\side Q  &&(s^\prime \geq s \geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}) \\
+            &\geq \alpha_2(|r-q|+|r-r^\prime|+|q-q^\prime|)\\
+            &\geq \alpha_2|r^\prime-q^\prime|
+        \end{align*}
+
+        Therefore, {\color{red}$2R\subset \{R: R\subset \bigcap_{q^\prime\in Q} C_\calB(q^\prime, V, \alpha)\} =  C_\calB^{2,2}(Q, V, \alpha_2)$.}
+        \item Assume for all $q^{\prime\prime}\in 2sQ$, then
+        \begin{equation*}
+            \begin{split}
+                |\centerof 2R - q^{\prime\prime}| &\leq \left(\frac{1}{2}\diam 2R + \dist(2R, Q) + \frac{1}{2}\diam Q + \frac{1}{2}\diam 2sQ\right)\\
+                &\leq (\sqrt{2}+s+\frac{\sqrt{2}}{2} + \sqrt{2}s ) \side Q \\
+                &\leq \frac{2^n}{2}\side R = \frac{1}{2}\side 2^n R
+            \end{split}
+        \end{equation*}
+        which implies that $\displaystyle 2sQ \subset B(\centerof R, \frac{1}{2}\side 2^n R)\subset 2^n R$.
+        \item Similarly, assume $\forall q^{\prime\prime\prime}\in 3sQ$, then
+        \begin{equation*}
+            \begin{split}
+                |\centerof 2R - q^{\prime\prime\prime}| &\leq (\frac{1}{2}\diam 2R + \dist(2R, Q) + \frac{1}{2}\diam Q + \frac{1}{2}\diam 3sQ)\\
+                &\leq (\sqrt{2}+s+\frac{\sqrt{2}}{2} + \frac{3}{2}\sqrt{2}s ) \side Q \\
+                &\leq \frac{2^m}{2}\side R = \frac{1}{2}\side 2^m R
+            \end{split}
+        \end{equation*}
+        which implies that $\displaystyle 3sQ \subset B(\centerof R, \frac{1}{2}\side 2^m R)\subset 2^m R$.
+    \end{enumerate}
+\end{proof}
+
+
+\begin{lemma}
+    If there exist $K\geq1$, such that for $\mu$-a.e. $x\in \rr^2, 0<r<\infty$, 
+    \begin{equation}
+        \mu(B(x, 2r))\leq K\mu(B(x,r))
+    \end{equation} 
+    then for any dyadic cube $Q$ containing $x$ where (\ref{eq:doubling}) holds, $n\in \nn, n\geq 2$,
+    \begin{equation}
+        \mu(2^n Q)\leq K^{3n-3} \mu(2Q)
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    By the half open definition of the dyadic cube, for $\mu$-a.e. $x\in \rr^2$, $x$ must be in only one cube $Q$. Let $r = \side Q /2$. We claim that $2^n Q\subset B(x, 2^{3n-3}r)$ and $B(x, r)\subset 2Q$. For any $q\in 2^n Q$, $|\centerof Q -x|\leq \sqrt{2}/2\cdot\side Q $ and $|\centerof 2^n Q -q|\leq \sqrt{2}/2 \cdot\side 2^n Q  = 2^{n-1}\sqrt{2}\cdot \side Q$. Note that $n\geq 2$, so
+    \begin{equation*}
+        |x-q| \leq \left(\frac{\sqrt{2}}{2} + 2^{n-1}\sqrt{2}\right) \side Q < \frac{2^{3n-3}}{2} \side Q = 2^{3n-3}r
+    \end{equation*}
+Then $q\in B(x, 2^{3n-3}r)$ and thus $2^n Q\subset B(x, 2^{3n-3}r)$. Consider that for all $p\in \bigcup_{q\in Q} B(q, r)\setminus Q$, $\dist(p, \partial Q)\leq r = \dist(\partial 2Q, Q)$, so $B(x, r)\subset \bigcup_{q\in Q} B(q, r)\subset 2Q$. Therefore, by the containments and (\ref{eq:doubling}), 
+    \begin{equation*}
+        \mu(2^n Q) \leq \mu(B(x, 2^{3n-3}r)) \leq \prod_{i=1}^{3n-3} K \cdot \mu(B(x,r))\leq K^{3n-3}\mu(B(x,r))\leq K^{3n-3}\mu(2Q)
+    \end{equation*}
+\end{proof}
+
+\begin{lemma}
+    Let $\mu$ be a measure on $\rr^2$ and $E$ denote the set of points $\mu$-a.e. $x\in\rr^2$.For $x\in E$, there exists $K\geq 1$ such that $\mu(B(x, 2r))\leq K\mu(B(x,r))$. For $0<\alpha_2<\alpha_1<1$, $V\in G(1,2)$, any dyadic cube $Q_k$ contained $\mu$-a.e. $x$ in $\rr^2$ with the side length $2^{-k}, k\in\nn$, and a dilation constant $s\in\nn$ such that $s \geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}$, when $Q\downarrow x$ (i.e. $k\rightarrow\infty \Rightarrow 2^{-k}\downarrow 0$),
+    \begin{equation}
+        \frac{\mu(C_\calB^{2,1}(Q_k, V, \alpha_2)\cap 2sQ_k)}{\mu(2sQ_k)} \rightarrow 0
+    \end{equation}
+    if and only if $E$ is $\mu$-carried by Lipschitz graphs {\color{red}with respect to $V$ and the Lipschitz constant $\alpha_1$}
+\end{lemma}
+\begin{proof}
+    We first show the sufficient condition holds. By (\ref{eq:limBC-2sQ-0}) there exists a large enough $k$ such that for any $\delta>0$,
+    \begin{equation}
+        \mu(C_\calB^{2,1}(Q_k, V, \alpha_2)\cap 2sQ) < \delta\mu(2sQ_k)
+    \end{equation}
+    Fix a $k$ and $Q_k\ni x$. Now construct sets:
+    \begin{equation*}
+        \begin{split}
+            S_{Q_k} &:= \{2R_k: \dist(2R_k, Q_k)\geq s\cdot\side Q_k, 2R_k\cap(2sQ_k\cap C_\calB^{2, 1} (Q_k, V, \alpha_1))\neq \emptyset\} \\
+            S_{Q_k}^\prime &:= \{2R_k: \dist(2R_k, Q_k)\geq s\cdot\side Q_k, 2R_k\subset 2sQ_k\cap C_\calB^{2, 1} (Q_k, V, \alpha_1)\} \\
+            S_{Q_k}^{\prime\prime} &:= S_{Q_k} \setminus S_{Q_k}^\prime
+        \end{split}
+    \end{equation*}
+    where $2R_k$ is the dilation cube of the dyadic cube $R_k$ with the same side length as $Q_k$. Then for any $2R_k\in S_{Q_k}^\prime$, by Lemma \ref{lemma:s-guarantee-containQ-between-2alpha} (\ref{lemma-1:s-guarantee-containQ-between-2alpha}), $2R_k\subset  C_\calB^{2,2}(Q_k, V, \alpha_2)$ and apparently $2R_k\subset  C_\calB^{2,1}(Q_k, V, \alpha_2)\cap 2sQ_k$ as well. Then, fix $2^n=n(s), n\in\nn$ such that $2^n\geq 2(\sqrt{2}+1)s + 3\sqrt{2}$, then by Lemma \ref{lemma:s-guarantee-containQ-between-2alpha} (\ref{lemma-2:s-guarantee-containQ-between-2alpha}), $2sQ_k\subset 2^n R_k$. Now assume that there are some $\mu$-a.e. $x$ are contained in $2R_k$, then by (\ref{eq:delta-4-limQ-2sQ-0}) and Lemma \ref{lemma:doubling-meaure-4cubes} (\ref{eq:doubling4cubes}), 
+    \begin{equation*}
+        \mu(2^n R_k)\leq K^{3n-3}\mu(2R_k)\leq K^{3n-3}\mu(C_\calB^{2,1}(Q, V, \alpha_2)\cap 2sQ_k) < \delta K^{3n-3} \mu(2sQ_k)
+    \end{equation*}
+    which is a contradiction if we choose $\delta<K^{-3n+3}$. Thus, 
+    \begin{equation*}
+        \mu(S_{Q_k}^\prime) = \mu(\bigcup_{2R_k\in S_{Q_k}^\prime} 2R_k)=\sum_{2R_K \in S^\prime_{Q_k}}\mu(2R_k)=0
+    \end{equation*}
+    Similarly, we will consider any $2R_k^\prime\in S^{\prime\prime}_{Q_k}$. Now fix $2^m = m(s), m\in\nn$ such that $2^m \geq (3\sqrt{2}+2)s + 3\sqrt{2}$ and then by Lemma \ref{lemma:s-guarantee-containQ-between-2alpha} (\ref{lemma-2:s-guarantee-containQ-between-2alpha}), $2R_k^\prime \subset  3sQ_k \subset 2^m R_k$. Then with the similar contradiction proof noting that $\mu(2sQ_k)\leq \mu(3sQ_k)$, we can say $\mu(S_{Q_k}^{\prime\prime})=0$. Hence, $\mu(S_{Q_k}) = \mu(S_{Q_k}^\prime \cup S_{Q_k}^{\prime\prime}) = 0$. {\color{red}Note that this will hold for all dyalic cubes with the smaller side length than $Q_k$.}
+    
+    Assume that for $\mu$-a.e. $x\in Q_k$, any $y\in C_\calB(x, V, \alpha_1)$, we have $\dist(x-y,V)>\alpha_1|x-y|$. {\color{red}There exists dyadic cube $Q_{k^\prime}\ni x$ such that $(\sqrt{2}+s)\cdot 2^{-k^\prime} \leq |y-x|$. Then $\dist(y, Q_{k^\prime})|\geq |y-x|-\dist(x, \partial Q_{k^\prime})\geq (\sqrt{2} +s-\sqrt{2})\side Q_{k^\prime} = s\cdot\side Q^{k^\prime}$, so that $y\in S_{Q_{k^\prime}}$.}
+    
+    
+    % If $|x-y|\geq (\sqrt{2} +s)\side Q_k$ then $\dist(y, Q_k)|\geq |y-x|-\dist(x, Q_k)\geq (\sqrt{2} +s-\sqrt{2})\side Q_k = s\cdot\side Q$, so that $y\in S_{Q_k}$. On the other hand, if $|y-x|<(\sqrt{2} +s)\side Q_k$, then there exists $\epsilon_y>0$ such that $\epsilon_y\leq |y-x|$. There also exists a $k^\prime \gg k$ such that for the cube $Q_{k^\prime}, x\in Q_{k^\prime}\subset Q_k$, it satisfies $\epsilon_y\geq (\sqrt{2} +s)\cdot2^{-k^\prime}$, which similarly implies that $y\in S_{Q_k^\prime}$.
+    
+    Hence, $C_\calB(x, V, \alpha_1)\subset \bigcup_{k=1}^\infty \{S_{Q_k}: x\in Q_k\}$. Thus, for $\mu$-a.e. $x\in E$ where $x$ must be contained in only one $Q_k$,
+    \begin{equation*}
+        \begin{split}
+            \mu(C_\calB(x, V, \alpha_1))\leq \mu\left( \bigcup_{k=1}^\infty \left\{S_{Q_k}:x\in Q_k \right)\}\right) = 0
+        \end{split}
+    \end{equation*}
+    It follows immediately that for $\mu$-a.e. $x\in E$, $\mu(C_\calB(x, V, \alpha_1)) = 0$. Applying Corollary \ref{LisaCoro7.1}, the sufficient condition holds then.
+
+
+
+
+    {\color{red}
+    To prove the necessary condition, for any $Q_k$, suppose that $r = \sqrt{2}s\cdot 2^{-k}$ such that $2sQ\subset B(x,r), x\in Q$. By the assumption and Corollary \ref{coro:mattila-coro-2.14}(1), it follows that
+    \begin{equation*}
+        \lim_{r\downarrow 0}\frac{\mu(B(x, r)\setminus E)}{\mu(B(x,r))} =0
+    \end{equation*}
+    Furthermore, applying Lemma \ref{lemma:Suf-4-Geo-Lemma}, for $Q_k\ni x$,
+    $C_\calB^{2,1}(Q_k, V, \alpha)\cap 2sQ_k \subset C_\calB(x, r,V, \alpha)\subset B(x, r)\setminus E$. Then, problem appears
+    \begin{equation*}
+        \lim_{r\downarrow 0}\frac{C_\calB^{2,1}(Q_k, V, \alpha)\cap 2sQ_k}{\mu(2sQ_k)} =0
+    \end{equation*}
+    (need to be proved)
+    \begin{equation*}
+        \lim_{k\rightarrow \infty}\frac{\mu(2sQ_k \setminus E)}{\mu(2sQ_k)} =0
+    \end{equation*}
+
+    \textit{(Another Draft for this proof)} 
+
+    To prove the necessary condition, suppose that $E$ is conatined in the Lipschitz graph $\Gamma = \{(x, f(x)) : x\in V\}\subset V\times V^\perp = \rr^2$ where $f$ is a Lipschitz function $f: V\rightarrow V^\perp$ with Lipschitz constant $\alpha_2$. Then if we choose any $x_1, x_2\in E\subset \Gamma$, $\dist(x_2-x_1, V) = |f(x_2)-f(x_1)| \leq \alpha_2 |x_2-x_1|$. Thus, $x_1\in C_\calG(x_2, V, \alpha_2)$. As $x_1, x_2$ arbitrary, $E\subset C_\calG(x, V, \alpha_2), \forall x\in E$. Now, for $Q_k\ni x$,
+    \begin{equation}
+        C_\calB^{2,1}(Q_k, V, \alpha_2)\cap 2sQ_k \subset C_\calB(x,V, \alpha_2) \cap 2sQ_k \subset 2sQ_k \setminus C_\calG(x, V, \alpha_2) \subset 2sQ_k \setminus E   
+    \end{equation}
+    By SOMESOMESOME Lemma,
+    \begin{equation*}
+        \lim_{k\rightarrow \infty}\frac{\mu(2sQ_k \setminus E)}{\mu(2sQ_k)} =0
+    \end{equation*}
+    Combining (\ref{containment-necessary-condition}),
+    \begin{equation*}
+        \lim_{k\rightarrow \infty}\frac{\mu(C_\calB^{2,1}(Q_k, V, \alpha_2)\cap 2sQ_k)}{\mu(2sQ_k)} =0
+    \end{equation*}
+    This completes the proof of the necessary condition. 
+    }
+\end{proof}
+
+{\color{red}
+\begin{lemma} Let $\mu$ be a Radon measure on $\rr^n$ and $E\subset \rr^n$ measurable. For any dyadic cube $Q_k$ with side length $2^{-k}$ contained $\mu$-a.e. $x\in E$,
+    \begin{equation*}
+        \lim_{k\rightarrow \infty}\frac{\mu(2sQ_k \setminus E)}{\mu(2sQ_k)} =0
+    \end{equation*}
+\end{lemma}
+
+
+
+
+
+
+
+\begin{lemma}[Sufficient Condition for Geometric Lemma] Let $V\in G(1,2)$, $\alpha\in(0,1)$, non-empty set $E\subset \rr^2$. If there exists a Lipschitz function $f: V\rightarrow V^\perp$ with Lipschitz constant $\alpha$ such that $E$ is contained in the Lipschitz graph $\Gamma = \{(x, f(x)) : x\in V\}\subset V\times V^\perp = \rr^2$, then $E\subset C_\calG(x, V, \alpha), \forall x\in E$.
+\end{lemma}
+\begin{proof}
+    Since $\Gamma\subset V\times V^\perp$ and if we choose any $x_1, x_2\in E\subset \Gamma$, then $\dist(x_2-x_1, V) = |f(x_2)-f(x_1)| \leq \alpha |x_2-x_1|$. Thus, $x_1\in C_\calG(x_2, V, \alpha)$. As $x_1, x_2$ arbitrary, $E\subset C_\calG(x, V, \alpha), \forall x\in E$. 
+\end{proof}
+}
+
+
+
+
+\newpage
+\subsection{July 1-5 Necessary Condition for the Lemma}
+\begin{lemma}
+    Let $\mu$ be a measure on $\rr^2$ and $E$ denote the set of points $\mu$-a.e. $x\in\rr^2$.For $x\in E$, there exists $K\geq 1$ such that $\mu(B(x, 2r))\leq K\mu(B(x,r))$. For $0<\alpha_2<\alpha_1<1$, $V\in G(1,2)$, any dyadic cube $Q_k$ contained $\mu$-a.e. $x$ in $\rr^2$ with the side length $2^{-k}, k\in\nn$, and a dilation constant $s\in\nn$ such that $s \geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}$, when $Q\downarrow x$ (i.e. $k\rightarrow\infty \Rightarrow 2^{-k}\downarrow 0$),
+    \begin{equation}
+        \frac{\mu(C_\calB^{1,1}(Q, V, \alpha_2)\cap 2sQ)}{\mu(2sQ)} \rightarrow 0
+    \end{equation}
+    if and only if $E$ is $\mu$-carried by Lipschitz graphs.
+\end{lemma}
+\textit{Proof of Necessary Condition.}  verified that the neccesary condition cannot hold. 
+
+
+\newpage
+\subsection{June 30-31 Wrapping everything up}
 \begin{definition}[Distance]
     We define the distance $\dist(X, Y)$ from a set(or a point) $X$ to another set $Y$ by:
     \begin{equation*}
@@ -9,16 +548,16 @@
     \end{equation*}
 \end{definition}
 
-\begin{lemma}\label{lemma:s-guarantee-containQ-between-2alpha}
+\begin{lemma}
     For $0<\alpha_2<\alpha_1<1$, $V\in G(1, 2)$, a dyadic cube $Q$ in $\rr^2$, and a dilation cube $2R$ where $R$ is the dyadic cube with the same side length as $Q$, Let $s\in\nn$ satisify
     \begin{equation}
         \dist(Q, 2R)\geq s\cdot \side Q \geq \frac{3\sqrt{2}(1+\alpha_2)}{\alpha_1-\alpha_2}\cdot \side Q
     \end{equation}
     Then
     \begin{enumerate}[(i)]
-        \item \label{lemma-1:s-guarantee-containQ-between-2alpha} if $2R\subset C_\calB^{1,1}(Q, V, \alpha_1)$, then $2R\subset  C_\calB^{1,2}(Q, V, \alpha_2)$.
-        \item \label{lemma-2:s-guarantee-containQ-between-2alpha} suppose a dilation constant $t = 2^n, n\in\nn$, if $t\geq 2(\sqrt{2}+1)s + 3\sqrt{2}$, then $2sQ\subset tR $.
-        \item \label{lemma-3:s-guarantee-containQ-between-2alpha} another dilation constant $t^\prime = 2^m, m\in\nn$, if $t^\prime \geq (3\sqrt{2}+2)s + 3\sqrt{2}$, then $3sQ\subset t^\prime R$.
+        \item  if $2R\subset C_\calB^{1,1}(Q, V, \alpha_1)$, then $2R\subset  C_\calB^{1,2}(Q, V, \alpha_2)$.
+        \item  suppose a dilation constant $t = 2^n, n\in\nn$, if $t\geq 2(\sqrt{2}+1)s + 3\sqrt{2}$, then $2sQ\subset tR $.
+        \item  another dilation constant $t^\prime = 2^m, m\in\nn$, if $t^\prime \geq (3\sqrt{2}+2)s + 3\sqrt{2}$, then $3sQ\subset t^\prime R$.
     \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -57,15 +596,15 @@
 \end{proof}
 
 
-\begin{lemma}\label{lemma:doubling-meaure-4cubes}
+\begin{lemma}
     If for $\mu$-a.e. $x\in \rr^2, 0<r<\infty, \mu(B(x, 2r))\leq K\mu(B(x,r)), K\in\rr^+$, then for $n\in \nn, n\geq 2$,
-    \begin{equation}\label{eq:doubling4cubes}
+    \begin{equation}
         \mu(2^n Q)\leq K^{3n-3} \mu(2Q)
     \end{equation}
     where $Q$ is the dyadic cube containing $\mu$-a.e. $x$, and $2^n Q$, $2Q$ are dilation cubes.
 \end{lemma}
 \begin{proof}
-    By the half open definition of the dyatic cube, for $\mu$-a.e. $x\in \rr^2$, $x$ must in only one cube $Q$. Let $r = \side Q /2$. We claim that $2^n Q\subset B(x, 8^{n-1}r)$ and $B(x, r)\subset 2Q$. For any $q\in 2^n Q$, $|\centerof Q -x|\leq \sqrt{2}/2\cdot\side Q $ and $|\centerof 2^n Q -q|\leq \sqrt{2}/2 \cdot\side 2^n Q  = 2^{n-1}\sqrt{2}\cdot \side Q$. Note that $n\geq 2$, so
+    By the half open definition of the dyadic cube, for $\mu$-a.e. $x\in \rr^2$, $x$ must in only one cube $Q$. Let $r = \side Q /2$. We claim that $2^n Q\subset B(x, 8^{n-1}r)$ and $B(x, r)\subset 2Q$. For any $q\in 2^n Q$, $|\centerof Q -x|\leq \sqrt{2}/2\cdot\side Q $ and $|\centerof 2^n Q -q|\leq \sqrt{2}/2 \cdot\side 2^n Q  = 2^{n-1}\sqrt{2}\cdot \side Q$. Note that $n\geq 2$, so
     \begin{equation*}
         |x-q| \leq \left(\frac{\sqrt{2}}{2} + 2^{n-1}\sqrt{2}\right) \side Q < \frac{8^{n-1}}{2} \side Q = 8^{n-1}r
     \end{equation*}
@@ -76,14 +615,11 @@ Then $q\in B(x, 8^{n-1}r)$ and thus $2^n Q\subset B(x, 8^{n-1}r)$. Consider that
 \end{proof}
 
 
-
-
-
-\begin{lemma}\label{lemma:limQ-2sQ-0}
+\begin{lemma}
     Let $\mu$ be a measure on $\rr^2$. Let $0<\alpha_2<\alpha_1<1$, $V\in G(1,2)$, any dyadic cube $Q_k$ contained $\mu$-a.e. $x$ in $\rr^2$ with the side length $2^{-|k|}, k\in\zz$, dilation constants $s\in\nn$, parameter $K>0$. Let $E$ denote the set of points $x\in\rr^2$ then
     \begin{enumerate}[(i)]
         \item \label{lemmq-1:limQ-2sQ-0} When $Q\downarrow x$ (i.e. $|k|\rightarrow\infty \Rightarrow 2^{-|k|}\downarrow 0$),
-        \begin{equation}\label{eq:limBC-2sQ-0}
+        \begin{equation}
             \frac{\mu(C_\calB^{1,1}(Q, V, \alpha_2)\cap 2sQ)}{\mu(2sQ)} \rightarrow 0
         \end{equation}
         \item \label{lemmq-2:limQ-2sQ-0} $s$ satisfies
@@ -99,7 +635,7 @@ Then $q\in B(x, 8^{n-1}r)$ and thus $2^n Q\subset B(x, 8^{n-1}r)$. Consider that
 \end{lemma}
 \begin{proof}
     We first show the sufficient condition holds. By (\ref{eq:limBC-2sQ-0}) and $\lim_{|k|\rightarrow\infty} \side Q_k = 0$, there exists a large enough $k$ such that for any $\delta>0$,
-    \begin{equation}\label{eq:delta-4-limQ-2sQ-0}
+    \begin{equation}
         \mu(C_\calB^{1,1}(Q_k, V, \alpha_2)\cap 2sQ) < \delta\mu(2sQ_k)
     \end{equation}
     Fix a $|k|$ and $Q_k\ni x$. Now construct sets:
@@ -505,7 +1041,7 @@ Applying \ref{eq:thmAeq1} for every $y$ in every $Q_{E_i}$, and \ref{thm:Naplest
 
 
 \newpage
-\subsection{June 17-20 \texorpdfstring{$\mu(C_\mathcal{B}^2(Q, V, \alpha)) = 0 \Rightarrow \mu$ Carried by Lipschitz Graphs}{Lg}}
+\subsection{June 17-20 \texorpdfstring{$\mu(C_\mathcal{B}^2(Q, V, \alpha)) = 0 \Rightarrow \mu$ Carried by Lipschitz Graph}{Lg}}
 
 \begin{lemma}\label{lemma:CBQ2carried}
     Let $\mu$ be a Radon measure on $\rr^n$, $V$ be an $m$-dimensional linear plane in $\rr^n$, $\alpha\in(0,1)$. Suppose $E\subset \rr^n$ such that for $\mu$-a.e. $y\in E$, and for every dyadic cube $Q$ containing $y$, 
@@ -559,7 +1095,7 @@ An example of this proof illustrated in $\rr^2$ is shwon in Figure \ref{fig:CB1=
 \end{figure}
 
 
-\begin{corollary}[{\cite[Corollary 7.1]{naples2020}}]\label{LisaCoro7.1}
+\begin{corollary}[{\cite[Corollary 7.1]{naples2020}}]
     Let $\mu$ be a Radon measure on $H, V$ be an $m$-dimensional linear plane in $H$, $\alpha \in(0,1)$, and $0<r<\infty$. If for $\mu$ -a.e. $x \in H$
    $$
    \mu\left(C_{\mathcal{B}}(x, r, V, \alpha)\right)=0
