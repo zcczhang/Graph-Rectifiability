@@ -1,5 +1,54 @@
 \section{Research}
 
+\subsection{July 13 Distance between Bad Cone at a Cube to the Cube}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.66\textwidth]{images/dist-CBQ2Q.png}
+\end{figure}
+
+\begin{lemma}
+    For a dyadic cube $Q\in \rr^2$, $V\in G(1,2)$, $\alpha\in(0,1)$, assume that the inclination angle of $V$ is $\theta$, then $\dist(C_\calB^2(Q, V, \alpha), Q) = s\cdot \side Q$ where $s$ is
+    \begin{equation*}
+        \sqrt{ \left(\alpha + \sqrt{1-\alpha^2} \right)|\cos \theta-\sin\theta| \left(  \frac{\left(\alpha + \sqrt{1-\alpha^2} \right)|\cos \theta-\sin\theta|}{4\alpha^2(1-\alpha^2)} - \frac{\sin\theta}{\alpha} -\frac{\cos\theta}{\sqrt{1-\alpha^2}}  \right) + 1}
+    \end{equation*}
+    and $\dist(C_\calB^2(Q, V, \alpha), \centerof Q) = s^\prime \cdot \side Q$ where $s^\prime$ is 
+    \begin{equation*}
+        \sqrt{ \left(\alpha + \sqrt{1-\alpha^2} \right)|\cos \theta-\sin\theta|\left( \frac{\left(\alpha + \sqrt{1-\alpha^2} \right)|\cos \theta-\sin\theta|}{4\alpha^2(1-\alpha^2)} - \frac{\cos\theta + \sin\theta}{2\alpha} - \frac{\cos\theta-\sin\theta}{2\sqrt{1-\alpha^2}}  \right) + \frac{1}{2}}
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    For convenience, assume that $A, B, C, D$ are four corners of $Q$(note that point $A, B, C\notin Q$, but exist in the cube system and $\partial Q$), $P$ is one of vertices of $C_\calB^2(Q, V, \alpha)$, $\phi$ is the aperture of $Q_\calB^2(Q, V, \alpha)$. Then for any $y\in\partial C_\calB(B, V, \alpha)$, $\dist(y-B, V) = \alpha|y-B| = \sin\frac{\pi-\phi}{2} |y-B|$, so $\phi = \pi-2\arcsin \alpha$. Note that $\angle PBA = (\pi-\phi)/2 -\theta = \arcsin \alpha -\theta$, $\angle PDA = \pi/2 - ((\pi-\phi)/2 - \theta) - \phi = \theta -\phi/2 = \theta + \arcsin \alpha -\pi/2$. By the \textit{Law of Sines},
+    \begin{equation*}
+        \begin{split}
+            |P-D| &= \frac{|B-D|}{\sin \angle BPD}\cdot \sin\angle PBD \\
+            &= \frac{ \sqrt{2}\sin(\arcsin (\alpha) - \theta + \pi/4)}{\sin (2\arcsin \alpha) } \cdot \side Q\\
+            &= \frac{ \left(\alpha + \sqrt{1-\alpha^2} \right)|\cos \theta-\sin\theta|}{2\alpha\sqrt{1-\alpha^2} } \cdot \side Q
+        \end{split}
+    \end{equation*} 
+    Then applying the \textit{Law of Cosines}, denoting $|P-D|$ as $t\cdot \side Q$,
+    \begin{equation*}
+        \begin{split}
+            \dist(C_\calB^2(Q, V, \alpha), Q) &= |P-A|\\
+            &= \sqrt{|P-D|^2 + |A-D|^2 - 2|P-D||A-D|\cos \angle ADP} \\
+            &= \sqrt{t^2 + 1 - 2t\cdot\cos(\theta + \arcsin \alpha -\pi/2) }\cdot \side Q \\
+            &= \sqrt{t^2 + 1 - 2t\left( \sqrt{1-\alpha^2} \sin \theta + \alpha\cos\theta\right) }\cdot \side Q \\
+            &= s\cdot \side Q
+        \end{split}
+    \end{equation*}
+    Similarly,
+    \begin{equation*}
+        \begin{split}
+             \dist(C_\calB^2(Q, V, \alpha), Q), \centerof Q) &= |P- \centerof Q| \\
+            &= \sqrt{\frac{1}{4}|B-D|^2 + |P-D|^2 - |B-D||P-D|\cos\angle PDB} \\ 
+            &= \sqrt{\frac{1}{2} + t^2 - \sqrt{2} t \cos(\theta + \arcsin \alpha -\pi/4)}\cdot \side Q \\
+            &= \sqrt{\frac{1}{2} + t^2 -  t \left( \sqrt{1-\alpha^2}(\cos\theta +\sin\theta) + \alpha(\cos\theta -\sin\theta)\right)}\cdot \side Q \\
+            &= s^\prime \cdot \side Q
+        \end{split}
+    \end{equation*}
+\end{proof}
+
+\newpage
 \subsection{July 8 Complete and Modify our Lemma}
 
 \begin{corollary}[{\cite[Corollary 7.1]{naples2020}}]\label{LisaCoro7.1}
