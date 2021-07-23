@@ -1,5 +1,65 @@
 \section{Research}
 
+
+\subsection{July 19}
+\begin{lemma}
+    Suppose that for $E\subset \rr^2$, there exists $k_0$ such that for all $x\in E$ and $k\geq k_0$, $\alpha\in(0,1), V\in G(1,2)$,
+    \begin{equation*}
+        E\cap C_\calB^2(Q_k, V, \alpha) = \emptyset
+    \end{equation*}
+    where $Q_k$ is the dyadic cube of generation $k$ containing $x$. Then $E\subset N_\delta(\Gamma)$ where $\Gamma$ is a rectifiable graph. 
+\end{lemma}
+\begin{proof}
+    Fix a dyadic cube $Q_{k,i}\ni x_i\in E$. Choose $\alpha^\prime>\alpha$ then $\partial C_\calB^1(Q_{k,i}, V, \alpha^\prime) \cap \partial C_\calB^2(Q_{k,i}, V, \alpha) = \{p_1, p_2, p_3, p_4\}$ four points. Then 
+    \begin{equation}\label{eq:nonamelemma1}
+        E\setminus C_\calB^1(Q_{k,i}, V, \alpha^\prime)\subset C_\calG(x_i, V, \alpha^\prime)
+    \end{equation}
+    Construct the set $S_i^\prime$ where $p_1, p_2, p_3, p_4\in \partial S_i^\prime$ and $C_\calB^1(Q_{k,i}, V, \alpha^\prime)\setminus S_i^\prime \subset C_\calB^2(Q_{k,i}, V, \alpha) $. Then similarly for every $x_i\in E\cap Q_{k,i}$ we can find a collection of $S_i^\prime$ which covers $E$. Now let $S_i$ denote the disjoint set contained the center point of $S_i^\prime$ such that $\bigcup S_i = \bigcup S_i^\prime$, and assume $y_i$ is the center point of $S_i^\prime$ as the representitive point such that $F = \bigcup y_i$. Then, by (\ref{eq:nonamelemma1}), 
+    \begin{equation*}
+        y_i\notin F\setminus C_\calG(y_i, V, \alpha^\prime)\subset F\setminus( E\setminus C_\calB^1(Q_{k,i}, V, \alpha^\prime)) = y_i
+    \end{equation*}
+    so that $F\setminus C_\calG(y_i, V, \alpha^\prime) = \emptyset, \forall y_i\in F$. Applying the Geometric Lemma, $F$ is contained in a rectifiable graph, named $\Gamma$. The next step is just find a $N_\delta(\Gamma) \supset \bigcup S_i$ and thus $E\subset N_\delta(\Gamma)$.
+\end{proof}
+
+
+
+\newpage
+\subsection{July 16-18}
+\begin{lemma}
+    Suppose that for $E\subset \rr^2$, there exists $k_0$ such that for all $x\in E$ and $k\geq k_0$, $\alpha\in(0,1), V\in G(1,2)$,
+    \begin{equation*}
+        E\cap C_\calB^2(Q_k, V, \alpha) = \emptyset
+    \end{equation*}
+    where $Q_k$ is the dyadic cube of generation $k$ containing $x$. Then $E\subset N_\delta(\Gamma)$ where $\Gamma$ is a rectifiable graph. 
+\end{lemma}
+
+\begin{proof}
+    Fix a $Q_k\ni x$. Choose $\alpha^\prime>\alpha$ then $\partial C_\calB^1(Q_k, V, \alpha^\prime) \cap C_\calB^2(Q_k, V, \alpha) = \{p_1, p_2, p_3, p_4\}$ four points. For every $x\in Q_k\cap E$, we have $E\setminus C_\calB^1(Q_k, V, \alpha^\prime)\subset C_\calG(x, V, \alpha^\prime)$. Then it has to follow that $\emptyset = E\setminus C_\calG(x, V, \alpha^\prime) \subset E\setminus (E\setminus C_\calB^1 (Q_k, V, \alpha^\prime)) = C_\calB^1 (Q_k, V, \alpha^\prime)$. Then it has to be $C_\calB^2 (Q_k, V, \alpha) \subset E\setminus C_\calG(x, V, \alpha^\prime)$.
+\end{proof}
+
+
+
+Other work: Modified paper
+
+
+
+\subsection{July 14-15}
+
+\begin{lemma}
+    Suppose that for $E\subset \rr^2$, there exists $k_0$ such that for all $x\in E$ and $k\geq k_0$, $\alpha\in(0,1), V\in G(1,2)$,
+    \begin{equation*}
+        E\cap C_\calB^2(Q_k, V, \alpha) = \emptyset
+    \end{equation*}
+    where $Q_k$ is the dyadic cube of generation $k$ containing $x$. Then $E\subset N_\delta(\Gamma)$ where $\Gamma$ is a rectifiable graph. 
+\end{lemma}
+\begin{proof}
+    $E\setminus N_\delta(Q_k) \subset C_\calG(x, V, \alpha)$ or $E\setminus N_\delta(Q_k)\cap C_\calB(x, V, \alpha) = \emptyset$ for every $x\in Q_k\cap E$. Then apply the geometric lemma.
+\end{proof}
+
+Other work: Modified paper.
+
+
+\newpage
 \subsection{July 13 Distance between Bad Cone at a Cube to the Cube}
 
 \begin{figure}[H]
