@@ -1,7 +1,14 @@
 \section{Research}
 
+\subsection{July 23-Aug 1 Finish Paper and Poster}
 
-\subsection{July 19}
+Paper: https://www.overleaf.com/read/gdjxsshrpqjw
+
+Poster: https://www.overleaf.com/read/pvcsxqjqqnzp
+
+
+
+\subsection{July 19-22}
 \begin{lemma}
     Suppose that for $E\subset \rr^2$, there exists $k_0$ such that for all $x\in E$ and $k\geq k_0$, $\alpha\in(0,1), V\in G(1,2)$,
     \begin{equation*}
@@ -10,17 +17,19 @@
     where $Q_k$ is the dyadic cube of generation $k$ containing $x$. Then $E\subset N_\delta(\Gamma)$ where $\Gamma$ is a rectifiable graph. 
 \end{lemma}
 \begin{proof}
-    Fix a dyadic cube $Q_{k,i}\ni x_i\in E$. Choose $\alpha^\prime>\alpha$ then $\partial C_\calB^1(Q_{k,i}, V, \alpha^\prime) \cap \partial C_\calB^2(Q_{k,i}, V, \alpha) = \{p_1, p_2, p_3, p_4\}$ four points. Then 
-    \begin{equation}\label{eq:nonamelemma1}
-        E\setminus C_\calB^1(Q_{k,i}, V, \alpha^\prime)\subset C_\calG(x_i, V, \alpha^\prime)
-    \end{equation}
-    Construct the set $S_i^\prime$ where $p_1, p_2, p_3, p_4\in \partial S_i^\prime$ and $C_\calB^1(Q_{k,i}, V, \alpha^\prime)\setminus S_i^\prime \subset C_\calB^2(Q_{k,i}, V, \alpha) $. Then similarly for every $x_i\in E\cap Q_{k,i}$ we can find a collection of $S_i^\prime$ which covers $E$. Now let $S_i$ denote the disjoint set contained the center point of $S_i^\prime$ such that $\bigcup S_i = \bigcup S_i^\prime$, and assume $y_i$ is the center point of $S_i^\prime$ as the representitive point such that $F = \bigcup y_i$. Then, by (\ref{eq:nonamelemma1}), 
+    Fix a dyadic cube $Q_{k,i}\ni x_i\in E$. Choose $\alpha^\prime>\alpha$ then $\partial C_\calB^1(Q_{k,i}, V, \alpha^\prime) \cap \partial C_\calB^2(Q_{k,i}, V, \alpha) = \{p_1, p_2, p_3, p_4\}$ four points.
+    Construct the set $S_i^\prime$ where $p_1, p_2, p_3, p_4\in \partial S_i^\prime$ and $C_\calB^1(Q_{k,i}, V, \alpha^\prime)\setminus S_i^\prime \subset C_\calB^2(Q_{k,i}, V, \alpha) $. Then similarly for every $x_i\in E\cap Q_{k,i}$ we can find a collection of $S_i^\prime$ which covers $E$. Now le t $S_i$ denote the disjoint set contained the center point of $S_i^\prime$ such that $\bigcup S_i = \bigcup S_i^\prime$, and assume $y_i$ is the center point of $S_i^\prime$ as the representitive point such that $F = \bigcup y_i$. Then, 
     \begin{equation*}
         y_i\notin F\setminus C_\calG(y_i, V, \alpha^\prime)\subset F\setminus( E\setminus C_\calB^1(Q_{k,i}, V, \alpha^\prime)) = y_i
     \end{equation*}
-    so that $F\setminus C_\calG(y_i, V, \alpha^\prime) = \emptyset, \forall y_i\in F$. Applying the Geometric Lemma, $F$ is contained in a rectifiable graph, named $\Gamma$. The next step is just find a $N_\delta(\Gamma) \supset \bigcup S_i$ and thus $E\subset N_\delta(\Gamma)$.
+    so that $F\setminus C_\calG(y_i, V, \alpha^\prime) = \emptyset, \forall y_i\in F$. Applying the Geometric Lemma, $F$ is contained in a rectifiable graph, named $\Gamma$. The next step is just to find a $N_\delta(\Gamma) \supset \bigcup S_i$ and thus $E\subset N_\delta(\Gamma)$.
 \end{proof}
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.66\textwidth]{images/newlemma1.png}
+\end{figure}
 
 
 \newpage
