@@ -2,7 +2,6 @@
 
 [***Poster Link***](/files/Poster_Characterization_of_Rectifiable_Measures_that_are_Carried_by_Lipschitz_Graphs.pdf)
 
-<embed src="/files/Poster_Characterization_of_Rectifiable_Measures_that_are_Carried_by_Lipschitz_Graphs.pdf" height="100%" width="100%">
 
 [***Paper Link(Modifying...)***]()
 
